@@ -28,12 +28,9 @@
         <ul class="navbar-nav ml-auto">
           
           <li class="nav-item pt-3">
-            <a href="/prodd" class="nav-link"><h1 class="lead" style="font-size: 22px"> Productos </h1></a>
+            <a href="/productos" class="nav-link"><h1 class="lead" style="font-size: 22px"> Productos </h1></a>
           </li>
          
-          <li class="nav-item pt-3">
-            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"> Producción </h1></a>
-          </li>    
          
           <li class="nav-item mt-3 pb-2">
               <button type="button" class="btn btn-primary">
@@ -122,39 +119,69 @@
             <% productos.forEach(producto => { %>
               <div class="col-md-3 mr-2 ml-2 mt-2 mb-2">
                   <div class="card text-center pt-1" style="width: 15rem;">
-                      <div class="card-header" style="background-image:url(img/dif5.png)">
+                    <% if(producto.nameCategory == "Foto Regalos"){ %>
+                      <div class="card-header" style="background-color: #17a2b8;">
                         <h5 class="card-title text-white"><%= producto.nameProduct %></h5>
                       </div>
+                        <% } if(producto.nameCategory == "Foto libros"){ %>
+                          <div class="card-header" style="background-color: #3795f8;">
+                            <h5 class="card-title text-white"><%= producto.nameProduct %></h5>
+                      </div>
+                        <% } if(producto.nameCategory == "Foto Marcos") { %> 
+                          <div class="card-header" style="background-color: #8256fa;">
+                            <h5 class="card-title text-white"><%= producto.nameProduct %></h5>
+                      </div>
+                            <% } %>
                       <div class="card-body">
-                          <img src="img/<%= producto.imageProduct %>" width="50px">
+                          <img src="img/<%= producto.imageProduct %>" width="100%" height="150px">
                       </div>
                       <div class="card-header">
                           <h6 class="">
-                              <div href="#collapse<%= producto.idProduct %>" data-toggle="collapse" data-parent="#accordion">
-                                  <i class="fas fa-arrow-circle-down"></i> Caracteristicas:
+                              <div href="#" class="botonbajo" data-toggle="modal" data-target="#modal<%= producto.idProduct %>" >
+                                  Caracteristicas<i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Ver caracteristicas del producto"></i> 
                               </div>
                           </h6>
-                      </div>
-                      <div id="collapse<%= producto.idProduct %>" class="collapse">
-                          <div class="card-body">
-                              <ul class="list-group list-group-flush">
-                                  <li class="list-group-item"><%= producto.featuresProduct %></li>
-                                  <li class="list-group-item">Categoría: <%= producto.nameCategory %></li>
-                                  <li class="list-group-item">Dimensiones: <%= producto.widthDimension %> X <%= producto.heightDimension %></li>
-                                  <li class="list-group-item">Máx en pedidos: <%= producto.max %></li>
-                                  <li class="list-group-item">Mín en pedidos: <%= producto.min %></li>
-                                  <li class="list-group-item">Precio : <%= producto.priceProduct %></li>
-                                  <li class="list-group-item">Tiempo que tarda entrega : <%= producto.time %></li>
-                                  <% if(producto.enableProduct == 1){ %>
-                                    <li class="list-group-item">Existencia en Almacén : Sí</li>
-                                  <% } else{ %>  
-                                    <li class="list-group-item">Existencia en Almacén : No</li>        
-                                  <% } %>  
-                              </ul>
-                          </div>
+                          <h6 class="">
+                            <a href="editar/<%= producto.idProduct %>" class="btn btn-secondary pr-4 pl-4">
+                              <i class="fas fa-angle-double-right"></i> Editar
+                            </a>
+                        </h6>
                       </div>  
                   </div>
               </div>
+ <!-- MODAL DE CARACTERISTICAS -->
+              <div class="modal fade" id="modal<%= producto.idProduct %>">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                      <h5 class="modal-title"> <i class="fas fa-info"></i> Caracteristicas</h5>
+                      <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><span>Detalles del producto:</span><%= producto.featuresProduct %></li>
+                            <li class="list-group-item"><span>Categoria:</span> <%= producto.nameCategory %></li>
+                            <li class="list-group-item"><span>Dimensiones:</span><%= producto.widthDimension %> X <%= producto.heightDimension %></li>
+                            <li class="list-group-item"><span>Pedidos maximos:</span><%= producto.max %></li>
+                            <li class="list-group-item"><span>Pedidos minimos:</span><%= producto.min %></li>
+                            <li class="list-group-item"><span>Precio:</span> <%= producto.priceProduct %></li>
+                            <li class="list-group-item"><span>Tiempo de entrega:</span><%= producto.time %></li>
+                            <% if(producto.enableProduct == 1){ %>
+                              <li class="list-group-item"><span>Existencia en almacen:</span> Sí</li>
+                            <% } else{ %>  
+                              <li class="list-group-item"><span>Existencia en almacen:</span> No</li>        
+                            <% } %>  
+                        </ul>
+                    </div>
+                    </div>
+            
+                  </div>
+                </div>
+              </div>
+
             <% })%>
             <div class="col-md-1"></div>
             </div>
@@ -163,7 +190,7 @@
         <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
         <table class="table table-bordered">
           <thead>
-            <tr>
+            <tr style="color: aliceblue; background-color: #17a2b8;">
               <th scope="col">Nombre:</th>
               <th scope="col">Precio:</th>
               <th scope="col">Tiempo de entrega:</th>
