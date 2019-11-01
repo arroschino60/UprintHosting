@@ -296,11 +296,11 @@ app.post('/reestablecer', (req, res) => {
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
         crossorigin="anonymous">
       <link rel="stylesheet" href="css/style.css">
-      <title>V I V A L L</title>
+      <title>UPrint</title>
     </head>
     
-    <body><p style="font-size: 24px; color: Blue;">Hola, se le comunica su nueva contraseña para el correo: ${req.body.campo1}</p>
-    <lu>Nueva contraseña: ${req.body.custId} </lu><br>
+    <body><p style="font-size: 24px; color: Blue;">Recientemente se solicito un cambio para la contraseña del correo:<br> ${req.body.campo1}</p>
+    <a>Nueva contraseña: ${req.body.custId} </a><br>
     <a href="index.html" class="btn btn-success">estilo</a>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
