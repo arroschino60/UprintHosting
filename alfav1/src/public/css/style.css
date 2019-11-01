@@ -550,6 +550,21 @@ element.style {
 
 }
 
+#jumbocontacto{
+    background-image: url(../img/jumbocontacto.png);
+    background-size: 1300px 450px;
+    background-repeat: no-repeat;
+    margin-top: -30px;
+   
+}   
+
+#jumbopersonalizacion{
+    background-image: url(../img/jumbopersonalizacion.png);
+    background-size: 1300px 450px;
+    background-repeat: no-repeat;
+    margin-top: -30px;
+   
+} 
 
 #welcomeh1{
     margin-bottom: 100px;
@@ -574,7 +589,31 @@ element.style {
  background-repeat: no-repeat;
 }
 
+#tutorialfondo{
+ background-image:url(../img/dif3.png);
+ background-repeat: no-repeat;
+ width: 1300px;
+ height: 580px;
+ margin-top: -50px;
+    
+}
 
+#tutorialmarco{
+ background-image:url(../img/customplantilla.png);
+ background-repeat: no-repeat;
+ width: 1300px;
+ height: 550px;
+ margin-top: -50px;
+    
+}
+
+#tutobtn1{
+ margin-right: 400px;
+}
+
+#tutobtn2{
+ margin-right: 400px;    
+}
 
 /*
 

@@ -28,6 +28,18 @@ module.exports = function(app,passport){
     app.get('/editor', (req, res) => {
 		res.render('editor');
 	});
+
+    app.get('/contacto', (req, res) => {
+		res.render('contacto');
+	});
+
+    app.get('/tc', (req, res) => {
+		res.render('tc');
+	});
+    
+    app.get('/tc2', (req, res) => {
+		res.render('tc');
+	});
 	//app.get('/login', (req, res) => {
 	//	res.render('login.ejs');
 	//});

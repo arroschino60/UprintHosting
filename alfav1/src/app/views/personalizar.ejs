@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    
+    <link rel="icon" href="./img/iconuprint.png" id="">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/style.css">
   <title>uPrint</title>
 </head>
 
 <body id="home" data-spy="scroll" data-target="#main-nav">
-  <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
+     <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
     <div class="container">
-      <a href="../logo.html" class="navbar-brand">
+      <a href="/" class="navbar-brand">
         <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -25,39 +25,69 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a href="../UPrint/Productos.html" class="nav-link">Productos</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Personalización</a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">Contacto</a>
+          <li class="nav-item pt-2">
+                <a href="/" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Inicio </h1></a>
+                </li>
+                
+                <li class="nav-item pt-2">
+                <a href="/productos" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Productos </h1></a>
+                </li>
+
+                <li class="nav-item pt-2">
+                <a href="/personalizar" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px">Personalizacion</h1></a>
+                </li>
+
+                <li class="nav-item pt-2">
+                <a href="/contacto" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Contacto </h1></a>
+                </li>
+
+          <li class="nav-item pt-2">
+              <button type="button" class="btn btn-info">
+                <a id="shoppingBag" href="#">
+                <i class="fas fa-shopping-cart text-white"></i>
+                <span class="badge badge-light text-secondary">0</span>
+                <span class="sr-only">unread messages</span>
+                </a>
+             </button>
           </li>
 
-          <li class="nav-item">
-              <button type="button" class="btn btn-primary">
-                <a id="shoppingBag" href="#"><i class="material-icons text-light pt-1">shopping_basket <span class="badge badge-light text-secondary">0</span>
-                <span class="sr-only">unread messages</span> </i> 
-                </a>
-            </button>
-            
-          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Categoria del producto -->
-  <section id="newsletter1" class="bg-dark text-white text-center pt-1 pb-1" style="background-image:url(img/dif3.png)">
-    <div class="container"> 
-        <h1 class="display-4" style="font-size: 50px">¿Cómo debo personalizar?</h1>
-    </div>
-  </section>
 
+<div class="jumbotron jumbotron-fluid" id="jumbopersonalizacion">
+  <div class="container" id="regalosproducttittle">
+    <h1 class="display-4"><i class="fas fa-palette"></i> Personalización</h1>
+    <p class="lead">Guía para personalizar tus productos</p>
+    <span class="badge badge-light">Herramienta:</span>
+    <span class="badge badge-danger">Tutorial</span>
+  </div>
+</div>
+
+
+<section id="tutorialfondo">
+    <div class="container" id="tutorialmarco">
+        <div class="row">
+            <div class="col-md-12">
+                <button id="tutobtn1" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un texto a tu personalización">
+                <i class="fas fa-text-width fa-2x"></i>
+                </button>
+            </div>
+            
+            <div class="col-md-12">
+                <button id="tutobtn2" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un emoji a tu personalización">
+                <i class="fas fa-question-circle fa-2x"></i>
+                </button>
+            </div>
+                
+          
+
+            
+        </div>
+    </div>
+</section>
 
   <!-- Acerca de la categoria del producto -->
   <section style="background-image:url(img/dif5.png)">
@@ -175,7 +205,6 @@
                 <button type="button" class="btn btn-danger btn-lg">Funda Rosa <br> $300</button>
               </div>
             </div>
-     
           </div>
 
           <!-- CONTROLS -->
@@ -632,15 +661,18 @@
                 &copy; uPrint.com <br> Todos los Derechos Reservados
                 </h6>
             </div>
-            <div class="col-md-2">
+              <div class="col-md-2">
+                <a href="/tc">
                 <button type="button" class="btn btn-dark">Terminos & Condiciones</button>
+                </a>
             </div>
             <div class="col-md-1">
             </div>
             <div class="col-md-2">
+                <a href="/tc2">
                 <button type="button" class="btn btn-dark">Aviso de Privacidad</button>
+                </a>
             </div>
-             
 
       </div>
         
@@ -698,6 +730,11 @@
 
   </script>
 
+  <script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script>
 
 </body>
 
