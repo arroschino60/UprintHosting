@@ -262,6 +262,11 @@ app.get('/reccont', (req, res) => {
     });
   });
 
+  app.get('/newpass', (req, res) => {
+    res.render('nuevacontrasena', {
+      //news: result
+    });
+  });
 
 /*
 //Función para actualizar status de productos FALTA MODIFICAR
@@ -308,8 +313,8 @@ app.post('/reestablecer', (req, res) => {
     </head>
     
     <body><p style="font-size: 24px; color: Blue;">Recientemente se solicito un cambio para la contraseña del correo:<br> ${req.body.campo1}</p>
-    <a>Nueva contraseña: ${req.body.custId} </a><br>
-    <a href="index.html" class="btn btn-success">estilo</a>
+    <a>De ser veridico, sigue este enlace:</a><br>
+    <a href="http://localhost:3000/newpass" class="btn btn-success">enlace</a>
     <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
