@@ -1,5 +1,6 @@
 var authController = require('../controllers/authcontroller.js');
 const productosModel = require("../config/passport/productions.js");
+const admModel = require("../config/passport/amin.js");
 
 module.exports = function(app,passport){
 
@@ -61,7 +62,7 @@ app.post('/signin', passport.authenticate('local-signin',  { successRedirect: '/
 
 //Función para recuperar información de pedidos
 app.get('/pro', function (req, res, next) {
-	productosModel
+	admModel
 		.obtenerUnidades()
 		.then(productos => {
 			res.render("production", {
@@ -88,6 +89,43 @@ app.get('/prodd', function (req, res, next) {
 		});
 
 });
+
+//Función para obtener las ventas en un periodo de tiempo
+app.post('/proselect', function (req, res, next) {
+    const {
+        fechafin,
+        fechaini
+      } = req.body;
+	admModel
+		.obtenerVentas(fechaini, fechafin)
+		.then(productos => {
+			res.render("production", {
+				productos: productos,
+			});
+		})
+		.catch(err => {
+			return res.status(500).send(err);
+		});
+
+});
+
+//Función para cambiar el status de los pedidos
+app.post('/cambStatus/:id/:idos', function(req, res, next){
+    const { exampleFormControlSelect1 } = req.body;
+    console.log(req.params.idos);
+    console.log(req.params.id);
+    console.log(exampleFormControlSelect1);
+    admModel
+    .cambiarStatus(req.params.idos, req.params.id, exampleFormControlSelect1)
+    .then(() => {
+        res.redirect("/pro");
+    })
+    .catch(err => {
+        return res.status(500).send(err);
+    });
+});
+
+
 //Función para insertar productos
 app.post('/insertar', function (req, res, next) {
     // Obtener el nombre y precio. Es lo mismo que
@@ -119,7 +157,7 @@ app.post('/insertar', function (req, res, next) {
         return res.status(500).send("No hay comment");
 	}
     // Si todo va bien, seguimos
-    productosModel
+    admModel
         .insertarProducto(nombre, precio, tiempo, min, max, categoria, validatedCustomFile, dimen, comment, exist)
         .then(idProductoInsertado => {
             res.redirect("/prodd");
@@ -175,7 +213,7 @@ app.post('/actualizar/', function (req, res, next) {
         return res.status(500).send("No hay comment");
 	}
 	if(!validatedCustomFile) {
-		productosModel
+		admModel
         .actualizar(id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist)
         .then(() => {
             res.redirect("/prodd");
@@ -185,7 +223,7 @@ app.post('/actualizar/', function (req, res, next) {
         });	
 	}else {
 		// Si no se cambió la imagen
-		productosModel
+		admModel
         .actualizar(id, nombre, precio, tiempo, min, max, categoria, validatedCustomFile, dimen, comment, exist)
         .then(() => {
             res.redirect("/prodd");
@@ -199,7 +237,7 @@ app.post('/actualizar/', function (req, res, next) {
 
 //Función para eliminar producto
 app.get('/eliminar/:id', function (req, res, next) {
-    productosModel
+    admModel
         .eliminar(req.params.id)
         .then(() => {
             res.redirect("/prodd");

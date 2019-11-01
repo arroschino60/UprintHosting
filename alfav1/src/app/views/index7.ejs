@@ -28,7 +28,7 @@
         <ul class="navbar-nav ml-auto">
           
           <li class="nav-item pt-3">
-            <a href="/productos" class="nav-link"><h1 class="lead" style="font-size: 22px"> Productos </h1></a>
+            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"> Pedidos </h1></a>
           </li>
          
          
@@ -151,17 +151,17 @@
 
               <select class="form-control" id="categoria" name="categoria" value="<%= producto.idCategory %>">
                 <% if(producto.idCategory == 2){ %>
-                    <option value="2" aria-selected="true">Foto Libros</option>        
+                    <option value="2" aria-selected="true" disabled selected >Foto Libros</option>        
                 <% } else{ %>  
                   <option value="2">Foto Libros</option>
                 <% } %>
                 <% if(producto.idCategory == 3){ %>
-                  <option value="2" aria-selected="true">Foto Marcos</option>        
+                  <option value="2" aria-selected="true" disabled selected>Foto Marcos</option>        
               <% } else{ %>  
                 <option value="3">Foto Marcos</option>
               <% } %>
               <% if(producto.idCategory == 1){ %>
-                <option value="1" aria-selected="true">Foto Regalos</option>        
+                <option value="1" aria-selected="true" disabled selected>Foto Regalos</option>        
             <% } else{ %>  
               <option value="1">Foto Regalos</option>
             <% } %>
@@ -175,11 +175,11 @@
 
               <select class="form-control" id="exist" name="exist" value="<%= producto.enableProduct %>">
                 <% if(producto.enableProduct == 1){ %>
-                    <option value="true" aria-selected="true">Sí</option>        
+                    <option value="true" aria-selected="true" disabled selected>Sí</option>        
                     <option value="false">No</option>
                 <% } else{ %>  
                   <option value="true" >Sí</option>        
-                    <option value="false" aria-selected="true">No</option>
+                    <option value="false" aria-selected="true" disabled selected>No</option>
                 <% } %>
              </select>
             </div>

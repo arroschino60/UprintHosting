@@ -14,30 +14,12 @@
         <link rel="stylesheet" href="css/style.css">
         
     </head>
-    <body id="home" data-spy="scroll" data-target="#main-nav" style="background-image:url(img/dif2.png)">
+    <body  style="background-image:url(img/dif2.png)">
         <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
             <div class="container">
                 <a href="/" class="navbar-brand">
                     <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
                 </a>
-                
-          <li class="nav-item pt-3">
-            <a href="/prodd" class="nav-link"><h1 class="lead" style="font-size: 22px"> Productos </h1></a>
-          </li>
-         
-          <li class="nav-item pt-3">
-            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"> Producción </h1></a>
-          </li>    
-         
-          <li class="nav-item mt-3 pb-2">
-              <button type="button" class="btn btn-primary">
-                <a id="shoppingBag" href="#">
-                <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">ADMIN</span>
-                <span class="sr-only">unread messages</span>
-                </a>
-             </button>
-          </li>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -48,27 +30,48 @@
             </div>
         </nav>
         <!-- NAV -->
+        <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
+                <div class="container">
+                  <a href="/" class="navbar-brand">
+                    <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
+                  </a>
+                  <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ml-auto">
+                      
+                      <li class="nav-item pt-3">
+                        <a href="/prodd" class="nav-link"><h1 class="lead" style="font-size: 22px"> Regresar </h1></a>
+                      </li>
+            
+                    </ul>
+                  </div>
+                </div>
+              </nav>
         <div class="container">
+            
             <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1">Periodo de tiempo que desea ver:</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option value="" disabled selected></option>
-                            <option value="1">Día</option>
-                            <option value="2">Semana</option>
-                            <option value="3">Quimcena</option>
-                            <option value="4">Mes</option>
-                            <option value="5">Trimestre</option>
-                        </select>
-                    </div>
-            </div>
-                <div class="col-md-4"></div>
-                <form method="get" action="/pro">
-                    <div class="col-md-4 text-center-center">
-                        <button type="submit" class="btn btn-primary" >Actualizar</button>
+                <form name="formulario" method="post" action="/proselect">
+                    <div class="row">
+                        <div class="col col-md-4 col-xs-4 text-center">
+                            <h3>Mostrar desde la fecha:</h3>
+                            <!-- Campo de entrada de fecha -->
+                            Selecciona la fecha deseada:
+                            <input type="date" name="fechaini" min="25-03-2018" step="1" value="10-10-2019" required>
+                        </div>
+                        <div class="col col-md-4 col-xs-4 text-center">
+                            <h3>Hasta la fecha:</h3>
+                            <!-- Campo de entrada de fecha -->
+                            Selecciona la fecha deseada:
+                            <input type="date" name="fechafin" min="25-03-2018" step="1" value="11-10-2019" required>
+                        </div>
+                        <div class="col col-md-4 col-xs-4 text-center center">
+                            <button type="submit" class="btn btn-info btn-lg btn-block">Buscar en intervalo de fechas</button>
+                        </div>
                     </div>
                 </form>
+                <hr>
             </div>
             <hr>
             <div class="row">
@@ -76,6 +79,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">No. de artículo</th>
                                 <th scope="col">Articulo</th>
                                 <th scope="col">Fecha de pedido</th>
                                 <th scope="col">Estatus</th>
@@ -88,28 +92,30 @@
                             <% productos.forEach(producto => { %>
                                 
                                 <tr>
-                                    <td><%= producto.idVenta %></td>
-                                    <td><%= producto.product %></td>
+                                    <form method="POST" action="/cambStatus/<%= producto.idArticle %>/<%= producto.idSelling %>">
+                                    <td><p id="idVen" name="idVen"><%= producto.idSelling %></p></td>
+                                    <td><p id="idArt" name="idArt"><%= producto.idArticle %></p></td>
+                                    <td><%= producto.nameProduct %></td>
                                     <td ><%= producto.fecha %></td>
                                     <td>
                                         <div class="form-group">
-                                            <select class="form-control  pb-2 mt-2" id="exampleFormControlSelect1" style="font-size: x-small;">
-                                                    <% if(producto.stat == 1){ %>
+                                            <select class="form-control  pb-2 mt-2" id="exampleFormControlSelect1" name="exampleFormControlSelect1" >
+                                                    <% if(producto.statusOrder == 1){ %>
                                                         <option value="1" disabled selected>Recibido</option>        
                                                     <% } else{ %>  
                                                         <option value="1" >Recibido</option>        
                                                     <% } %>
-                                                    <% if(producto.stat == 2){ %>
+                                                    <% if(producto.statusOrder == 2){ %>
                                                         <option value="2" disabled selected>En producción</option>        
                                                     <% } else{ %>  
                                                         <option value="2">En producción</option>
                                                     <% } %>
-                                                    <% if(producto.stat == 3){ %>
+                                                    <% if(producto.statusOrder == 3){ %>
                                                         <option value="3" disabled selected>Terminado</option>        
                                                     <% } else{ %>  
                                                         <option value="3">Terminado</option>
                                                     <% } %>
-                                                    <% if(producto.stat == 4){ %>
+                                                    <% if(producto.statusOrder == 4){ %>
                                                         <option value="4" disabled selected>Enviado</option>        
                                                     <% } else{ %>  
                                                         <option value="4">Enviado</option>
@@ -125,7 +131,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel"><%= producto.product %></h4>
+                                                        <h4 class="modal-title" id="myModalLabel"><%= producto.nameProduct %></h4>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -136,14 +142,12 @@
                                                                     <img src="/img/fr1.JPG" width="180px" height="200px" alt="">
                                                             </div>
                                                             <div class="col">
-                                                                <p>Categoría: <%= producto.categor %></p>
-                                                                <p>Subcategoría: <%= producto.subcategor %></p>
-                                                                <p>Medidas: <%= producto.ancho %> X <%= producto.alto %> </p>
-                                                                <p>Cantidad: <%= producto.cant %></p>
-                                                                <p>Usuario: <%= producto.usuario %></p>
-                                                                <p>C.P.: <%= producto.cp %></p>
-                                                                <p>Calle: <%= producto.calle %></p>
-                                                                <p>Precio: <%= producto.precio %></p>
+                                                                <p>Categoría: <%= producto.nameCategory %></p>
+                                                                <p>Medidas: <%= producto.widthDimension %> X <%= producto.heightDimension %> </p>
+                                                                <p>Cantidad: <%= producto.quantity %></p>
+                                                                <p>C.P.: <%= producto.zipNameSelling %></p>
+                                                                <p>Calle: <%= producto.street %></p>
+                                                                <p>Precio: <%= producto.price %></p>
                                                             </div>
                                                         </div>
 
@@ -153,8 +157,9 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <button type="submit">Guardar Status</button>
-                                    </td>  
+                                        <button class="btn btn-success">Guardar Status</button>
+                                    </td> 
+                                </form> 
                                 </tr>
                                 <% })%>
                             </tbody>
@@ -169,42 +174,6 @@
                 <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(img/dif3.png)">
                     <div class="container mb-5">
                       <div class="row text-center">
-                            <div class="col-md-4">
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fab fa-facebook fa-3x"></i>
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fas fa-envelope fa-3x"></i>
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fas fa-phone-square fa-3x"></i>
-                            </div>
-                            <div class="col-md-1">
-                                <i class="fas fa-map-marker-alt fa-3x"></i>
-                            </div>
-                            <div class="col-md-3">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="row text-center">
-                            <div class="col-md-1">
-                            </div>
-                            <div class="col-md-4">
-                                <h6 class="lead" style="font-size: 15px">
-                                    <span id="year"></span>
-                                    &copy; uPrint.com <br> Todos los Derechos Reservados
-                                </h6>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-dark">Terminos & Condiciones</button>
-                            </div>
-                            <div class="col-md-1">
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn btn-dark">Aviso de Privacidad</button>
-                            </div>
                         </div>
                     </div>      
                 </footer>
