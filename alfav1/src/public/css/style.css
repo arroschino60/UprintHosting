@@ -320,7 +320,172 @@ element.style {
   margin: 26px auto;
 }
 
-#bann{
+#bannpla1tittle{
+  width: 190px;
+  height: 120px;
+  margin-top: -220px;
+  margin-left: 0px;
+  margin-bottom: 135px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+#bannpla1tittleimagen{
+  width: 175px;
+  height: 120px;
+  margin-top: 45px;
+  margin-left: -130px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+#bannpla1{
+  width: 200px;
+  height: 170px;
+  margin-top: -290px;
+  margin-left: -0px;
+  margin-bottom: 0px; 
+  position: absolute;
+  z-index: 0;
+}
+
+#bannpla1imagen{
+  width: 210px;
+  height: 140px;
+  margin-top: -190px;
+  margin-left: -188px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 1;
+}
+
+#bannpla2tittle{
+  width: 190px;
+  height: 120px;
+  margin-top: -220px;
+  margin-left: 95px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+#bannpla2tittleimagen{
+  width: 220px;
+  height: 120px;
+  margin-top: 10px;
+  margin-left: -170px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+#bannpla2{
+  width: 200px;
+  height: 170px;
+  margin-top: -290px;
+  margin-left: -0px;
+  margin-bottom: 0px; 
+  position: absolute;
+  z-index: 0;
+}
+
+#bannpla2imagen{
+  width: 235px;
+  height: 165px;
+  margin-top: 45px;
+  margin-left: -88px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 1;
+}
+
+#bannpla3tittle{
+  width: 190px;
+  height: 120px;
+  margin-top: -220px;
+  margin-left: 95px;
+  margin-bottom: 135px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+#bannpla3tittleimagen{
+  width: 190px;
+  height: 120px;
+  margin-top: 60px;
+  margin-left: -95px;
+  margin-bottom: 135px;
+  position: absolute;
+  z-index: 2;
+
+}
+
+#bannpla3{
+  width: 90px;
+  height: 55px;
+  margin-top: -290px;
+  margin-left: 93px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 0;
+}
+
+#bannpla3imagen{
+  width: 190px;
+  height: 120px;
+  margin-top: 130px;
+  margin-left: -43px;
+  margin-bottom: 0px;
+  position: absolute;
+  z-index: 1;
+}
+
+#bann1{
+  width: 270px;
+  height: 140px;
+  margin-top: 85px;
+  margin-left: -200px;
+}
+
+#bantittle1{
+  width: 250px;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+#bann2{
+  width: 140px;
+  height: 100px;
+  margin-top: -30px;
+  margin-left: 238px;
+}
+
+#bantittle2{
+  width: 250px;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+#bann3{
+  width: 130px;
+  height: 145px;
+  margin-top: 45px;
+  margin-left: -325px;;
+}
+
+#bantittle3{
+  width: 250px;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+#bann4{
   width: 190px;
   height: 100px;
   margin-top: 0px;
@@ -328,48 +493,88 @@ element.style {
   margin-bottom: 30px;
 }
 
-#bann1{
-  width: 270px;
-  height: 140px;
-  margin-top: 115px;
-  margin-left: -200px;
+#bantittle4{
+  width: 250px;
+  height: 60px;
+  margin-bottom: 15px;
+  margin-right: 100px;
 }
 
-#bann2{
-  width: 140px;
-  height: 100px;
-  margin-top: 0px;
-  margin-left: 238px;
+#bann5{
+  width: 220px;
+  height: 150px;
+  margin-top: 13px;
+  margin-left: -55px;
 }
 
-#bann3{
-  width: 130px;
-  height: 130px;
-  margin-top: 83px;
-  margin-left: -325px;;
+#bantittle5{
+  width: 250px;
+  height: 50px;
+  margin-bottom: 25px;
 }
 
 #jumbofotoregalos{
     background-image: url(../img/jumbofotoregalos.png);
-    background-size: 1300px 350px;
+    background-size: 1300px 450px;
     background-repeat: no-repeat;
-    padding-bottom: 120px;
    
+}
+
+#regalosproduct{
+    margin-top: -80px;
+}
+
+#regalosproducttittle{
+    margin-top: -35px;
+}
+
+#marcosproduct{
+    margin-top: -80px;
+}
+
+#jumboproduct{
+    margin-top: -80px;
 }
 
 #jumbofotomarcos{
     background-image: url(../img/jumbofotomarco.png);
-    background-size: 1300px 350px;
+    background-size: 1300px 450px;
     background-repeat: no-repeat;
-    padding-bottom: 120px;
+    
 }
 
 #jumbofotolibros{
     background-image: url(../img/jumbofotolibros.png);
-    background-size: 1300px 350px;
+    background-size: 1300px 450px;
     background-repeat: no-repeat;
-    padding-bottom: 120px;
+
 }
+
+
+#welcomeh1{
+    margin-bottom: 100px;
+    width: 60%;
+    height: 60%;
+}
+
+#welcomeh2{
+    width: 10%;
+    height: 10%;
+    margin-left: 330px;
+    margin-top: 100px;
+    margin-bottom: -20px;
+}
+
+#firstban{
+    margin-top: -30px;
+}
+
+#cuerpo{
+ background-image:url(../img/dif2.png);
+ background-repeat: no-repeat;
+}
+
+
 
 /*
 

@@ -20,6 +20,14 @@ module.exports = function(app,passport){
 	app.get('/catalogo', (req, res) => {
 		res.render('catalogo');
 	});
+
+    app.get('/comprar', (req, res) => {
+		res.render('index3');
+	});
+
+    app.get('/editor', (req, res) => {
+		res.render('editor');
+	});
 	//app.get('/login', (req, res) => {
 	//	res.render('login.ejs');
 	//});

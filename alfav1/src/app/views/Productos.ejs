@@ -15,10 +15,10 @@
   <title>uPrint</title>
 </head>
 
-<body id="home" data-spy="scroll" data-target="#main-nav" style="background-image:url(img/dif2.png)">
+<body id="home" data-spy="scroll" data-target="#main-nav">
   <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
     <div class="container">
-      <a href="../logo.html" class="navbar-brand">
+      <a href="/" class="navbar-brand">
         <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -31,7 +31,7 @@
                 </li>
                 
                 <li class="nav-item pt-2">
-                <a href="../sony/index2.html" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Productos </h1></a>
+                <a href="/productos" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Productos </h1></a>
                 </li>
 
                 <li class="nav-item pt-2">
@@ -57,6 +57,9 @@
     </div>
   </nav>
 
+<section id="cuerpo">
+    
+<section id="firstban">
     <!--Carousel-->
 <section id="carousel">
     
@@ -75,25 +78,53 @@
   <div class="carousel-inner">
       
      <div class="carousel-item active">
-      <img class="d-block w-100" src="img/ban.png"
+      <img class="d-block w-100" src="img/testbanner.png"
         alt="Second slide">
       <div class="carousel-caption d-none d-md-block text-right">
           <div class="container text-center">
+                    <img src="img/choosecategorytittle.png" id="welcomeh1">
+                    <img src="img/astronauta1.gif" id="welcomeh2" data-toggle="tooltip" data-placement="top" title="¿A dónde quieres ir?">
                     <div class="row">
-                        <div class="col-md-5 mr-1">
-                            
-                        </div>
-                        <div class="col-md-1 mb-1 mt-1"></div>
                         
-                        <div class="col-md-5">
-                            <h1 class="lead mb-4 mt-2" style="font-size: 40px">Bienvenido a uPrint</h1>
-                            <p style="font-size: 15px" class="mb-5 pb-2">
-                            El mejor lugar para personalizar!
-                            </p>
+            
+                        <div class="col-md-4">
+                            <div class="bannpla1">
+                                <img class="" id="bannpla1imagen" src="img/planet2.gif">
+                            </div>
                             
-                            <img class="" id="bann" src="img/fondoiniciogif.gif" data-toggle="tooltip" data-placement="right" title="La variedad de nuestros productos te encantarán!">
-                                
+                            <div id="bannpla1tittle" data-toggle="tooltip" data-placement="top" title="Haz click para visitar la sección de foto libros!">
+                                <a href="#secfotolibros">
+                                <img id="bannpla1tittleimagen" src="img/fotolibrostittle.png">
+                                </a>
+                            </div>
+                            
                         </div>
+
+                        <div class="col-md-4">
+                            <div id="bannpla2">
+                                <img class="" id="bannpla2imagen" src="img/planet3.gif">
+                            </div>
+
+                            <div id="bannpla2tittle" data-toggle="tooltip" data-placement="top" title="Haz click para visitar la sección de foto regalos!">
+                                <a href="#secfotoregalos">
+                                <img id="bannpla2tittleimagen" src="img/fotoregalostittle.png">
+                                </a>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="col-md-4">
+                            <div id="bannpla3">
+                            <img class="" id="bannpla3imagen" src="img/planet1.gif">
+                            </div>
+                            
+                            <div id="bannpla3tittle" data-toggle="tooltip" data-placement="top" title="Haz click para visitar la sección de foto marcos!">
+                            <a href="#secfotomarcos">
+                            <img id="bannpla3tittleimagen" src="img/fotomarcostittle.png">
+                            </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
       </div>
@@ -112,7 +143,9 @@
                         </div>
                         <div class="col-md-1 mb-1 mt-1"></div>
                         <div class="col-md-5 mr-1">
-                            <h1 class="lead mb-5 mt-2" style="font-size: 40px">Foto Regalos</h1>
+                    
+                            <img src="img/bantittle1.png" id="bantittle1">
+
                             <i class="fas fa-coffee fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title="Tazas personalizadas"></i>
                             <i class="fas fa-mobile-alt fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="top" title="Fundas de smartphone personalizadas"></i>
                             <i class="fas fa-key fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="right" title="Llaveros personalizados"></i>
@@ -142,7 +175,9 @@
              <div class="container text-center">
                     <div class="row">
                         <div class="col-md-5">
-                            <h1 class="lead mb-5 mt-2" style="font-size: 40px">Foto Marcos</h1>
+                            
+                            <img src="img/bantittle2.png" id="bantittle2">
+
                             <i class="fas fa-box-open fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title="Cajas personalizadas para guardar todas tus fotos"></i>
         
                             <i class="fas fa-magic fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="right" title="Diferentes acabados de impresión para tus album"></i>
@@ -177,7 +212,9 @@
                         </div>
                         <div class="col-md-1 mb-1 mt-1"></div>
                         <div class="col-md-5 mr-1">
-                            <h1 class="lead mb-5 mt-2" style="font-size: 40px">Foto Libros</h1>
+                            
+                            <img src="img/bantittle3.png" id="bantittle3"><br>
+                            
                             <i class="fas fa-calendar-alt fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title="Crea agendas personalizadas"></i>
                             <i class="fas fa-book fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="right" title="Crea albums personalizados"></i>
                             <p style="font-size: 15px">
@@ -198,19 +235,68 @@
     </div>
 
      <div class="carousel-item">
-      <img class="d-block w-100" src="img/basebaner2.png"
-        alt="Third slide">
-      <div class="carousel-caption d-none d-md-block text-left">
-               <h1 class="lead mb-5 mt-2" style="font-size: 40px">Publicidad</h1>
-      </div>
-    </div>
-
-    <div class="carousel-item">
-        <img class="d-block w-100" src="img/basebaner2.png"
+      <img class="d-block w-100" src="img/ban5.png"
         alt="Second slide">
         <div class="carousel-caption d-none d-md-block text-right">
-           <h1 class="lead mb-5 mt-2" style="font-size: 40px">Publicidad</h1>
-        </div>
+             <div class="container text-center">
+                    <div class="row">
+                        <div class="col-md-5">
+                            
+                            <img src="img/bantittle5.png" id="bantittle5">
+
+                            <i class="fas fa-palette fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title=":)"></i>
+        
+                            <i class="fas fa-paint-brush fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="right" title=":D"></i>
+
+                            <p style="font-size: 15px">
+                            Personaliza cualquier producto a tu gusto o utiliza alguno de nuestros diseños predeterminados, te mostraremos como hacerlo paso por paso!
+                            </p>
+
+                            <a href="#" class="nav-link">
+                            <button type="button" class="btn btn-light pl-4 pr-4" data-toggle="tooltip" data-placement="bottom" title="Encuentra más productos de esta categoria">
+                            <i class="fas fa-info-circle"></i> Leer más
+                            </button>
+                            </a>
+
+                        </div>
+                        <div class="col-md-1 mb-1 mt-1"></div>
+                        <div class="col-md-5 mr-1">
+                            <img class="" id="bann5" src="img/personalizaciongif.gif" data-toggle="tooltip" data-placement="top" title="Imprime tus diseños y momentos más importantes!">
+                        </div>
+                    
+                    </div>
+                </div>
+      </div>
+         
+     </div>
+
+    <div class="carousel-item">
+        <img class="d-block w-100" src="img/ban.png"
+        alt="Second slide">
+    <div class="carousel-caption d-none d-md-block text-right">
+          <div class="container text-center">
+                    <div class="row">
+                        <div class="col-md-5 mr-1">
+                            
+                        </div>
+                        <div class="col-md-1 mb-1 mt-1"></div>
+                        
+                        <div class="col-md-5">
+                            <img src="img/bantittle4.png" id="bantittle4">
+                            <p style="font-size: 15px" class="mb-5 pb-2 mr-4 pr-5">
+                            <button type="button" class="btn btn-light pr-3 mr-3" data-toggle="tooltip" data-placement="right" title="Escribenos y te atenderemos en lo que tu necesites">
+                            ¿Dudas o comentarios? <i class="fas fa-phone"></i> 
+                            </button>
+                            </p>
+                           
+                            
+                            <img class="" id="bann4" src="img/fondoiniciogif.gif" data-toggle="tooltip" data-placement="right" title="La variedad de nuestros productos te encantarán!">
+                                
+                        </div>
+                    </div>
+                </div>
+      </div>    
+        
     </div>
 
   </div>
@@ -233,25 +319,28 @@
       </div>    
 </section>
 
+</section>
 
-
+<section id="secfotoregalosdiv">
 <section id="secfotoregalos">
 
 <div class="jumbotron jumbotron-fluid" id="jumbofotoregalos">
-  <div class="container" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
+  <div class="container" id="regalosproducttittle" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
     <h1 class="display-4"><i class="fas fa-gift"></i> Foto Regalos</h1>
     <p class="lead">Encuentra diferentes tipos de termos, tazas y fundas para tu smartphone!</p>
-<a href="#termo" class="badge badge-primary">Termos</a>
-<a href="#taza" class="badge badge-secondary">Tazas</a>
-<a href="#funda" class="badge badge-success">Fundas de smartphone</a>
-<a href="#rompe" class="badge badge-danger">Rompecaezas</a>
-<a href="#pad" class="badge badge-warning">Mousepad</a>
-<a href="#llave" class="badge badge-info">Llaveros</a>
-<a href="#" class="badge badge-light">X</a>
-<a href="#" class="badge badge-dark">X</a>
+
+<span class="badge badge-primary">Termos</span>
+<span class="badge badge-secondary">Tazas</span>
+<span class="badge badge-success">Fundas de smartphone</span>
+<span class="badge badge-danger">Rompecabezas</span>
+<span class="badge badge-warning">Mousepad</span>
+<span class="badge badge-info">Llaveros</span>
+<span class="badge badge-light">Café</span>
+<span class="badge badge-dark">Té</span>
+
   </div>
 </div>
- <div class="container">
+ <div class="container" id="regalosproduct">
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -1219,23 +1308,26 @@
     </div>
  </div>
 </section>
-
+</section>
+    
 <section id="secfotomarcos">
 <div class="jumbotron jumbotron-fluid" id="jumbofotomarcos">
   <div class="container" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
     <h1 class="display-4"><i class="fas fa-gift"></i> Foto Marcos</h1>
     <p class="lead">Siente la textura de todos nuestros modos de impresión!</p>
-<a href="#" class="badge badge-primary">Caja de fotos</a>
-<a href="#" class="badge badge-secondary">Acabado Ultra</a>
-<a href="#" class="badge badge-success">Acabado Lino</a>
-<a href="#" class="badge badge-danger">Acabado Brillo</a>
-<a href="#" class="badge badge-warning">Acabado X</a>
-<a href="#" class="badge badge-info">Acabado X</a>
-<a href="#" class="badge badge-light">Acabado X</a>
-<a href="#" class="badge badge-dark">Acabado X</a>
+
+<span class="badge badge-primary">Caja de fotos</span>
+<span class="badge badge-secondary">Acabado Ultra</span>
+<span class="badge badge-success">Acabado Lino</span>
+<span class="badge badge-danger">Acabado Brillo</span>
+<span class="badge badge-warning">Acabado X</span>
+<span class="badge badge-info">Acabado X</span>
+<span class="badge badge-light">Acabado X</span>
+<span class="badge badge-dark">Acabado X</span>
+
   </div>
 </div>
-    <div class="container">
+    <div class="container" id="marcosproduct">
         <div class="row">
 
             <div class="col-md-12">
@@ -1447,17 +1539,19 @@
   <div class="container" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
     <h1 class="display-4"><i class="fas fa-gift"></i> Foto Libros</h1>
     <p class="lead">Renueva la manera de crear album de fotos con tus seres queridos!</p>
-<a href="#" class="badge badge-primary">Agendas</a>
-<a href="#" class="badge badge-secondary">Eventos</a>
-<a href="#" class="badge badge-success">Bodas</a>
-<a href="#" class="badge badge-danger">Bautizos</a>
-<a href="#" class="badge badge-warning">Graduaciones</a>
-<a href="#" class="badge badge-info">Personalizaciones</a>
-<a href="#" class="badge badge-light">Sesiones de fotos</a>
-<a href="#" class="badge badge-dark">Cinematografía</a>
+
+<span class="badge badge-primary">Agendas</span>
+<span class="badge badge-secondary">Eventos</span>
+<span class="badge badge-success">Bodas</span>
+<span class="badge badge-danger">Bautizos</span>
+<span class="badge badge-warning">Graduaciones</span>
+<span class="badge badge-info">Personalizaciones</span>
+<span class="badge badge-light">Sesiones de fotos</span>
+<span class="badge badge-dark">Cinematografía</span>
+
   </div>
 </div>
-    <div class="container">
+    <div class="container" id="jumboproduct">
         <div class="row">
 
             <div class="col-md-12">
@@ -1489,7 +1583,7 @@
             <img class="card-img-top" src="img/productore6.png" alt="Card image cap">
             <div class="card-body text-center">
                  <h5 class="card-title">
-                    <font size="3">Agenda estándar uPrint®</font>
+                    <font size="3">Agenda estándar uPrint®</font> 
                      <footer class="blockquote-footer text-center">desde <cite title="Source Title">$54 MXN</cite></footer>
                 </h5>
                     <h5 class="mb-0">
@@ -1647,7 +1741,7 @@
                     </p>
                     </div>
                     </div>
-                    <a href="index3.html" class="btn btn-info">Comprar</a>
+                    <a href="/comprar" class="btn btn-info">Comprar</a>
             </div>
             </div>
             
@@ -1702,8 +1796,9 @@
             </div>
         </div>
     </div>
-</section>    
-
+</section>
+    
+</section>
   <!-- FOOTER -->
   <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(img/dif3.png)">
       

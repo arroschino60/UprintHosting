@@ -158,9 +158,9 @@ function save(){
 }
 
 function setLeft(){
-    let mask1 = new Mask(320,185,300,165, new Picture(310,-80,'img/foto1.jpg',341.625,512));
-    let mask2 = new Mask(320,10,300,165, new Picture(310,-80,'img/foto1.jpg',341.625,512));
-    let mask3 = new Mask(10,10,300,340, new Picture(-50,-80,'img/foto3.jpg',500,750));
+    let mask1 = new Mask(320,185,300,165, new Picture(310,-80,'./img/foto1.jpg',341.625,512));
+    let mask2 = new Mask(320,10,300,165, new Picture(310,-80,'./img/foto1.jpg',341.625,512));
+    let mask3 = new Mask(10,10,300,340, new Picture(-50,-80,'./img/foto3.jpg',500,750));
 
     mainEditor.resetMasks();
     mainEditor.clear();
@@ -170,9 +170,9 @@ function setLeft(){
 }
 
 function setRight(){
-    let mask1 = new Mask(10,185,300,165, new Picture(-10,-80,'img/foto1.jpg',341.625,512));
-    let mask2 = new Mask(10,10,300,165, new Picture(-10,-80,'img/foto1.jpg',341.625,512));
-    let mask3 = new Mask(320,10,300,340, new Picture(280,-80,'img/foto3.jpg',500,750));
+    let mask1 = new Mask(10,185,300,165, new Picture(-10,-80,'./img/foto1.jpg',341.625,512));
+    let mask2 = new Mask(10,10,300,165, new Picture(-10,-80,'./img/foto1.jpg',341.625,512));
+    let mask3 = new Mask(320,10,300,340, new Picture(280,-80,'./img/foto3.jpg',500,750));
     
     mainEditor.resetMasks();
     mainEditor.clear();
