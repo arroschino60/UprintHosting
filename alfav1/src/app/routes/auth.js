@@ -20,14 +20,6 @@ module.exports = function(app,passport){
 	app.get('/catalogo', (req, res) => {
 		res.render('catalogo');
 	});
-
-    app.get('/comprar', (req, res) => {
-		res.render('index3');
-	});
-
-    app.get('/editor', (req, res) => {
-		res.render('editor');
-	});
 	//app.get('/login', (req, res) => {
 	//	res.render('login.ejs');
 	//});
@@ -195,6 +187,16 @@ app.get('/editar/:id', function (req, res, next) {
             return res.status(500).send("Error obteniendo producto");
         });
 });
+
+app.post('/actualiza', (req, res) => {
+    const {
+      notvis
+    } = req.body;
+    connection.query('UPDATE `users` SET `password`='+req.body.newpass+ 'WHERE email =' + req.body.campo1,
+      (err, result) => {
+        res.redirect('signin');
+      });
+  });
 
 //Función para modificar 
 app.post('/actualizar/', function (req, res, next) {
