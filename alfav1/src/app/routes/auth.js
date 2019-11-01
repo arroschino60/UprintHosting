@@ -189,12 +189,9 @@ app.get('/editar/:id', function (req, res, next) {
 });
 
 app.post('/actualiza', (req, res) => {
-    const {
-      notvis
-    } = req.body;
-    connection.query('UPDATE `users` SET `password`='+req.body.newpass+ 'WHERE email =' + req.body.campo1,
+    passport.query('UPDATE `users` SET `password`='+req.body.newpass+ 'WHERE email =' + req.body.campo1,
       (err, result) => {
-        res.redirect('signin');
+        res.redirect('logo');
       });
   });
 
