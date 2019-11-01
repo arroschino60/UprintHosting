@@ -17,9 +17,28 @@ module.exports = function(app,passport){
 		res.render('productos');
 	});
 
-	app.get('/catalogo', (req, res) => {
-		res.render('catalogo');
+	app.get('/tc', (req, res) => {
+		res.render('tc');
 	});
+
+    app.get('/tc2', (req, res) => {
+		res.render('tc2');
+	});
+
+    app.get('/editor', (req, res) => {
+		res.render('editor');
+	});
+        
+    app.get('/contacto', (req, res) => {
+		res.render('contacto');
+	});
+
+    app.get('/comprar', (req, res) => {
+		res.render('index3');
+	});
+
+
+    
 	//app.get('/login', (req, res) => {
 	//	res.render('login.ejs');
 	//});
