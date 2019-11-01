@@ -27,9 +27,9 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
           
-          <li class="nav-item pt-3">
-            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"> Pedidos </h1></a>
-          </li>
+            <li class="nav-item pt-3">
+                <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"> Pedidos </h1></a>
+              </li>
          
          
           <li class="nav-item mt-3 pb-2">
@@ -137,12 +137,12 @@
                       </div>
                       <div class="card-header">
                           <h6 class="">
-                              <div href="#" class="botonbajo" data-toggle="modal" data-target="#modal<%= producto.idProduct %>" >
+                              <div href="#" class="botonbajo" data-toggle="modal" data-target="#modal<%= producto.idProduct %>" style="cursor: pointer;" >
                                   Caracteristicas<i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Ver caracteristicas del producto"></i> 
                               </div>
                           </h6>
                           <h6 class="">
-                            <a href="editar/<%= producto.idProduct %>" class="btn btn-secondary pr-4 pl-4">
+                            <a href="editar/<%= producto.idProduct %>" class="btn btn-secondary pr-4 pl-4" data-toggle="tooltip" data-placement="top" title="Editar producto"> 
                               <i class="fas fa-angle-double-right"></i> Editar
                             </a>
                         </h6>
@@ -161,18 +161,19 @@
                     </div>
                     <div class="modal-body">
                       <div class="card-body">
+                        <h1><%= producto.nameProduct %></h1><br>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><span>Detalles del producto:</span><%= producto.featuresProduct %></li>
-                            <li class="list-group-item"><span>Categoria:</span> <%= producto.nameCategory %></li>
-                            <li class="list-group-item"><span>Dimensiones:</span><%= producto.widthDimension %> X <%= producto.heightDimension %></li>
-                            <li class="list-group-item"><span>Pedidos maximos:</span><%= producto.max %></li>
-                            <li class="list-group-item"><span>Pedidos minimos:</span><%= producto.min %></li>
-                            <li class="list-group-item"><span>Precio:</span> <%= producto.priceProduct %></li>
-                            <li class="list-group-item"><span>Tiempo de entrega:</span><%= producto.time %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8">Detalles del producto:</span><%= producto.featuresProduct %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Categoria:</span > <%= producto.nameCategory %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Dimensiones:</span><%= producto.widthDimension %> X <%= producto.heightDimension %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Pedidos maximos:</span><%= producto.max %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Pedidos minimos:</span><%= producto.min %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Precio:</span> <%= producto.priceProduct %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Tiempo de entrega:</span><%= producto.time %></li>
                             <% if(producto.enableProduct == 1){ %>
-                              <li class="list-group-item"><span>Existencia en almacen:</span> Sí</li>
+                              <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Existencia en almacen:</span> <span style="color: rgb(41, 138, 83);" >Si</span></li>
                             <% } else{ %>  
-                              <li class="list-group-item"><span>Existencia en almacen:</span> No</li>        
+                              <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8; ">Existencia en almacen:</span><span style="color: rgb(177, 40, 40);">No</span></li>        
                             <% } %>  
                         </ul>
                     </div>
