@@ -1,6 +1,7 @@
 var authController = require('../controllers/authcontroller.js');
 const productosModel = require("../config/passport/productions.js");
 const admModel = require("../config/passport/amin.js");
+const nodemailer = require('nodemailer');
 
 module.exports = function(app,passport){
 
@@ -247,6 +248,12 @@ app.get('/eliminar/:id', function (req, res, next) {
         });
 });
 
+app.get('/reccont', (req, res) => {
+    res.render('Reestablecer', {
+      //news: result
+    });
+  });
+
 
 /*
 //Función para actualizar status de productos FALTA MODIFICAR
@@ -275,6 +282,72 @@ function isLoggedIn(req, res, next) {
 
     res.redirect('/signin');
 }
+
+app.post('/reestablecer', (req, res) => {
+    const cuerpo = `<!DOCTYPE html>
+    <html lang="en">
+    
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+      <link rel="stylesheet" href="css/style.css">
+      <title>V I V A L L</title>
+    </head>
+    
+    <body><p style="font-size: 24px; color: Blue;">Hola, se le comunica su nueva contraseña para el correo: ${req.body.campo1}</p>
+    <lu>Nueva contraseña: ${req.body.custId} </lu><br>
+    <a href="index.html" class="btn btn-success">estilo</a>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+    </body>
+    `;
+    
+    let transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+          user: 'gorgeousgeorge0196@gmail.com', // generated ethereal user
+          pass: 'Canacatrequel@7'  // generated ethereal password
+      },
+      tls:{
+        rejectUnauthorized:false
+      }
+    });
+    
+    // setup email data with unicode symbols
+    let mailOptions = {
+        from: '"U-Print" <gorgeousgeorge0196@gmail.com>', // sender address
+        to: `${req.body.campo1}`, // list of receivers
+        subject: 'Reestablecer contraseña', // Subject line
+        text: 'Saludos!', // plain text body
+        html: cuerpo // html body
+    };
+    
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log('Message sent: %s', info.messageId);   
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    
+        console.log(req.body);
+        res.render('logo');
+    });
+    
+    
+      });
 
 
 }
