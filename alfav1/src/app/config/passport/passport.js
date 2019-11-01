@@ -46,7 +46,7 @@
 
       if(user)
       {
-        return done(null, false, {message : 'That email is already taken'} );
+        return done(null, false, {message : 'Ese correo ya se encuentra en uso'} );
       }
 
       else

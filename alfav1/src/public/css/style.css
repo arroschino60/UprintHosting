@@ -597,6 +597,22 @@ element.style {
  margin-top: -50px;
     
 }
+.fechas input[type="date"], input[type="text"]{
+  border: 0;
+  background: none;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #0b608a;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box input[type="date"]:focus, input[type="text"]:focus{
+  width: 280px;
+  border: 2px solid #0dba93;
+}
 
 #tutorialmarco{
  background-image:url(../img/customplantilla.png);
