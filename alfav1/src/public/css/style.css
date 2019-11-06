@@ -48,8 +48,6 @@ body {
 
   .mb-resp {
     margin-bottom: 1rem; } }
-element.style {
-}
 #shoppingBag{
   color: #3e5ff1;
 }
@@ -129,7 +127,7 @@ element.style {
 
 #btsignup{
   color: black;
-   border: 0;
+   /*border: 0;*/
   background: none;
   margin: 20px auto;
   text-align: center;
@@ -161,7 +159,7 @@ element.style {
   font-weight: 500;
 }
 .box input[type="email"],.box input[type="password"], input[type="text"]{
-  border: 0;
+  /*border: 0;*/
   background: none;
   margin: 20px auto;
   text-align: center;
@@ -178,7 +176,7 @@ element.style {
 }
 .box input[type="submit"]{
   color: black;
-   border: 0;
+   /*border: 0;*/
   background: none;
   margin: 20px auto;
   text-align: center;
@@ -256,7 +254,7 @@ element.style {
   padding: 12px;
 }
 .nombre{
-  color: aliceblue;
+  /*color: aliceblue;*/
   text-transform: uppercase;
   font-size: 24px;
   color: #333;

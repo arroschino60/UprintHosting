@@ -12,9 +12,21 @@ module.exports = function(app,passport){
 
     app.get('/personalizar', (req, res) => {
 		res.render('personalizar');
-	});
+    });
+    
+    //Para obtener productos para el catálogo
 	app.get('/productos', (req, res) => {
-		res.render('productos');
+        productosModel
+		.obtenerProd()
+		.then(productos => {
+			res.render("productos", {
+				productos: productos,
+			});
+		})
+		.catch(err => {
+			return res.status(500).send("Error obteniendo productos");
+		});
+        //res.render('productos');
 	});
 
 	app.get('/tc', (req, res) => {
