@@ -12,6 +12,10 @@ module.exports = function(app,passport){
 
     app.get('/personalizar', (req, res) => {
 		res.render('personalizar');
+    });
+    
+    app.get('/pasaber', (req, res) => {
+		res.render('logoCopy');
 	});
 	app.get('/productos', (req, res) => {
 		res.render('productos');
