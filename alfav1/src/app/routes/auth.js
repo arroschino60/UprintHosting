@@ -13,7 +13,9 @@ module.exports = function(app,passport){
     app.get('/personalizar', (req, res) => {
 		res.render('personalizar');
     });
-    
+    app.get('/pasaber', (req, res) => {
+		res.render('logoCopy');
+	});
     //Para obtener productos para el catálogo
 	app.get('/productos', (req, res) => {
         productosModel
