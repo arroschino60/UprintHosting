@@ -2,42 +2,41 @@
 <html>
 <head>
 		<meta charset="utf-8">
-		<title>Página de perfil ejemplo</title>
-		<% include partials/head %>
+		<title>Administrar</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+		crossorigin="anonymous">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
 </head>
-<body>
-		<div class="container">
+<body style="background-image: url(../img/logodif.png);">
+		<div class="box">
 				<header class="text-center">
-				  <h1>Profile Page</h1>
-				  
-				  <a href="/prodd" class="btn btn-light btn-sm">
-					Administrar Productos
-				  </a>
-				  <a href="/pro" class="btn btn-light btn-sm">
-					Ver pedidos
-				  </a>
-				  <a href="/logout" class="btn btn-light btn-sm">
-					Logout
-				  </a>
+						<img src="img/logouprint.png" style="width: 120px; height: 100px;">
+				  <h1>¡Bienvenido, <%= user.firstname %>!</h1>
 				</header>
 				<hr>
-				<div class="container">
-				  <div class="col-sm-6">
-					<div class="card">
-					  <div class="card-body">
-						<h3 class="card-title"><span class="fa fa-user"></span> Local</h3>
-						<p>
-						  <strong>id</strong> : <%= user.id %> <br>
-						  <strong>email</strong> : <%= user.email %> <br>
-						  <strong>password</strong> : <%= user.password %>
-						</p>
-						<a href="/logout" class="btn btn-light btn-sm">
-						  Cerrar Cesión
-						</a>
+				<div style="width: 100%; margin-right: auto; margin-left: auto;">
+						<div class="col-sm-6">
+						  <div class="card">
+							<div class="card-body">
+							  <h3 class="card-title"><span class="fa fa-user"></span> <%= user.username %></h3>
+							  <p>
+								<strong>id</strong> : <%= user.id %> <br>
+							  </p>
+							  
+							</div>
+						  </div>
+						</div>
 					  </div>
-					</div>
-				  </div>
-				</div>
+					  <a href="/prodd" class="btn btn-light btn-sm">
+						Administrar Productos
+					  </a>
+					  <a href="/pro" class="btn btn-light btn-sm">
+						Ver pedidos
+					  </a><br>
+					  <a href="/logout" class="btn btn-light btn-sm">
+						Cerrar Sesión
+					  </a>
 			  </div>
 </body>
 </html>

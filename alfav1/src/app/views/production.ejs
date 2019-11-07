@@ -13,22 +13,9 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/style.css">
         
+        
     </head>
     <body  style="background-image:url(img/dif2.png)">
-        <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
-            <div class="container">
-                <a href="/" class="navbar-brand">
-                    <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
-                </a>
-                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav ml-auto">
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <!-- NAV -->
         <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
                 <div class="container">
@@ -58,13 +45,13 @@
                             <h3>Mostrar desde la fecha:</h3>
                             <!-- Campo de entrada de fecha -->
                             Selecciona la fecha deseada:
-                            <input type="date" name="fechaini" min="25-03-2018" step="1" value="10-10-2019" required>
+                            <input type="date" name="fechaini" min="25-03-2018" step="1" value="xx-xx-xxxx" required>
                         </div>
                         <div class="col col-md-4 col-xs-4 text-center">
                             <h3>Hasta la fecha:</h3>
                             <!-- Campo de entrada de fecha -->
                             Selecciona la fecha deseada:
-                            <input type="date" name="fechafin" min="25-03-2018" step="1" value="11-10-2019" required>
+                            <input type="date" name="fechafin" min="25-03-2018" step="1" value="xx-xx-xxxx" required>
                         </div>
                         <div class="col col-md-4 col-xs-4 text-center center">
                             <button type="submit" class="btn btn-info btn-lg btn-block">Buscar en intervalo de fechas</button>
@@ -74,7 +61,7 @@
                 <hr>
             </div>
             <hr>
-            <div class="row">
+            <div class="row tabla">
                     <table class="table table-sm table-hover" style="background-color: white;">
                             <thead>
                             <tr>
@@ -163,19 +150,72 @@
                                 </tr>
                                 <% })%>
                             </tbody>
-                        </table>
+                        </table><br>
+                        
                                         
                     </div>
+                    <section><div style="height: 200px;"></div></section>
                 </div>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
                 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
                 <!-- FOOTER -->
                 <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(img/dif3.png)">
+      
                     <div class="container mb-5">
                       <div class="row text-center">
-                        </div>
-                    </div>      
+                         
+                          <div class="col-md-4">
+                          </div>
+                          <div class="col-md-1">
+                             <a> <i class="fab fa-facebook fa-3x"></i></a>
+                          </div>
+                          <div class="col-md-1">
+                              <a><i class="fas fa-envelope fa-3x"></i></a>
+                          </div>
+                          <div class="col-md-1">
+                             <A> <i class="fas fa-phone-square fa-3x"></i></A>
+                          </div>
+                          <div class="col-md-1">
+                              <a><i class="fas fa-map-marker-alt fa-3x"></i></a>
+                          </div>
+                          <div class="col-md-3">
+                          </div>
+                      
+                      </div>
+                          </div>
+              
+              
+              
+                  <div class="container">
+                    <div class="row text-center">
+              
+                          <div class="col-md-1">
+                          </div>
+                          <div class="col-md-4">
+                              <h6 class="lead" style="font-size: 15px">
+                              <span id="year"></span>
+                              &copy; uPrint.com <br> Todos los Derechos Reservados
+                              </h6>
+                          </div>
+                          <div class="col-md-2">
+                              <a href="/tc">
+                              <button type="button" class="btn btn-dark">Terminos & Condiciones</button>
+                              </a>
+                          </div>
+                          <div class="col-md-1">
+                          </div>
+                          <div class="col-md-2">
+                              <a href="/tc2">
+                              <button type="button" class="btn btn-dark">Aviso de Privacidad</button>
+                              </a>
+                          </div>
+                           
+              
+                    </div>
+                      
+                  </div>      
+              
                 </footer>
                 <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
                 crossorigin="anonymous"></script>
