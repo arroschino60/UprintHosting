@@ -44,9 +44,19 @@
 
           <li class="nav-item pt-2">
               <button type="button" class="btn btn-info">
-                <a id="shoppingBag" href="/comprar">
+                <a id="shoppingBag" href="/carrito">
                 <i class="fas fa-shopping-cart text-white"></i>
-                <span class="badge badge-light text-secondary">1</span>
+                <span class="badge badge-light text-secondary">3</span>
+                <span class="sr-only">unread messages</span>
+                </a>
+             </button>
+          </li>
+
+          <li class="nav-item pt-2">
+              <button type="button" class="btn btn-info">
+                <a id="shoppingBag" href="/signin">
+                <i class="fas fa-user text-white"></i>
+                <span class="badge badge-light text-secondary">Usuario</span>
                 <span class="sr-only">unread messages</span>
                 </a>
              </button>
@@ -252,7 +262,7 @@
                             Personaliza cualquier producto a tu gusto o utiliza alguno de nuestros diseños predeterminados, te mostraremos como hacerlo paso por paso!
                             </p>
 
-                            <a href="#" class="nav-link">
+                            <a href="/personalizar" class="nav-link">
                             <button type="button" class="btn btn-light pl-4 pr-4" data-toggle="tooltip" data-placement="bottom" title="Encuentra más productos de esta categoria">
                             <i class="fas fa-info-circle"></i> Leer más
                             </button>
@@ -284,9 +294,11 @@
                         <div class="col-md-5">
                             <img src="img/bantittle4.png" id="bantittle4">
                             <p style="font-size: 15px" class="mb-5 pb-2 mr-4 pr-5">
+                            <a href="/contacto">
                             <button type="button" class="btn btn-light pr-3 mr-3" data-toggle="tooltip" data-placement="right" title="Escribenos y te atenderemos en lo que tu necesites">
                             ¿Dudas o comentarios? <i class="fas fa-phone"></i> 
                             </button>
+                            </a>
                             </p>
                            
                             
@@ -325,18 +337,18 @@
     <section id="secfotoregalos">
 
         <div class="jumbotron jumbotron-fluid" id="jumbofotoregalos">
-            <div class="container" id="regalosproducttittle" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
+            <div class="container" id="regalosproducttittle" data-toggle="tooltip" data-placement="bottom" title="Aquí encontrarás todos los productos de fotoregalos">
                 <h1 class="display-4"><i class="fas fa-gift"></i> Foto Regalos</h1>
                 <p class="lead">Encuentra diferentes tipos de termos, tazas y fundas para tu smartphone!</p>
 
-                <span class="badge badge-primary">Termos</span>
-                <span class="badge badge-secondary">Tazas</span>
-                <span class="badge badge-success">Fundas de smartphone</span>
-                <span class="badge badge-danger">Rompecabezas</span>
-                <span class="badge badge-warning">Mousepad</span>
-                <span class="badge badge-info">Llaveros</span>
-                <span class="badge badge-light">Café</span>
-                <span class="badge badge-dark">Té</span>
+                <span class="badge badge-primary"><i class="fas fa-prescription-bottle"></i> Termos</span>
+                <span class="badge badge-secondary"><i class="fas fa-coffee"></i> Tazas</span>
+                <span class="badge badge-success"><i class="fas fa-mobile-alt"></i> Fundas de smartphone</span>
+                <span class="badge badge-danger"><i class="fas fa-puzzle-piece"></i> Rompecabezas</span>
+                <span class="badge badge-warning"><i class="fas fa-mouse-pointer"></i> Mousepad</span>
+                <span class="badge badge-info"><i class="fas fa-key"></i> Llaveros</span>
+                <span class="badge badge-light"><i class="fas fa-coffee"></i> Café</span>
+                <span class="badge badge-dark"><i class="fas fa-coffee"></i> Té</span>
 
             </div>
         </div>
@@ -389,7 +401,7 @@
                                                                 </p>
                                                             </div>
                                                         </div>
-                                                        <a href="#" class="btn btn-info">Comprar</a>
+                                                         <a href="#" class="btn btn-info disabled" role="button" aria-disabled="true">Comprar (no disponible)</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -407,17 +419,17 @@
     
 <section id="secfotomarcos">
     <div class="jumbotron jumbotron-fluid" id="jumbofotomarcos">
-        <div class="container" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
+        <div class="container" data-toggle="tooltip" data-placement="bottom" title="Aquí encontrarás todos los productos de fotomarcos">
             <h1 class="display-4"><i class="fas fa-gift"></i> Foto Marcos</h1>
             <p class="lead">Siente la textura de todos nuestros modos de impresión!</p>
-            <span class="badge badge-primary">Caja de fotos</span>
-            <span class="badge badge-secondary">Acabado Ultra</span>
-            <span class="badge badge-success">Acabado Lino</span>
-            <span class="badge badge-danger">Acabado Brillo</span>
-            <span class="badge badge-warning">Acabado X</span>
-            <span class="badge badge-info">Acabado X</span>
-            <span class="badge badge-light">Acabado X</span>
-            <span class="badge badge-dark">Acabado X</span>
+            <span class="badge badge-primary"><i class="fas fa-box-open"></i> Caja de fotos</span>
+            <span class="badge badge-secondary"><i class="fas fa-magic"></i> Acabado Ultra</span>
+            <span class="badge badge-success"><i class="fas fa-magic"></i> Acabado Lino</span>
+            <span class="badge badge-danger"><i class="fas fa-magic"></i> Acabado Brillo</span>
+            <span class="badge badge-warning"><i class="fas fa-magic"></i> Acabado X</span>
+            <span class="badge badge-info"><i class="fas fa-magic"></i> Acabado X</span>
+            <span class="badge badge-light"><i class="fas fa-magic"></i> Acabado X</span>
+            <span class="badge badge-dark"><i class="fas fa-magic"></i> Acabado X</span>
         </div>
     </div>
     <div class="container" id="marcosproduct">
@@ -468,7 +480,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <a href="#" class="btn btn-info">Comprar</a>
+                                                     <a href="#" class="btn btn-info disabled" role="button" aria-disabled="true">Comprar (no disponible)</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -485,41 +497,24 @@
 
 <section id="secfotolibros">
     <div class="jumbotron jumbotron-fluid" id="jumbofotolibros">
-        <div class="container" data-toggle="tooltip" data-placement="bottom" title="Haz click en las pestañas para navegar entre las categorías">
+        <div class="container" data-toggle="tooltip" data-placement="bottom" title="Aquí encontrarás todos los productos de fotolibros">
             <h1 class="display-4"><i class="fas fa-gift"></i> Foto Libros</h1>
             <p class="lead">Renueva la manera de crear album de fotos con tus seres queridos!</p>
-            <span class="badge badge-primary">Agendas</span>
-            <span class="badge badge-secondary">Eventos</span>
-            <span class="badge badge-success">Bodas</span>
-            <span class="badge badge-danger">Bautizos</span>
-            <span class="badge badge-warning">Graduaciones</span>
-            <span class="badge badge-info">Personalizaciones</span>
-            <span class="badge badge-light">Sesiones de fotos</span>
-            <span class="badge badge-dark">Cinematografía</span>
+            <span class="badge badge-primary"><i class="fas fa-calendar-alt"></i>  Agendas</span>
+            <span class="badge badge-secondary"><i class="fas fa-book"></i> Eventos</span>
+            <span class="badge badge-success"><i class="fas fa-book"></i> Bodas</span>
+            <span class="badge badge-danger"><i class="fas fa-book"></i> Bautizos</span>
+            <span class="badge badge-warning"><i class="fas fa-book"></i> Graduaciones</span>
+            <span class="badge badge-info"><i class="fas fa-edit"></i> Personalizaciones</span>
+            <span class="badge badge-light"><i class="fas fa-camera"></i> Sesiones de fotos</span>
+            <span class="badge badge-dark"><i class="fas fa-video"></i> Cinematografía</span>
         </div>
     </div>
     <div class="container" id="jumboproduct">
         <div class="row">
 
             <div class="col-md-12">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Encuentra la agenda ideal para ti">
-                        <a class="nav-link active" id="home2-tab" data-toggle="tab" href="#home2" role="tab" aria-controls="home2"
-                        aria-selected="true"><i class="fas fa-calendar-alt"></i> Agenda</a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Prueba nuestros diseños especiales de bodas">
-                        <a class="nav-link" id="profile2-tab" data-toggle="tab" href="#profile2" role="tab" aria-controls="profile2"
-                        aria-selected="false"><i class="fas fa-book"></i> Fotolibro bodas</a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Prueba nuestros diseños especiales de bautizos">
-                        <a class="nav-link" id="contact2-tab" data-toggle="tab" href="#contact2" role="tab" aria-controls="contact2"
-                        aria-selected="false"><i class="fas fa-book"></i> Fotolibro bautizo</a>
-                    </li>
-                    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Prueba nuestros diseños especiales de eventos">
-                        <a class="nav-link" id="contact11-tab" data-toggle="tab" href="#contact11" role="tab" aria-controls="contact11"
-                        aria-selected="false"><i class="fas fa-book"></i> Foto libro eventos</a>
-                    </li>
-                </ul>
+                
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home2" role="tabpanel" aria-labelledby="home2-tab">
                         <div class="container">
@@ -564,7 +559,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <a href="#" class="btn btn-info">Comprar</a>
+                                                    <a href="/comprar" class="btn btn-info">Comprar</a>
                                                 </div>
                                             </div>
                                         </div>
