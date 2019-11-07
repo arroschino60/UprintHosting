@@ -1,4 +1,5 @@
     const express    = require('express');
+    const fileUpload = require('express-fileupload')
     const app        = express();
     const path = require('path');
     var passport   = require('passport');
@@ -6,8 +7,25 @@
     var bodyParser = require('body-parser');
     var env        = require('dotenv').load;
     var exphbs     = require('express-handlebars');
+    var formidable = require('express-form-data');
+    //const multer = require('multer');
     
 
+    //app.use(fileUpload())
+    //For up documents
+    /*let storage = multer.diskStorage({
+      destination:(req,file,cb)=>{
+        cb(null,'.public/img')
+      },
+      filename:(req, file, cb) => {
+        cb(null, file.fieldname = '-'+ Date.now() + path.extname(file.originalname));
+      }
+    });
+
+    const upload = multer({ storage });
+    
+    app.use(express.json());
+    app.use(express.urlencoded({ extended: true }));*/
 
     //For BodyParser
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,6 +37,8 @@
     app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
     app.use(passport.initialize());
     app.use(passport.session()); // persistent login sessions
+
+    app.use(formidable.parse({ keepExtensions: true}));
 
 
      //For Handlebars

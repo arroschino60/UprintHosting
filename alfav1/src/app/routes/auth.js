@@ -2,6 +2,7 @@ var authController = require('../controllers/authcontroller.js');
 const productosModel = require("../config/passport/productions.js");
 const admModel = require("../config/passport/amin.js");
 const nodemailer = require('nodemailer');
+var fs = require("fs"); 
 
 module.exports = function(app,passport){
 
@@ -165,7 +166,7 @@ app.post('/insertar', function (req, res, next) {
     // Obtener el nombre y precio. Es lo mismo que
     // const nombre = req.body.nombre;
     // const precio = req.body.precio;
-    const { nombre, precio, tiempo, min, max, categoria, validatedCustomFile, dimen, comment, exist } = req.body;
+    const { nombre, precio, tiempo, min, max, categoria, file, dimen, comment, exist } = req.body;
     if (!nombre) {
         return res.status(500).send("No hay nombre");
 	}
@@ -191,8 +192,20 @@ app.post('/insertar', function (req, res, next) {
         return res.status(500).send("No hay comment");
 	}
     // Si todo va bien, seguimos
+    //saca la extención de la imagén
+    var extension = req.files.file.name.split(".").pop();
+    //Aquí se le asigna dirección y nombre
+    var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/nvoproduct"+req.files.file.name;
+    var oldPath = req.files.file.path;
+    console.log(newPath);
+    //Se cambia el archivo de carpeta
+    fs.rename(oldPath, newPath, function (err) {
+        if (err) throw err
+        console.log('Successfully renamed - AKA moved!')
+    })
+    //se hacen los cambios
     admModel
-        .insertarProducto(nombre, precio, tiempo, min, max, categoria, validatedCustomFile, dimen, comment, exist)
+        .insertarProducto(nombre, precio, tiempo, min, max, categoria, "nvoproduct"+req.files.file.name, dimen, comment, exist)
         .then(idProductoInsertado => {
             res.redirect("/prodd");
         })
@@ -230,10 +243,7 @@ app.post('/actualiza', (req, res) => {
 
 //Función para modificar 
 app.post('/actualizar/', function (req, res, next) {
-    // Obtener el nombre y precio. Es lo mismo que
-    // const nombre = req.body.nombre;
-    // const precio = req.body.precio;
-    const { id, nombre, precio, tiempo, min, max, categoria, validatedCustomFile,imagen, dimen, comment, exist } = req.body;
+    const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
     if (!nombre) {
         return res.status(500).send("No hay nombre");
 	}
@@ -252,8 +262,8 @@ app.post('/actualizar/', function (req, res, next) {
 	
 	if ( !comment) {
         return res.status(500).send("No hay comment");
-	}
-	if(!validatedCustomFile) {
+    }
+    if(!req.files.file.name) {
 		admModel
         .actualizar(id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist)
         .then(() => {
@@ -263,18 +273,30 @@ app.post('/actualizar/', function (req, res, next) {
             return res.status(500).send(err);
         });	
 	}else {
-		// Si no se cambió la imagen
-		admModel
-        .actualizar(id, nombre, precio, tiempo, min, max, categoria, validatedCustomFile, dimen, comment, exist)
+        //Si se cambió la imagen
+        //saca la extención de la imagén
+        var extension = req.files.file.name.split(".").pop();
+        //Aquí se le asigna dirección y nombre
+        var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/product"+id+"."+extension;
+        var oldPath = req.files.file.path;
+        console.log(newPath);
+        //Se cambia el archivo de carpeta
+        fs.rename(oldPath, newPath, function (err) {
+            if (err) throw err
+            console.log('Successfully renamed - AKA moved!')
+        })
+        //se hacen los cambios
+        admModel
+        .actualizar(id, nombre, precio, tiempo, min, max, categoria, "product"+id+"."+extension , dimen, comment, exist)
         .then(() => {
             res.redirect("/prodd");
         })
         .catch(err => {
             return res.status(500).send(err);
         });
-	}
-    
-});
+        
+    }
+	});
 
 //Función para eliminar producto
 app.get('/eliminar/:id', function (req, res, next) {
@@ -300,6 +322,12 @@ app.get('/reccont', (req, res) => {
     });
   });
 
+  //Función para subir documentos PRIMER INTENTO
+/*app.post('/subir', upload.single('file'), (req, res) => {
+    console.log('Storage location is ${req.hostname}/${req.file.path}');
+    return res.send(req.file);
+})*/
+
 /*
 //Función para actualizar status de productos FALTA MODIFICAR
 router.post('/act/', function (req, res, next) {
@@ -321,6 +349,8 @@ router.post('/act/', function (req, res, next) {
         });
 });
 */
+
+
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
