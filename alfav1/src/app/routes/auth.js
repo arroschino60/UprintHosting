@@ -37,6 +37,13 @@ module.exports = function(app,passport){
 		res.render('index3');
 	});
 
+     app.get('/carrito', (req, res) => {
+		res.render('index33');
+	});
+    
+    app.get('/pago', (req, res) => {
+		res.render('index333');
+	});
 
     
 	//app.get('/login', (req, res) => {

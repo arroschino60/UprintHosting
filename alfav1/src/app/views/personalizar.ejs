@@ -43,9 +43,9 @@
 
           <li class="nav-item pt-2">
               <button type="button" class="btn btn-info">
-                <a id="shoppingBag" href="#">
+                <a id="shoppingBag" href="/comprar">
                 <i class="fas fa-shopping-cart text-white"></i>
-                <span class="badge badge-light text-secondary">0</span>
+                <span class="badge badge-light text-secondary">1</span>
                 <span class="sr-only">unread messages</span>
                 </a>
              </button>
@@ -66,11 +66,51 @@
   </div>
 </div>
 
+<div class="container" id="tutorialfondo">
+ <div class="row">
+     <div class="col-md-12">
 
-<section id="tutorialfondo">
-    <div class="container" id="tutorialmarco">
-        <div class="row">
-            <div class="col-md-12">
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Haz click para mostrar el menú interactivo de la personalización de Foto Regalos">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home1" role="tab" aria-controls="home"
+      aria-selected="true"><i class="fas fa-gift"></i> Foto Regalos</a>
+  </li>
+  <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Haz click para mostrar el menú interactivo de la personalización de Foto Libros">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+      aria-selected="false"><i class="fas fa-gift"></i> Foto Libros</a>
+  </li>
+  <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Haz click para mostrar el menú interactivo de la personalización de Foto Marcos">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
+      aria-selected="false"><i class="fas fa-gift"></i> Foto Marcos</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home1" role="tabpanel" aria-labelledby="home-tab">
+  
+  <div class="container">
+    <div class="row">
+        
+        <div class="col-md-12" id="tutorialmarco">
+                <button id="tutobtn1" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un texto a tu personalización">
+                <i class="fas fa-text-width fa-2x"></i>
+                </button>
+                <button id="tutobtn2" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un emoji a tu personalización">
+                <i class="fas fa-question-circle fa-2x"></i>
+                </button>
+        </div>
+    
+    </div>
+  </div>
+
+
+  </div>
+
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="container">
+    <div class="row" id="tutorialmarco2">
+        
+        <div class="col-md-12">
                 <button id="tutobtn1" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un texto a tu personalización">
                 <i class="fas fa-text-width fa-2x"></i>
                 </button>
@@ -81,38 +121,83 @@
                 <i class="fas fa-question-circle fa-2x"></i>
                 </button>
             </div>
-                
-          
+        
+    </div>
+  </div>
 
+  </div>
+    
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+      <div class="container">
+    <div class="row" id="tutorialmarco3">
+        
+        <div class="col-md-12">
+                <button id="tutobtn1" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un texto a tu personalización">
+                <i class="fas fa-text-width fa-2x"></i>
+                </button>
+            </div>
+            
+            <div class="col-md-12">
+                <button id="tutobtn2" type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Haz click para agregar un emoji a tu personalización">
+                <i class="fas fa-question-circle fa-2x"></i>
+                </button>
+            </div>
+        
+    </div>
+  </div>
+
+
+  </div>
+</div>
+
+         
+
+     
+     </div>
+ </div>
+</div>
+
+    
+<div class="jumbotron jumbotron-fluid" id="jumbopersonalizacion2">
+  <div class="container" id="regalosproducttittle">
+    <h1 class="display-4"><i class="fas fa-arrow-right"></i> Parámetros </h1>
+    <p class="lead">Estos son los parámetros que debes conocer para comenzar a personalizar tu producto</p>
+    <span class="badge badge-light">Herramienta:</span>
+    <span class="badge badge-success">Información</span>
+  </div>
+</div>
+    
+<!-- Acerca de la categoria del producto -->
+<section id="jumbosection">
+
+<div class="container" id="para1">
+    <div class="row">
+        <div class="col-md-3" id="jumbophone" data-toggle="tooltip" data-placement="top" title="Todos los diseños varian dependiendo del modelo del producto">
             
         </div>
-    </div>
-</section>
-
-  <!-- Acerca de la categoria del producto -->
-  <section style="background-image:url(img/dif5.png)">
-    
-      <div class="container-fluid pt-5 pb-5">
-
-          <div class="row">
-          
-    <div class="col-md-2">
-    </div>
-
-    <div class="col-md-5 mt-3 text-center">
-        <button type="button" class="btn btn-outline-info">
-            <img src="img/cellphone1.png" alt="" class="">
-        </button>
-    </div>
-    
-    <div class="col-md-3 text-center">
+        <div class="col-md-3" id="jumbophone2" data-toggle="tooltip" data-placement="bottom" title="Haz click para consultar los modelos disponibles">
             <h1 class="lead text-white" style="font-size: 30px"> <i class="fas fa-mobile-alt"></i> Fundas para smartphone</h1>
-
-          <div class="card" style="">
-                    <div class="card-body">
-                        <h5 class="card-title lead">Caracteristicas principales</h5>
+            <div class="card">
+                    <div class="card-body pb-4" style="background-image:url(img/dif2.png)">
+                        <h5 class="card-title lead pb-3">Caracteristicas principales</h5>
                         <p class="card-text ">Estos son los parametros principales para poder diseñar tu funda de smartphone
                         </p>
+                    </div> 
+                    
+                    <div class="card-body text-center">
+                       <a href="#" class="btn btn-info" data-toggle="modal" data-target="#addUserModal">
+                        <i class="fas fa-plus"></i> Modelos disponibles
+                        </a>
+                    </div>
+                    
+              </div>
+        </div>
+
+        <div class="col-md-3" id="jumbophone3" data-toggle="tooltip" data-placement="top" title="Consideramos todas las medidas y materiales exactas para poder personalizar tu producto">
+    
+            <div class="card">
+                    <div class="card-body text-center" style="background-image:url(img/dif2.png)">
+                        <h5 class="card-title lead">Parámetros</h5>
                     </div>
 
                         <ul class="list-group list-group-flush">
@@ -128,41 +213,32 @@
                         <li class="list-group-item">
                         <i class="fas fa-mobile"></i> <i class="fas fa-arrow-right"></i> Modelo
                         </li>
-                        
                         </ul>
-
-                    <div class="card-body text-center">
-                    
-                    <a href="#" class="btn btn-info" data-toggle="modal" data-target="#addUserModal">
-                    <i class="fas fa-plus"></i> Modelos disponibles
-                    </a>
-                        
-                    </div>
               </div>
-    
+        </div>
     </div>
-              
-    
-          </div>
-          
-      </div> <!--Container-->
-    
+</div>
+
   </section>
 
 
-<section id="newsletter1" class="text-center mt-4 pt-1 pb-1" style="background-image:url(img/dif2.png)">
-    <div class="container"> 
-        <h1 class="display-4">Diseños Predeterminados</h1>
-    </div>
-</section>
+<div class="jumbotron jumbotron-fluid" id="jumbopersonalizacion3">
+  <div class="container" id="regalosproducttittle">
+    <h1 class="display-4"><i class="fas fa-paint-brush"></i> Diseños Predeterminados </h1>
+    <p class="lead">Utiliza un diseño por predeterminado y adaptalo a tu gusto.</p>
+    <span class="badge badge-light">Herramienta:</span>
+    <span class="badge badge-success">Información</span>
+    <span class="badge badge-primary">Personalización</span>
+  </div>
+</div>
 
 
 <!--Carousel-->
 <section id="carousel">
     
-  <div class="container" style="max-width: 50rem; max-height: 50rem;">
+  <div class="container">
     <div class="row mt-1 pt-1">
-      <div class="col-md-6">
+      <div class="col-md-3" id="caruselparametros" data-toggle="tooltip" data-placement="top" title="Aquí se muestran diseños predeterminados de ejemplo">
 
         <!-- SLIDER WITH CAPTIONS -->
         <div id="slider4" class="carousel slide mb-5" data-ride="carousel" style="background-image:url(img/dif2.png)">
@@ -178,31 +254,51 @@
             <div class="carousel-item active">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/custom1.png" alt="First Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-danger btn-lg">Funda Roja <br> $200</button>
+                <a href="/productos">
+               <button type="button" class="btn btn-danger btn-sm">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/custom2.png" alt="Second Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-warning btn-lg">Funda Amarilla <br> $150</button>
+                <a href="/productos">
+                <button type="button" class="btn btn-warning btn-sm" href="/productos">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/custom3.png" alt="Third Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-primary btn-lg">Funda Violeta <br> $291</button>
+                <a href="/productos">
+                <button type="button" class="btn btn-info btn-sm" href="/productos">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/custom4.png" alt="Third Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-success btn-lg">Funda Verde <br> $123</button>
+                <a href="/productos">
+                <button type="button" class="btn btn-success btn-sm" href="/productos">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/custom5.png" alt="Third Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-danger btn-lg">Funda Rosa <br> $300</button>
+                <a href="/productos">
+                <button type="button" class="btn btn-light btn-sm" href="/productos">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -218,167 +314,110 @@
         </div>
       </div>
         
-      <div class="col-md-6 text-center">
+      <div class="col-md-3 text-center" data-toggle="tooltip" data-placement="left" title="Elige un producto entre las tres categorías disponibles">
       
        <div class="card mt-5 mb-5" style="background-image:url(img/dif5.png)">
+            <div class="card-body">
+                <h5 class="card-title lead text-white"><i class="fas fa-arrow-circle-down text-white"></i> Elige tu producto</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <h5><i class="fas fa-tshirt fa-3x"></i></h5>
+                <p class="card-text">
+                Elige uno de los productos de todas nuestras categorias
+                </p>
+                </li>
+            </ul>
+        </div>
 
-                    <div class="card-body">
-                        <h5 class="card-title lead text-white">Elige el diseño que más te agrade</h5>
-                    </div>
-                        <ul class="list-group list-group-flush">
-                    
-                        <li class="list-group-item">
-                        
-                        <h5>Diseño Predeterminado</h5>
-                        <p class="card-text ">Utiliza un diseño por predeterminado
-                        </p>
+      </div>
 
-                        <button type="button" class="btn btn-info" href="#modelosventana">
-                        <i class="fas fa-angle-double-right"></i> Elegir!
-                        </button>
+      <div class="col-md-3 text-center" data-toggle="tooltip" data-placement="left" title="Encuentra una gama de diseños diferentes para cualquier ocasión">
+      
+       <div class="card mt-5 mb-5" style="background-image:url(img/dif5.png)">
+            <div class="card-body">
+                <h5 class="card-title lead text-white"><i class="fas fa-arrow-circle-down text-white"></i> Elige tu diseño</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <h5><i class="fas fa-magic fa-3x"></i></h5>
+                <p class="card-text ">
+                Elige uno de nuestros diseños predeterminados de acuerdo a tu modelo
+                </p>
+                </li>
+            </ul>
+        </div>
 
-                        </li>
-                        </ul>
-              </div>
       </div> 
+
+      <div class="col-md-3 text-center" data-toggle="tooltip" data-placement="left" title="Recibe tu articulo desde la comodidad de tu casa o recojelo en alguna de nuestras sucursales">
+      
+       <div class="card mt-5 mb-5" style="background-image:url(img/dif5.png)">
+            <div class="card-body">
+                <h5 class="card-title lead text-white"><i class="fas fa-arrow-circle-down text-white"></i> Imprime tu producto</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <h5><i class="fas fa-print fa-3x"></i></h5>
+                <p class="card-text ">
+                Imprime la cantidad de articulos que necesites y recibelo en la sucursal más cercana
+                </p>
+                </li>
+            </ul>
+        </div>
+
+      </div> 
+ 
     </div>
   </div> 
 </section> 
 
-  <!-- BOXES -->
-  <section id="boxes" class="mb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-           <div class="card">
-              <div class="card-header text-center">
-                <h5 class="mb-0">
-                  <div class="showInfo" href="#collapseA" data-toggle="collapse" data-parent="#accordion">
-                     <p style="font-size: 20px" class="text-secondary">Elige tu producto</p>
-                     <i class="fas fa-arrow-circle-down"></i>
-                     <i class="fas fa-tshirt"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapseA" class="collapse">
-                <div class="card-body">
-                   <p class="text-muted">Elige uno de los productos de todas nuestras categorias</p> 
-                </div>
-              </div>
-            </div>
-            
-            
-        </div>
-
-        <div class="col-md-3">
-            <div class="card">
-              <div class="card-header text-center bg-info">
-                <h5 class="mb-0">
-                  <div class="showInfo"href="#collapseB" data-toggle="collapse" data-parent="#accordion">
-                    <p style="font-size: 19px" class="text-white">Elige tu diseño</p>
-                    <i class="fas fa-arrow-circle-down text-white"></i>
-                    <i class="fas fa-magic text-white"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapseB" class="collapse">
-                <div class="card-body">
-                  <p class="text-muted">Elige uno de nuestros diseños predeterminados de acuerdo a tu modelo</p>
-                </div>
-              </div>
-            </div>  
-        </div>
-
-        <div class="col-md-3">
-            <div class="card">
-              <div class="card-header text-center">
-                <h5 class="mb-0">
-                  <div class="showInfo" href="#collapseC" data-toggle="collapse" data-parent="#accordion">
-                    <p class="bg-outline-primary text-secondary">Imprime tu producto</p>
-                    <i class="fas fa-arrow-circle-down"></i>
-                    <i class="fas fa-print"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapseC" class="collapse">
-                <div class="card-body">
-                  <p class="text-muted">Imprime la cantidad de articulos que necesites</p>
-                </div>
-              </div>
-            </div>  
-        </div>
-
-        <div class="col-md-3">
-          <div class="card">
-              <div class="card-header text-center bg-info">
-                <h5 class="mb-0">
-                  <div class="showInfo" href="#collapseD" data-toggle="collapse" data-parent="#accordion">
-                    <p class="text-white">Recibe tu producto</p>
-                    <i class="fas fa-arrow-circle-down text-white"></i>
-                    <i class="fas fa-box-open text-white"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapseD" class="collapse">
-                <div class="card-body">
-                  <p class="text-muted">Recibe tu articulo desde la comodidad de tu casa o recojelo en alguna de nuestras sucursales</p>
-                </div>
-              </div>
-            </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-    
-
-<section id="newsletter1" class="text-center mt-5 pt-1 pb-1" style="background-image:url(img/dif2.png)">
-    <div class="container"> 
-        <h1 class="display-4">Personalización Manual</h1>
-    </div>
-</section>
-
-
+<div class="jumbotron jumbotron-fluid" id="jumbopersonalizacion3">
+  <div class="container" id="regalosproducttittle">
+    <h1 class="display-4"><i class="far fa-edit"></i> Diseño Manual </h1>
+    <p class="lead">Crea tu propio diseño y adaptalo a tu gusto con nuestras herramientas.</p>
+    <span class="badge badge-light">Herramienta:</span>
+    <span class="badge badge-success">Información</span>
+    <span class="badge badge-primary">Personalización</span>
+  </div>
+</div>  
+  
 <!--Carousel-->
 <section id="carousel">
     
-  <div class="container" style="max-width: 50rem; max-height: 50rem;">
+  <div class="container">
     <div class="row mt-1 pt-1">
-      <div class="col-md-6">
+      <div class="col-md-3" id="caruselparametros" data-toggle="tooltip" data-placement="top" title="Elige el modelo base para trabajar en tu producto">
 
         <!-- SLIDER WITH CAPTIONS -->
         <div id="slider4" class="carousel slide mb-5" data-ride="carousel" style="background-image:url(img/dif2.png)">
-         <div id="slider4" class="carousel slide mb-5" data-ride="carousel">
           <ol class="carousel-indicators">
             <li class="active" data-target="#slider4" data-slide-to="0"></li>
             <li data-target="#slider4" data-slide-to="1"></li>
-            <li data-target="#slider4" data-slide-to="2"></li>
             
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/cellphone.png" alt="First Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-dark btn-lg">Funda para personalizar <br> $200</button>
+                <a href="/productos">
+               <button type="button" class="btn btn-light btn-sm">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
             <div class="carousel-item">
               <img class="d-block img-fluid rounded mx-auto d-block" src="img/cellphone1.png" alt="Second Slide">
               <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-light btn-lg">Precio fijo<br> $200</button>
+                <a href="/productos">
+                <button type="button" class="btn btn-light btn-sm" href="/productos">
+                <i class="fas fa-angle-double-right"></i> Elegir!
+                </button>
+                </a>
               </div>
             </div>
-            <div class="carousel-item">
-              <img class="d-block img-fluid rounded mx-auto d-block" src="img/cellphone.png" alt="Third Slide">
-              <div class="carousel-caption d-none d-md-block">
-                <button type="button" class="btn btn-secondary btn-lg">Sin cargos extra</button>
-              </div>
-            </div>
+            
           </div>
 
           <!-- CONTROLS -->
@@ -391,127 +430,64 @@
           </a>
         </div>
       </div>
-        </div>
-
-                <div class="col-md-6 text-center">
+        
+      <div class="col-md-3 text-center" data-toggle="tooltip" data-placement="left" title="Elige tu producto y el modelo a personalizar para comenzar a adaptar tus ideas">
       
-                    <div class="card mt-5 mb-5" style="background-image:url(img/dif1.png)">
-
-                    <div class="card-body">
-                        <h5 class="card-title lead text-white">Hazlo con tu creatividad</h5>
-                    </div>
-                        <ul class="list-group list-group-flush">
-                    
-                        <li class="list-group-item">
-                        
-                        <h5>Personalización Manual</h5>
-                        <p class="card-text ">Personaliza el material a tu gusto
-                        </p>    
-                            <div class="text-center">
-                              <button type="button" class="btn btn-secondary" href="#modelosventana">
-                                <i class="far fa-edit"></i> Personalizar!
-                              </button>   
-                            </div>
-                        </li>
-                        </ul>
-                    </div>
-                </div> 
-            
-        </div>
-    </div>
-</section> 
-    
-
-  <!-- BOXES -->
-  <section id="boxes" class="mb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-           <div class="card">
-              <div class="card-header text-center">
-                <h5 class="mb-0">
-                  <div class="showInfo" href="#collapse1" data-toggle="collapse" data-parent="#accordion">
-                     <p style="font-size: 20px" class="text-secondary">Elige tu producto</p>
-                     <i class="fas fa-arrow-circle-down"></i>
-                     <i class="fas fa-tshirt"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse1" class="collapse">
-                <div class="card-body">
-                   <p class="text-muted">Elige uno de los productos de todas nuestras categorias</p> 
-                </div>
-              </div>
+       <div class="card mt-5 mb-5" style="background-image:url(img/dif1.png)">
+            <div class="card-body">
+                <h5 class="card-title lead text-white"><i class="fas fa-arrow-circle-down text-white"></i> Elige tu producto</h5>
             </div>
-            
-            
-        </div>
-
-        <div class="col-md-3">
-            <div class="card">
-              <div class="card-header text-center bg-secondary">
-                <h5 class="mb-0">
-                  <div class="showInfo"href="#collapse2" data-toggle="collapse" data-parent="#accordion">
-                    <p style="font-size: 19px" class="text-white">Personaliza tu producto</p>
-                    <i class="fas fa-arrow-circle-down text-white"></i>
-                    <i class="fas fa-paint-brush text-white"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse2" class="collapse">
-                <div class="card-body">
-                  <p class="text-muted">Personaliza tu producto a tu gusto o utiliza alguna de nuestras plantillas predeterminadas</p>
-                </div>
-              </div>
-            </div>  
-        </div>
-
-        <div class="col-md-3">
-            <div class="card">
-              <div class="card-header text-center">
-                <h5 class="mb-0">
-                  <div class="showInfo" href="#collapse3" data-toggle="collapse" data-parent="#accordion">
-                    <p class="bg-outline-primary text-secondary">Imprime tu producto</p>
-                    <i class="fas fa-arrow-circle-down"></i>
-                    <i class="fas fa-print"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse3" class="collapse">
-                <div class="card-body">
-                  <p class="text-muted">Imprime la cantidad de articulos que necesites</p>
-                </div>
-              </div>
-            </div>  
-        </div>
-
-        <div class="col-md-3">
-          <div class="card">
-              <div class="card-header text-center bg-secondary">
-                <h5 class="mb-0">
-                  <div class="showInfo" href="#collapse4" data-toggle="collapse" data-parent="#accordion">
-                    <p class="text-white">Recibe tu producto</p>
-                    <i class="fas fa-arrow-circle-down text-white"></i>
-                    <i class="fas fa-box-open text-white"></i>
-                  </div>
-                </h5>
-              </div>
-
-              <div id="collapse4" class="collapse">
-                <div class="card-body">
-                  <p class="text-muted">Recibe tu articulo desde la comodidad de tu casa o recojelo en alguna de nuestras sucursales</p>
-                </div>
-              </div>
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <h5><i class="fas fa-tshirt fa-3x"></i></h5>
+                <p class="card-text">
+                Elige uno de los productos de todas nuestras categorias
+                </p>
+                </li>
+            </ul>
         </div>
 
       </div>
+
+      <div class="col-md-3 text-center" data-toggle="tooltip" data-placement="left" title="Utiliza todas las herramientas para personalizar tus productos">
+      
+       <div class="card mt-5 mb-5" style="background-image:url(img/dif1.png)">
+            <div class="card-body">
+                <h5 class="card-title lead text-white"><i class="fas fa-arrow-circle-down text-white"></i> Crea tu diseño</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <h5><i class="fas fa-paint-brush fa-3x"></i></h5>
+                <p class="card-text">
+                Crea tu diseño a tu medida y con los recursos e imágenes que necesites
+                </p>
+                </li>
+            </ul>
+        </div>
+
+      </div> 
+
+      <div class="col-md-3 text-center" data-toggle="tooltip" data-placement="left" title="Recibe tu articulo desde la comodidad de tu casa o recojelo en alguna de nuestras sucursales">
+      
+       <div class="card mt-5 mb-5" style="background-image:url(img/dif1.png)">
+            <div class="card-body">
+                <h5 class="card-title lead text-white"><i class="fas fa-arrow-circle-down text-white"></i> Imprime tu producto</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                <h5><i class="fas fa-box-open fa-3x"></i></h5>
+                <p class="card-text">
+                Imprime la cantidad de articulos que necesites
+                </p>
+                </li>
+            </ul>
+        </div>
+
+      </div> 
+ 
     </div>
-  </section>
-    
+  </div> 
+</section> 
 
 
 <!--Ventanas Emergentes-->

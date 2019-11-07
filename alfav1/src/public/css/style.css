@@ -567,6 +567,56 @@ element.style {
    
 } 
 
+#jumbopersonalizacion2{
+    background-image: url(../img/jumbopersonalizacion2.png);
+    background-size: 1300px 450px;
+    background-repeat: no-repeat;
+    margin-top: -60px;
+   
+}
+
+#jumbopersonalizacion3{
+    background-image: url(../img/jumbopersonalizacion3.png);
+    background-size: 1300px 450px;
+    background-repeat: no-repeat;
+    margin-top: -60px;
+    margin-bottom: -20px;
+   
+}
+
+#caruselparametros{
+    margin-top: 50px;
+}
+
+#jumbophone{
+    background-image: url(../img/cellphone1.png);
+    background-size: 250px 250px;
+    margin-right: 0px;
+    margin-top: 10px;
+    background-repeat: no-repeat;
+}
+
+#jumbophone2{
+    margin-top: -60px;
+    margin-right: 30px;
+}
+
+#jumbophone3{
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+#jumbosection{
+    background-image: url(../img/fondodif.png);
+    background-size: 1300px 700px;
+    background-repeat: no-repeat;
+}
+
+#para1{
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
 #welcomeh1{
     margin-bottom: 100px;
     width: 60%;
@@ -590,17 +640,28 @@ element.style {
  background-repeat: no-repeat;
 }
 
-<<<<<<< HEAD
+
 #tutorialfondo{
- background-image:url(../img/dif3.png);
+ background-image:url(../img/fondo.png);
  background-repeat: no-repeat;
  width: 1300px;
  height: 580px;
  margin-top: -50px;
-    
+ margin-bottom: 150px;   
 }
-=======
->>>>>>> master
+
+#totalcoz{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-image:url(../img/fondo.png);
+   text-align: center;
+   z-index: 5;
+}
+
+
+
 .fechas input[type="date"], input[type="text"]{
   border: 0;
   background: none;
@@ -624,7 +685,25 @@ element.style {
  background-repeat: no-repeat;
  width: 1300px;
  height: 550px;
- margin-top: -50px;
+ margin-top: 50px;
+    
+}
+
+#tutorialmarco2{
+ background-image:url(../img/customplantilla2.png);
+ background-repeat: no-repeat;
+ width: 1300px;
+ height: 550px;
+ margin-top: 50px;
+    
+}
+
+#tutorialmarco3{
+ background-image:url(../img/customplantilla3.png);
+ background-repeat: no-repeat;
+ width: 1300px;
+ height: 550px;
+ margin-top: 50px;
     
 }
 
