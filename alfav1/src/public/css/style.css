@@ -5,7 +5,9 @@ body {
     font-family: "Roboto-Thin";
     src: url("Roboto-Thin.ttf")
 }
-
+.tabla{
+  border: 2px solid #17a2b8;
+}
 
 .navbar {
   box-shadow: 2px 2px 5px #3292a6;
@@ -15,10 +17,24 @@ body {
     font-size: 1.4rem;
     padding-right: 1.4rem; }
 
+    input[type="date"]{
+      border: 0;
+      background-color: whitesmoke;
+      margin: 20px auto;
+      text-align: center;
+      border: 2px solid #17a2b8;
+      padding: 14px 10px;
+      width: 200px;
+      outline: none;
+      transition: 0.25s;
+      font-weight: bolder;
+    }
+
 #showcase {
   position: relative;
   background: url("../img/uprintfondo.png");
   min-height: 600px; }
+
   #showcase .primary-overlay {
     background: rgba(50, 146, 166, 0.8);
     position: absolute;

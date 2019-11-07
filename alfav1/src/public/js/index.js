@@ -8,7 +8,7 @@ window.onscroll = () => mostrarOcultarBarra();
 
 mostrarOcultarBarra();
 
-var vista = document.getElementById("imagensotaFR");
+var vista = document.getElementById("imagensota");
 function change_img(image){
     vista.src = image.src;
 }

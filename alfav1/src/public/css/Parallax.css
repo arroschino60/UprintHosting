@@ -22,36 +22,6 @@ body, html{
   background-attachment:scroll;
 }
 
-.pimg1{
-  background-image:url('../img/dif1.png');
-  min-height:400px;
-}
-
-.pimg2{
-  background-image:url('../img/dif2.png');
-  min-height:400px;
-}
-
-.pimg3{
-  background-image:url('../img/dif3.png');
-  min-height:400px;
-}
-
-.section{
-  text-align:center;
-  padding:50px 80px;
-}
-
-.section-light{
-  background-color:#f4f4f4;
-  color:#666;
-}
-
-.section-dark{
-  background-color:#282e34;
-  color:#ddd;
-}
-
 .ptext{
   position:absolute;
   top:50%;
