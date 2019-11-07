@@ -115,8 +115,11 @@
   <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
     <div class="container">
         <div class="row">
+            <div class="col-md-1"></div>
             <% productos.forEach(producto => { %>
-
+              
+              <% })%>
+            <% productos.forEach(producto => { %>
               <div class="col-md-3 mr-2 ml-2 mt-2 mb-2">
                   <div class="card text-center pt-1" style="width: 15rem;">
                     <% if(producto.nameCategory == "Foto Regalos"){ %>
@@ -184,20 +187,12 @@
               </div>
 
             <% })%>
+            <div class="col-md-1"></div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
-            <h4>Selecciona numero de filas</h4>
-            <div class="form-group">
-                <select name="state" id="maxRows" class="form-control" style="width: 150px;">
-                        <option value="1">1</option>
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                        <option value="10">10</option>
-                </select>
-            </div>
-        <table id="mytable" class="table table-bordered table-striped">
+        <table class="table table-bordered">
           <thead>
             <tr style="color: aliceblue; background-color: #17a2b8;">
               <th scope="col">Nombre:</th>
@@ -213,12 +208,12 @@
           <tbody>
             <% productos.forEach(producto => { %>
             <tr>
-              <td scope="row">
+              <th scope="row">
                 <p><%= producto.nameProduct %></p>
                 <a href="editar/<%= producto.idProduct %>" class="btn btn-secondary pr-4 pl-4">
                   <i class="fas fa-angle-double-right"></i> Editar
                 </a>
-              </td>
+              </th>
               <td><%= producto.priceProduct %></td>
               <td><%= producto.time %></td>
               <td><%= producto.min %></td>
@@ -235,11 +230,6 @@
           <% }) %>
         </tbody>
       </table>
-      <div class="pagination-container">
-          <nav>
-              <ul class="pagination"></ul>
-          </nav>
-      </div>
     </div>
   </div>
 </div>
@@ -288,13 +278,13 @@
               <div class="col-md-4"></div>
             </div>  
             <div class="form-group">
-              <input placeholder="Nombre del producto" type="text" id="nombre" class="form-control" name="nombre">
+              <input type="text" id="nombre" class="form-control" name="nombre">
             </div>
             <div class="form-group">
               <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el precio del producto con pesos y decimales ($ 0.00 MXN)">
                 <h6 class="">Precio: <i class="fas fa-info-circle"></i></h6>
               </button>
-              <input type="number" id="precio" name="precio" class="form-control" placeholder="Precio del producto">
+              <input type="number" id="precio" name="precio" class="form-control" placeholder="...">
             </div>
             <div class="row">
               <div class="col-md-4">
@@ -302,7 +292,7 @@
                   <h6 class="">Tiempo de entrega en días: <i class="fas fa-info-circle"></i></h6>
                 </button>
                 <div class="form-group">
-                  <input type="number" id="tiempo" class="form-control"  name="tiempo" placeholder="Cantidad de días">
+                  <input type="number" id="tiempo" class="form-control"  name="tiempo" placeholder="...">
                 </div>
               </div>
               <div class="col-md-4">
@@ -310,7 +300,7 @@
                   <h6 class="">Minimo en venta: <i class="fas fa-info-circle"></i></h6>
                 </button>      
                 <div class="form-group">
-                  <input type="number" class="form-control" id="min" placeholder="Cantidad minima"  name="min">
+                  <input type="number" class="form-control" id="min" placeholder="..."  name="min">
                 </div>
               </div>
               <div class="col-md-4">
@@ -318,7 +308,7 @@
                   <h6 class="">Máximo en venta: <i class="fas fa-info-circle"></i></h6>
                 </button>
                 <div class="form-group">
-                  <input type="number" class="form-control" id="max" placeholder="Cantidad Maxima" name="max">
+                  <input type="number" class="form-control" id="max" placeholder="..." name="max">
                 </div>
               </div>
             </div>  
@@ -346,7 +336,7 @@
               <h6 class="">Imagen: <i class="fas fa-info-circle"></i></h6>
             </button>
             <div class="custom-file">
-              <input placeholder="Elegir imágen" type="file" name="file">
+              <input type="file" name="file">
             </div>
               <div class="form-group">
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la linea del producto a la que pertenece">
@@ -361,7 +351,7 @@
                 <button type="button" class="btn btn-light mt-2" data-toggle="tooltip" data-placement="right" title="Ingresa la descripcion del producto, caracteristicas principales, datos significativos.">
                   <h6 class="">Descripción: <i class="fas fa-info-circle"></i></h6>
                 </button>
-                <textarea placeholder="Breve descripción del producto" class="form-control" rows="3" id="comment" name="comment"></textarea>
+                <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
               </div>
               <div class="form-group">
                   <button class="btn btn-success">Guardar</button>
@@ -382,52 +372,6 @@
   <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
 
   <script>
-    var table='#mytable'
-$('#maxRows').on('change', function(){
-    $('.pagination').html('')
-    var trnum=0
-    var maxRows=parseInt($(this).val())
-    var totalRows=$(table+' tbody tr').length
-    $(table+' tr:gt(0)').each(function(){
-        trnum++
-        if(trnum > maxRows){
-            $(this).hide()
-        }
-        if(trnum <= maxRows){
-            $(this).show()
-        }
-        
-    })
-    if(totalRows > maxRows){
-        var pagenum=Math.ceil(totalRows/maxRows)
-        for(var i=0;i<=pagenum;){
-            $('.pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
-        }
-    }
-    $('.pagination li:first-child').addClass('active')
-    $('.pagination li').on('click', function(){
-        var pageNum=$(this).attr('data-page')
-        var trIndex=0;
-        $('.pagination li').removeClass('active')
-        $(this).addClass('active')
-        $(table+' tr:gt(0)').each(function(){
-            trIndex++
-            if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
-                $(this).hide()
-            }else{
-                $(this).show()
-            }
-        })
-    })
-})
-$(function(){
-    $('table tr:eq(0)').prepend('<th>ID</th>')
-    var id=0;
-    $('table tr:gt(0)').each(function(){
-        id++
-        $(this).prepend('<td>'+id+'</td>')
-    })
-})
     // Get the current year for the copyright
     $('#year').text(new Date().getFullYear());
 

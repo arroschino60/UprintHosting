@@ -7,14 +7,14 @@ var fs = require("fs");
 module.exports = function(app,passport){
 
 // index routes
-	app.get('/', (req, res) => {
+	app.get('/pasaber', (req, res) => {
 		res.render('logo');
     });
 
     app.get('/personalizar', (req, res) => {
 		res.render('personalizar');
     });
-    app.get('/pasaber', (req, res) => {
+    app.get('/', (req, res) => {
 		res.render('logoCopy');
 	});
     //Para obtener productos para el catálogo
@@ -117,12 +117,40 @@ app.get('/pro', function (req, res, next) {
 
 });
 
+app.get('/pro2', function (req, res, next) {
+	admModel
+		.obtenerUnidades()
+		.then(productos => {
+			res.render("productioncopy", {
+				productos: productos,
+			});
+		})
+		.catch(err => {
+			return res.status(500).send("Error obteniendo productos");
+		});
+
+});
+
 //Función para obtener productos
 app.get('/prodd', function (req, res, next) {
 	productosModel
 		.obtenerProd()
 		.then(productos => {
 			res.render("index6", {
+				productos: productos,
+			});
+		})
+		.catch(err => {
+			return res.status(500).send("Error obteniendo productos");
+		});
+
+});
+
+app.get('/prodd2', function (req, res, next) {
+	productosModel
+		.obtenerProd()
+		.then(productos => {
+			res.render("index6copy", {
 				productos: productos,
 			});
 		})

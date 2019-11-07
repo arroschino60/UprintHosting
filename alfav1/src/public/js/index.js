@@ -20,3 +20,9 @@ var vista3 = document.getElementById("imagensotaFM");
 function change_img3(image){
     vista3.src = image.src;
 }
+
+function LoadETOButton(){
+    document.getElementById("ETOButton").style.display="inline-block";
+}
+
+LoadETOButton();
