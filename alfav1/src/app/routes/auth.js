@@ -372,70 +372,109 @@ function isLoggedIn(req, res, next) {
 }
 
 app.post('/reestablecer', (req, res) => {
-    const cuerpo = `<!DOCTYPE html>
-    <html lang="en">
+    //consulta si existe el correo
+    productosModel
+        .existes(req.body.campo1)
+        .then(producto => {
+			if(producto){
+                console.log({ producto });
+                var nuew = randomString(10);
+                const cuerpo = `<!DOCTYPE html>
+                    <html lang="en">
     
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-        crossorigin="anonymous">
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
-        crossorigin="anonymous">
-      <link rel="stylesheet" href="css/style.css">
-      <title>UPrint</title>
-    </head>
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+                            crossorigin="anonymous">
+                            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+                            crossorigin="anonymous">
+                            <link rel="stylesheet" href="css/style.css">
+                            <title>UPrint</title>
+                        </head>
     
-    <body><p style="font-size: 24px; color: Blue;">Recientemente se solicito un cambio para la contraseña del correo:<br> ${req.body.campo1}</p>
-    <a>De ser veridico, sigue este enlace:</a><br>
-    <a href="http://localhost:3000/newpass" class="btn btn-success">enlace</a>
-    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
-    </body>
-    `;
+                        <body>
+                            <p style="font-size: 24px; color: Blue;">Recientemente se solicito un cambio para la contraseña del correo:<br> ${req.body.campo1}</p>
+                            <p>Tu nueva contraseña es: </p><br>
+                            <p>${nuew}</p>
+                            <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+                            crossorigin="anonymous"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                            crossorigin="anonymous"></script>
+                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+                            crossorigin="anonymous"></script>
+                            <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+                        </body>
+                `;
     
-    let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false, // true for 465, false for other ports
-      auth: {
-          user: 'gorgeousgeorge0196@gmail.com', // generated ethereal user
-          pass: 'Canacatrequel@7'  // generated ethereal password
-      },
-      tls:{
-        rejectUnauthorized:false
-      }
-    });
+                let transporter = nodemailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    secure: false, // true for 465, false for other ports
+                    auth: {
+                        user: 'gorgeousgeorge0196@gmail.com', // generated ethereal user
+                        pass: 'Canacatrequel@7'  // generated ethereal password
+                    },
+                    tls:{
+                        rejectUnauthorized:false
+                    }
+                });
     
-    // setup email data with unicode symbols
-    let mailOptions = {
-        from: '"U-Print" <gorgeousgeorge0196@gmail.com>', // sender address
-        to: `${req.body.campo1}`, // list of receivers
-        subject: 'Reestablecer contraseña', // Subject line
-        text: 'Saludos!', // plain text body
-        html: cuerpo // html body
-    };
+                // setup email data with unicode symbols
+                let mailOptions = {
+                    from: '"U-Print" <gorgeousgeorge0196@gmail.com>', // sender address
+                    to: `${req.body.campo1}`, // list of receivers
+                    subject: 'Reestablecer contraseña', // Subject line
+                    text: 'Saludos!', // plain text body
+                    html: cuerpo // html body
+                };
+                
+                // send mail with defined transport object
+                transporter.sendMail(mailOptions, (error, info) => {
+                    if (error) {
+                        return console.log(error);
+                    }
+                    console.log('Message sent: %s', info.messageId);   
+                    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);   
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                    console.log(req.body);
+                    res.render('logo');
+                });
+
+                //Asigna cambio de contraseña a la base de datos
+                productosModel
+                    .reestablecerContrasena(req.body.campo1, nuew)
+                    .then(() => {
+                        res.redirect("/");
+                    })
+                    .catch(err => {
+                        return res.status(500).send(err);
+                });
+            }else{
+                //return res.status(500).send("No se ha registrado ese correo");
+                res.redirect("/signup");
+            }
+        })
+        .catch(err => {
+            return res.status(500).send(err);
+        });
+});
     
-        console.log(req.body);
-        res.render('logo');
-    });
-    
-    
-      });
+
+      //Generar un valor aleatorio
+ function randomString (strLength, charSet) {
+    var result = [];
+
+    strLength = strLength || 5;
+    charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@';
+
+    while (--strLength) {
+        result.push(charSet.charAt(Math.floor(Math.random() * charSet.length)));
+    }
+    console.log(result.join(''));
+    return result.join('');
+}
 
 
 }
