@@ -103,7 +103,7 @@ app.post('/signin', passport.authenticate('local-signin',  { successRedirect: '/
 ));
 
 //Función para recuperar información de pedidos
-app.get('/pro', function (req, res, next) {
+app.get('/pro', isLoggedIn, function (req, res, next) {
 	admModel
 		.obtenerUnidades()
 		.then(productos => {
@@ -117,7 +117,7 @@ app.get('/pro', function (req, res, next) {
 
 });
 
-app.get('/pro2', function (req, res, next) {
+app.get('/pro2', isLoggedIn, function (req, res, next) {
 	admModel
 		.obtenerUnidades()
 		.then(productos => {
@@ -132,7 +132,7 @@ app.get('/pro2', function (req, res, next) {
 });
 
 //Función para obtener productos
-app.get('/prodd', function (req, res, next) {
+app.get('/prodd', isLoggedIn, function (req, res, next) {
 	productosModel
 		.obtenerProd()
 		.then(productos => {
@@ -146,7 +146,7 @@ app.get('/prodd', function (req, res, next) {
 
 });
 
-app.get('/prodd2', function (req, res, next) {
+app.get('/prodd2', isLoggedIn, function (req, res, next) {
 	productosModel
 		.obtenerProd()
 		.then(productos => {
@@ -362,28 +362,6 @@ app.get('/reccont', (req, res) => {
     console.log('Storage location is ${req.hostname}/${req.file.path}');
     return res.send(req.file);
 })*/
-
-/*
-//Función para actualizar status de productos FALTA MODIFICAR
-router.post('/act/', function (req, res, next) {
-    // Obtener el nombre y precio. Es lo mismo que
-    // const nombre = req.body.nombre;
-    // const precio = req.body.precio;
-    const { id, nombre, precio } = req.body;
-    if (!nombre || !precio || !id) {
-        return res.status(500).send("No hay suficientes datos");
-    }
-    // Si todo va bien, seguimos
-    productosModel
-        .actualizar(id, nombre, precio)
-        .then(() => {
-            res.redirect("/pro");
-        })
-        .catch(err => {
-            return res.status(500).send("Error actualizando producto");
-        });
-});
-*/
 
 
 function isLoggedIn(req, res, next) {

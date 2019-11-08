@@ -8,25 +8,7 @@
     var env        = require('dotenv').load;
     var exphbs     = require('express-handlebars');
     var formidable = require('express-form-data');
-    //const multer = require('multer');
     
-
-    //app.use(fileUpload())
-    //For up documents
-    /*let storage = multer.diskStorage({
-      destination:(req,file,cb)=>{
-        cb(null,'.public/img')
-      },
-      filename:(req, file, cb) => {
-        cb(null, file.fieldname = '-'+ Date.now() + path.extname(file.originalname));
-      }
-    });
-
-    const upload = multer({ storage });
-    
-    app.use(express.json());
-    app.use(express.urlencoded({ extended: true }));*/
-
     //For BodyParser
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
