@@ -86,9 +86,14 @@ app.get('/signin', authController.signin);
 
 //Funcion para registrarse
 app.post('/signup', 
-	passport.authenticate('local-signup',  { successRedirect: '/dashboard',
+	passport.authenticate('local-signup',  { //successRedirect: '/dashboard',
     failureRedirect: '/signup'}
-));
+), function(req, res) {
+    // successful auth, user is set at req.user.  redirect as necessary.
+    if (req.user.username == "Adm1n") { return res.redirect('/dashboard'); }
+    res.redirect('/comprar');
+    }
+);
 
 //Ejemplo de cómo poner que debe estar loggeado
 app.get('/dashboard',isLoggedIn, authController.dashboard);
@@ -97,10 +102,17 @@ app.get('/dashboard',isLoggedIn, authController.dashboard);
 app.get('/logout',authController.logout);
 
 //Funcion para autenticarse
-app.post('/signin', passport.authenticate('local-signin',  { successRedirect: '/dashboard',
-	successRedirect: '/dashboard',	
-	failureRedirect: '/signin'}
-));
+app.post('/signin', passport.authenticate('local-signin',  { 
+    
+    //successRedirect: '/dashboard',	
+    failureRedirect: '/signin'
+}), function(req, res) {
+    console.log(req.user);
+    // successful auth, user is set at req.user.  redirect as necessary.
+    if (req.user.username == "admin") { return res.redirect('/dashboard'); }
+    res.redirect('/comprar');
+    }
+);
 
 //Función para recuperar información de pedidos
 app.get('/pro', isLoggedIn, function (req, res, next) {
