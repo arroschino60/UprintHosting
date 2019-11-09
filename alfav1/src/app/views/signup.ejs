@@ -22,35 +22,35 @@
                             <a href="/"><img src="img/logouprint.png" style="width: 120px; height: 100px;"></a><br>
                         </div>
                     
-                    <div class="agrupar">
-                    <div class="form-group">
-                        <input name="username" type="text" class="form-control" placeholder="Nombre de Usuario"/>
-                    
-                        <input name="firstname" type="text" class="form-control" placeholder="Nombre(s)" style="margin-left: 20px;" />
+                    <div class="agrupar text-center">
+                    <div class="form-group text-center">
+                        <input name="username" type="text" class="form-control" placeholder="Nombre de Usuario" required />
+                        <input name="firstname" type="text" class="form-control" placeholder="Nombre(s)" style="margin-left: 25px;" required/>
+                        
                     </div>
                 </div>
                 <div class="agrupar">
                     <div class="form-group">
-                        <input name="lastname" type="text" class="form-control" placeholder="Apellido Paterno"/>
-                    
-                        <input name="secondlastname" type="text" class="form-control" placeholder="Apellido Materno" style="margin-left: 20px;" />
+                        <input name="lastname" type="text" class="form-control" placeholder="Apellido Paterno" required />
+                        <input name="secondlastname" type="text" class="form-control" placeholder="Apellido Materno" style="margin-left: 25px;" required />
                     </div>
                     </div>
                     <div class="agrupar">
-                    <div class="form-group">
-                            <input class="form-control" name="email" type="text" placeholder="e-mail" />
-                        <input name="password" type="password" class="form-control" placeholder="Contraseña" style="margin-left: 20px;" />
-                    </div>
+                        <div class="form-group">
+                            <input class="form-control" name="email" type="text" placeholder="e-mail" required/>
+                            <input name="password" type="password" class="form-control" placeholder="Contraseña" style="margin-left: 25px;" required />
+                        </div>
                     </div>
                     <div class="col align-self-center">
                         <input class="btn btn-dark btn-lg text-center" type="submit" value="OK" />
                     </div>
+                    <div class="text-center">
+                        <p>¿Ya tienes una cuenta? <a href="/signin">Ingresar</a></p>
+                        <a href="javascript:window.history.back();"><input class="btn btn-default" type="button" value="Volver" /></a>
+                        
+                    </div>
                 </form>
                 <hr>
-                <div class="text-center">
-                    <p>¿Ya tienes una cuenta? <a href="/signin">Ingresar</a></p>
-                    <p>O ir a <a href="/">Inicio</a>.</p>
-                </div>
             </div>
         </div>
     </div>

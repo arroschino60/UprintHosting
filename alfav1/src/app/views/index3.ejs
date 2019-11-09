@@ -8,18 +8,18 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
     crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    <link rel="icon" href="img/iconuprint.png" id="">
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/img/iconuprint.png" id="">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/style.css">
   <title>uPrint</title>
 </head>
 
-<body id="home" data-spy="scroll" data-target="#main-nav" style="background-image:url(img/dif2.png)">
+<body id="home" data-spy="scroll" data-target="#main-nav" style="background-image:url(/img/dif2.png)">
     
      <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
     <div class="container">
       <a href="/" class="navbar-brand">
-        <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
+        <img src="/logo/homelogo-01.png" width="180px" height="32px" alt="">
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -56,7 +56,13 @@
               <button type="button" class="btn btn-info">
                 <a id="shoppingBag" href="/signin">
                 <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">Usuario</span>
+                <span class="badge badge-light text-secondary">
+                  <% if(user){ %>
+                    <%= user.username %>
+                  <% } else { %>
+                  Usuario
+                  <% } %>
+                </span>
                 <span class="sr-only">unread messages</span>
                 </a>
              </button>
@@ -80,7 +86,7 @@
   </ol>
 </nav>
 
-                <h1 class="lead" style="font-size: 30px"> <i class="fas fa-book"></i> Fotolibro estándar eventos uPrint® </h1>
+                <h1 class="lead" style="font-size: 30px"> <i class="fas fa-book"></i> <%= producto.nameProduct%> uPrint® </h1>
             </div>
         </div>
     </div>
@@ -91,11 +97,12 @@
         <div class="row">
             <div class="col-md-4">
         <div class="card text-center mb-4">
-            <img id="pepa" class="text-center" src="img/productore7.png" alt="Card image cap">
+            <img id="pepa" class="text-center" src="/img/<%= producto.imageProduct %>" alt="Card image cap">
         <div class="card-body">
             <i class="fas fa-images fa-3x mr-3 ml-3"></i><i class="fas fa-images fa-3x mr-3 ml-3"></i><i class="fas fa-images fa-3x mr-3 ml-3"></i>
             <ul class="list-unstyled mt-3" style="text-align: left">
                 <ul>
+                <li><%= producto.featuresProduct %></li>
                 <li>Modelo ergonómico</li>
                 <li>Material resistente</li>
                 <li>Personalizable al gusto</li>
@@ -170,7 +177,7 @@
 <form>
   <div class="form-group row">
     <label for="staticEmail" class="col-sm-2 col-form-label">Cantidad:
-    <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Cantidad sujeta a existencias y un máximo de X piezas"></i>
+    <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Cantidad sujeta a existencias y un máximo de <%= producto.max %> piezas"></i>
  
      </label>
     <div class="col-sm-10">
@@ -200,7 +207,7 @@
             <div class="row">
                 <div class="col-md-7"></div>
                 <label class="col-md-3 text-left">Costo de imprenta: </label>
-                <h1 class="text-success col-md-2" style="font-size: 20px"> $200.00 </h1>
+                <h1 class="text-success col-md-2" style="font-size: 20px"> $<%= producto.priceProduct%> </h1>
             </div>
             <div class="row">
                 <div class="col-md-7"></div>
@@ -212,7 +219,7 @@
             <div class="row text-center">
                 
                 <div class="col-md-12">
-                    <a href="/carrito">
+                    <a href="/signin">
                     <button type="button" class="btn btn-success btn-lg pl-3 pr-3 mt-2 mb-2"><i class="fas fa-shopping-cart text-white"></i> Agregar al carrito </button>
                     </a>
                 </div>
@@ -240,7 +247,7 @@
           <div class="row">
               <div class="col-md-3">
             <div class="card" style="width: auto">
-            <img class="card-img-top" src="img/productore6.png" alt="Card image cap">
+            <img class="card-img-top" src="/img/productore6.png" alt="Card image cap">
             <div class="card-body text-center">
                  <h5 class="card-title">
                     <font size="3">Agenda estándar uPrint®</font>
@@ -283,7 +290,7 @@
 
 
   <!-- FOOTER -->
-  <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(img/dif3.png)">
+  <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(/img/dif3.png)">
       
       <div class="container mb-5">
         <div class="row text-center">
@@ -399,11 +406,11 @@
   </script> 
     
   <!-- scripts -->
-<script src="js/particles.js"></script>
-<script src="js/app.js"></script>
+<script src="/js/particles.js"></script>
+<script src="/js/app.js"></script>
 
 <!-- stats.js -->
-<script src="js/lib/stats.js"></script>
+<script src="/js/lib/stats.js"></script>
 <script>
   var count_particles, stats, update;
   stats = new Stats;

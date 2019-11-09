@@ -23,7 +23,8 @@ module.exports = function(app,passport){
 		.obtenerProd()
 		.then(productos => {
 			res.render("productos", {
-				productos: productos,
+                productos: productos,
+                user: req.user,
 			});
 		})
 		.catch(err => {
@@ -46,18 +47,43 @@ module.exports = function(app,passport){
         
     app.get('/contacto', (req, res) => {
 		res.render('contacto');
-	});
+    });
+    
+    /*app.get('/comprar', (req, res) => {
+		res.render('dashboard', {
+            user: req.user
+        });
+    });*/
 
-    app.get('/comprar', (req, res) => {
-		res.render('index3');
+    app.post('/comprar/:id', (req, res) => {
+        productosModel
+        .obtenerPorId(req.params.id)
+        .then(producto => {
+            if (producto) {
+                console.log({ producto });
+                res.render("index3", {
+                    producto: producto,
+                    user : req.user,
+                });
+            } else {
+                return res.status(500).send("No existe producto con ese id");
+            }
+        })
+        .catch(err => {
+            return res.status(500).send("Error obteniendo producto");
+        });
 	});
 
      app.get('/carrito', (req, res) => {
-		res.render('index33');
+		res.render('index33', {
+            user: req.user
+        });
 	});
     
     app.get('/pago', (req, res) => {
-		res.render('index333');
+		res.render('index333', {
+            user: req.user
+        });
 	});
 
     
@@ -91,7 +117,7 @@ app.post('/signup',
 ), function(req, res) {
     // successful auth, user is set at req.user.  redirect as necessary.
     if (req.user.username == "Adm1n") { return res.redirect('/dashboard'); }
-    res.redirect('/comprar');
+    res.redirect('/carrito');
     }
 );
 
@@ -110,42 +136,49 @@ app.post('/signin', passport.authenticate('local-signin',  {
     console.log(req.user);
     // successful auth, user is set at req.user.  redirect as necessary.
     if (req.user.username == "admin") { return res.redirect('/dashboard'); }
-    res.redirect('/comprar');
+    res.redirect('/carrito');
     }
 );
 
 //Función para recuperar información de pedidos
 app.get('/pro', isLoggedIn, function (req, res, next) {
-	admModel
+    if (req.user.username == "Adm1n") { 
+    admModel
 		.obtenerUnidades()
 		.then(productos => {
 			res.render("production", {
-				productos: productos,
+                productos: productos,
+                user: req.user,
 			});
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});
+		});}
+        res.redirect('/');
 
 });
 
 app.get('/pro2', isLoggedIn, function (req, res, next) {
-	admModel
+    if (req.user.username == "Adm1n") { 
+    admModel
 		.obtenerUnidades()
 		.then(productos => {
 			res.render("productioncopy", {
-				productos: productos,
+                productos: productos,
+                user : req.user,
 			});
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});
+		});}
+        res.redirect('/');
 
 });
 
 //Función para obtener productos
 app.get('/prodd', isLoggedIn, function (req, res, next) {
-	productosModel
+    if (req.user.username == "Adm1n") { 
+    productosModel
 		.obtenerProd()
 		.then(productos => {
 			res.render("index6", {
@@ -154,26 +187,30 @@ app.get('/prodd', isLoggedIn, function (req, res, next) {
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});
+		});}
+        res.redirect('/');
 
 });
 
 app.get('/prodd2', isLoggedIn, function (req, res, next) {
-	productosModel
+    if (req.user.username == "Adm1n") { 
+    productosModel
 		.obtenerProd()
 		.then(productos => {
 			res.render("index6copy", {
-				productos: productos,
+                productos: productos,
+                user : req.user,
 			});
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});
+		});}
+        res.redirect('/');
 
 });
 
 //Función para obtener las ventas en un periodo de tiempo
-app.post('/proselect', function (req, res, next) {
+app.post('/proselect',isLoggedIn, function (req, res, next) {
     const {
         fechafin,
         fechaini
@@ -182,7 +219,8 @@ app.post('/proselect', function (req, res, next) {
 		.obtenerVentas(fechaini, fechafin)
 		.then(productos => {
 			res.render("production", {
-				productos: productos,
+                productos: productos,
+                user : req.user,
 			});
 		})
 		.catch(err => {
@@ -192,7 +230,7 @@ app.post('/proselect', function (req, res, next) {
 });
 
 //Función para cambiar el status de los pedidos
-app.post('/cambStatus/:id/:idos', function(req, res, next){
+app.post('/cambStatus/:id/:idos',isLoggedIn, function(req, res, next){
     const { exampleFormControlSelect1 } = req.body;
     console.log(req.params.idos);
     console.log(req.params.id);
@@ -209,7 +247,7 @@ app.post('/cambStatus/:id/:idos', function(req, res, next){
 
 
 //Función para insertar productos
-app.post('/insertar', function (req, res, next) {
+app.post('/insertar',isLoggedIn, function (req, res, next) {
     // Obtener el nombre y precio. Es lo mismo que
     // const nombre = req.body.nombre;
     // const precio = req.body.precio;
@@ -263,7 +301,7 @@ app.post('/insertar', function (req, res, next) {
 
 //Función para buscar producto por id
 	
-app.get('/editar/:id', function (req, res, next) {
+app.get('/editar/:id',isLoggedIn, function (req, res, next) {
     productosModel
         .obtenerPorId(req.params.id)
         .then(producto => {
@@ -271,6 +309,7 @@ app.get('/editar/:id', function (req, res, next) {
                 console.log({ producto });
                 res.render("index7", {
                     producto: producto,
+                    user : req.user,
                 });
             } else {
                 return res.status(500).send("No existe producto con ese id");
@@ -281,7 +320,7 @@ app.get('/editar/:id', function (req, res, next) {
         });
 });
 
-app.post('/actualiza', (req, res) => {
+app.post('/actualiza',isLoggedIn, (req, res) => {
     passport.query('UPDATE `users` SET `password`='+req.body.newpass+ 'WHERE email =' + req.body.campo1,
       (err, result) => {
         res.redirect('logo');
@@ -289,7 +328,7 @@ app.post('/actualiza', (req, res) => {
   });
 
 //Función para modificar 
-app.post('/actualizar/', function (req, res, next) {
+app.post('/actualizar/',isLoggedIn, function (req, res, next) {
     const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
     if (!nombre) {
         return res.status(500).send("No hay nombre");
@@ -346,7 +385,7 @@ app.post('/actualizar/', function (req, res, next) {
 	});
 
 //Función para eliminar producto
-app.get('/eliminar/:id', function (req, res, next) {
+app.get('/eliminar/:id',isLoggedIn, function (req, res, next) {
     admModel
         .eliminar(req.params.id)
         .then(() => {
