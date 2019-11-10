@@ -45,7 +45,13 @@
               <button type="button" class="btn btn-primary">
                 
                 <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">Admin</span>
+                <span class="badge badge-light text-secondary">
+                    <% if(user){ %>
+                      <%= user.username %>
+                    <% } else { %>
+                    Usuario
+                    <% } %>
+                </span>
               </button>
             </a>
 

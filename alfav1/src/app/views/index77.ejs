@@ -46,7 +46,13 @@
               <button type="button" class="btn btn-primary">
                 
                 <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">Admin</span>
+                <span class="badge badge-light text-secondary">
+                    <% if(user){ %>
+                      <%= user.username %>
+                    <% } else { %>
+                    Usuario
+                    <% } %>
+                </span>
               </button>
             </a>
 
@@ -116,6 +122,7 @@
         <div class="row">
            <div class="col-md-12">
                <div class="container">
+                 <form method="POST" action="/actualizarKiosko">
       <div class="row">
 
            <div class="col-md-12">
@@ -123,7 +130,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el nombre del kiosko, debe ser único">
                     <h6 class="">Nombre del kiosko <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Kiosko centro...">
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Kiosko centro..." value="<%= producto.user %>">
               </div>
           </div>
 
@@ -132,16 +139,16 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el primer nombre del encargado del kiosko">
                     <h6 class="">Nombre del encargado <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Juan">
+                  <input type="text" class="form-control" id="encargado" name="encargado" placeholder="Juan" value="<%= producto.attendantName %>">
               </div>
           </div>
 
           <div class="col-md-6">
               <div class="form-group text-center">
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el segundo nombre del encargado del kiosko">
-                    <h6 class="">Segundo nombre del encargado <i class="fas fa-info-circle"></i></h6>
+                    <h6 class="">Apellidos del encargado <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Perez">
+                  <input type="text" class="form-control" id="snencargado" name="snencargado" placeholder="Perez" value="<%= producto.attendantSecondName %>">
               </div>
           </div>
          
@@ -150,7 +157,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la calle donde se encuentra el kiosko">
                     <h6 class="">Calle <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Argentina #123">
+                  <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Argentina #123" value="<%= producto.street %>">
             </div>
           </div>
 
@@ -159,7 +166,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la colonia donde se encuentra el kiosko">
                     <h6 class="">Colonia <i class="fas fa-info-circle"></i></h6>
                    </button>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Col soledad...">
+                  <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Col soledad..." value="<%= producto.suburb %>">
               </div>
           </div>
           
@@ -168,7 +175,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el código postal donde se encuentra el kiosko">
                     <h6 class="">Código postal <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="inputZip" placeholder="5280...">
+                  <input type="text" class="form-control" id="inputZip" name="inputZip" placeholder="5280..." value="<%= producto.zipcode %>">
               </div>
           </div>
 
@@ -177,7 +184,7 @@
                    <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el correo electrónico del kiosko">
                     <h6 class="">Correo electrónico <i class="fas fa-info-circle"></i></h6>
                    </button>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="kiosko@gmail.com">
+                  <input type="email" class="form-control" id="inputEmail4" name="inputEmail4" placeholder="kiosko@gmail.com" value="<%= producto.email %>">
               </div>
           </div>
 
@@ -186,7 +193,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el correo eletrónico secundario del kiosko">
                     <h6 class="">Correo electrónico Alternativo <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="kiosko2@gmail.com">
+                  <input type="email" class="form-control" id="inputEmail2" name="inputEmail2" placeholder="kiosko2@gmail.com" value="<%= producto.otheremail %>">
               </div>
           </div>
 
@@ -197,6 +204,7 @@
           </div>
 
       </div>
+    </form>
   </div>
             
            </div>

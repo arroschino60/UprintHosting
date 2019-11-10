@@ -14,7 +14,9 @@ module.exports = function(app,passport){
     });
 
     app.get('/personalizar', (req, res) => {
-		res.render('personalizar');
+		res.render('personalizar', {
+            user: req.user
+        });
     });
     app.get('/', (req, res) => {
 		res.render('logoCopy');
@@ -48,12 +50,28 @@ module.exports = function(app,passport){
 	});
         
     app.get('/contacto', (req, res) => {
-		res.render('contacto');
+		res.render('contacto', {
+            user: req.user
+        });
     });
     
     //Funciones para la administración  de kioskos
     app.get('/kiosko', (req, res) => {
-		res.render('index66');
+        productosModel
+        .obtenerKioskos()
+        .then(producto => {
+            if (producto) {
+                res.render("index66", {
+                    producto: producto,
+                    user : req.user,
+                });
+            } 
+        })
+        .catch(err => {
+            return res.status(500).send("Error obteniendo Kioskos");
+        });
+        //res.render('index66');
+        
     });
 
     /*app.get('/comprar', (req, res) => {
@@ -192,7 +210,8 @@ app.get('/prodd', isLoggedIn, function (req, res, next) {
 		.obtenerProd()
 		.then(productos => {
 			res.render("index6", {
-				productos: productos,
+                productos: productos,
+                user : req.user,
 			});
 		})
 		.catch(err => {
@@ -308,57 +327,53 @@ check('comment', 'Se debe ingresar un comentario').not().isEmpty()
     }
   });
 
-//app.post('/insertar',isLoggedIn, function (req, res, next) {
-    // Obtener el nombre y precio. Es lo mismo que
-    // const nombre = req.body.nombre;
-    // const precio = req.body.precio;
-//    const { nombre, precio, tiempo, min, max, categoria, file, dimen, comment, exist } = req.body;
-    //if (!nombre) {
-  //      return res.status(500).send("No hay nombre");
-//	}
-//	if (!precio ) {
-      //  return res.status(500).send("No hay precio");
-	//}
-	//if (!tiempo) {
-      //  return res.status(500).send("No hay tiempo");
-	//}
-	//if (!min ) {
-      //  return res.status(500).send("No hay min");
-	//}
-	//if ( !max ) {
-      //  return res.status(500).send("No hay max");
-	//}
-	//if ( !categoria ) {
-      //  return res.status(500).send("No hay categoria");
-	//}
-	//if ( !dimen ) {
-      //  return res.status(500).send("No hay dimen");
-	//}
-	//if ( !comment) {
-      //  return res.status(500).send("No hay comment");
-	//}
+app.post('/insertarKiosko', function (req, res, next) {
+    const { nombre, encargado, snencargado, inputAddress, inputAddress2, inputZip, inputEmail4, inputEmail2} = req.body;
     // Si todo va bien, seguimos
-    //saca la extención de la imagén
-    //var extension = req.files.file.name.split(".").pop();
-    //Aquí se le asigna dirección y nombre
-    //var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/nvoproduct"+req.files.file.name;
-    //var oldPath = req.files.file.path;
-    //console.log(newPath);
-    //Se cambia el archivo de carpeta
-    //fs.rename(oldPath, newPath, function (err) {
-        //if (err) throw err
-      //  console.log('Successfully renamed - AKA moved!')
-    //})
     //se hacen los cambios
-   // admModel
-        //.insertarProducto(nombre, precio, tiempo, min, max, categoria, "nvoproduct"+req.files.file.name, dimen, comment, exist)
-       // .then(idProductoInsertado => {
-        //    res.redirect("/prodd");
-      //  })
-     //   .catch(err => {
-    //      return res.status(500).send(err);
-  //      });
-//});
+   productosModel
+        .insertarKiosko(nombre, inputAddress, inputAddress2, encargado, inputZip, snencargado, inputEmail4, inputEmail2  )
+        .then(idProductoInsertado => {
+            res.redirect("/kiosko");
+        })
+        .catch(err => {
+          return res.status(500).send(err);
+        });
+});
+
+app.get('/editarKiosko/:id', function (req, res, next) {
+    productosModel
+        .obtenerKioskoPorId(req.params.id)
+        .then(producto => {
+            if (producto) {
+                console.log({ producto });
+                res.render("index77", {
+                    producto: producto,
+                    user : req.user,
+                });
+            } else {
+                return res.status(500).send("No existe kiosko con ese id");
+            }
+        })
+        .catch(err => {
+            return res.status(500).send("Error obteniendo kiosko");
+        });
+});
+
+app.post('/actualizarKiosko',
+      function (req, res) {
+        const { nombre, encargado, snencargado, inputAddress, inputAddress2, inputZip, inputEmail4, inputEmail2} = req.body;
+        //se hacen los cambios
+        productosModel
+        .editarKioskos(nombre, inputAddress, inputAddress2, encargado, inputZip, snencargado, inputEmail4, inputEmail2 )
+        .then(() => {
+            res.redirect("/kiosko");
+        })
+        .catch(err => {
+            return res.status(500).send(err);
+        });
+        }
+      );
 
 //Función para buscar producto por id
 	

@@ -10,8 +10,8 @@
     crossorigin="anonymous">
    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     
-  <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/style.css">
   <title>uPrint</title>
 </head>
 
@@ -19,7 +19,7 @@
   <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
     <div class="container">
       <a href="/" class="navbar-brand">
-        <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
+        <img src="/logo/homelogo-01.png" width="180px" height="32px" alt="">
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
@@ -56,7 +56,13 @@
               <button type="button" class="btn btn-info">
                 <a id="shoppingBag" href="/signin">
                 <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">Usuario</span>
+                <span class="badge badge-light text-secondary">
+                        <% if(user){ %>
+                            <%= user.username %>
+                          <% } else { %>
+                          Usuario
+                          <% } %>
+                </span>
                 <span class="sr-only">unread messages</span>
                 </a>
              </button>
@@ -88,23 +94,23 @@
   <div class="carousel-inner">
       
      <div class="carousel-item active">
-      <img class="d-block w-100" src="img/testbanner.png"
+      <img class="d-block w-100" src="/img/testbanner.png"
         alt="Second slide">
       <div class="carousel-caption d-none d-md-block text-right">
           <div class="container text-center">
-                    <img src="img/choosecategorytittle.png" id="welcomeh1">
-                    <img src="img/astronauta1.gif" id="welcomeh2" data-toggle="tooltip" data-placement="top" title="¿A dónde quieres ir?">
+                    <img src="/img/choosecategorytittle.png" id="welcomeh1">
+                    <img src="/img/astronauta1.gif" id="welcomeh2" data-toggle="tooltip" data-placement="top" title="¿A dónde quieres ir?">
                     <div class="row">
                         
             
                         <div class="col-md-4">
                             <div class="bannpla1">
-                                <img class="" id="bannpla1imagen" src="img/planet2.gif">
+                                <img class="" id="bannpla1imagen" src="/img/planet2.gif">
                             </div>
                             
                             <div id="bannpla1tittle" data-toggle="tooltip" data-placement="top" title="Haz click para visitar la sección de foto libros!">
                                 <a href="#secfotolibros">
-                                <img id="bannpla1tittleimagen" src="img/fotolibrostittle.png">
+                                <img id="bannpla1tittleimagen" src="/img/fotolibrostittle.png">
                                 </a>
                             </div>
                             
@@ -112,12 +118,12 @@
 
                         <div class="col-md-4">
                             <div id="bannpla2">
-                                <img class="" id="bannpla2imagen" src="img/planet3.gif">
+                                <img class="" id="bannpla2imagen" src="/img/planet3.gif">
                             </div>
 
                             <div id="bannpla2tittle" data-toggle="tooltip" data-placement="top" title="Haz click para visitar la sección de foto regalos!">
                                 <a href="#secfotoregalos">
-                                <img id="bannpla2tittleimagen" src="img/fotoregalostittle.png">
+                                <img id="bannpla2tittleimagen" src="/img/fotoregalostittle.png">
                                 </a>
                             </div>
                             
@@ -125,12 +131,12 @@
                         
                         <div class="col-md-4">
                             <div id="bannpla3">
-                            <img class="" id="bannpla3imagen" src="img/planet1.gif">
+                            <img class="" id="bannpla3imagen" src="/img/planet1.gif">
                             </div>
                             
                             <div id="bannpla3tittle" data-toggle="tooltip" data-placement="top" title="Haz click para visitar la sección de foto marcos!">
                             <a href="#secfotomarcos">
-                            <img id="bannpla3tittleimagen" src="img/fotomarcostittle.png">
+                            <img id="bannpla3tittleimagen" src="/img/fotomarcostittle.png">
                             </a>
                             </div>
                         </div>
@@ -141,7 +147,7 @@
      </div>
 
     <div class="carousel-item">
-      <img class="d-block w-100" src="img/ban1.png"
+      <img class="d-block w-100" src="/img/ban1.png"
         alt="Second slide">
      
       <div class="carousel-caption d-none d-md-block text-left">
@@ -149,12 +155,12 @@
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-md-5">
-                        <img class="" id="bann1" src="img/fotoregalosgif.gif" data-toggle="tooltip" data-placement="top" title="Elige distintos diseños y modelos!">
+                        <img class="" id="bann1" src="/img/fotoregalosgif.gif" data-toggle="tooltip" data-placement="top" title="Elige distintos diseños y modelos!">
                         </div>
                         <div class="col-md-1 mb-1 mt-1"></div>
                         <div class="col-md-5 mr-1">
                     
-                            <img src="img/bantittle1.png" id="bantittle1">
+                            <img src="/img/bantittle1.png" id="bantittle1">
 
                             <i class="fas fa-coffee fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title="Tazas personalizadas"></i>
                             <i class="fas fa-mobile-alt fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="top" title="Fundas de smartphone personalizadas"></i>
@@ -179,14 +185,14 @@
     </div>
 
     <div class="carousel-item">
-      <img class="d-block w-100" src="img/ban2.png"
+      <img class="d-block w-100" src="/img/ban2.png"
         alt="Second slide">
       <div class="carousel-caption d-none d-md-block text-right">
              <div class="container text-center">
                     <div class="row">
                         <div class="col-md-5">
                             
-                            <img src="img/bantittle2.png" id="bantittle2">
+                            <img src="/img/bantittle2.png" id="bantittle2">
 
                             <i class="fas fa-box-open fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title="Cajas personalizadas para guardar todas tus fotos"></i>
         
@@ -204,7 +210,7 @@
                         </div>
                         <div class="col-md-1 mb-1 mt-1"></div>
                         <div class="col-md-5 mr-1">
-                            <img class="" id="bann2" src="img/fondomarcosgif.gif" data-toggle="tooltip" data-placement="left" title="Guarda todos tus momentos importantes en una caja personalizada">
+                            <img class="" id="bann2" src="/img/fondomarcosgif.gif" data-toggle="tooltip" data-placement="left" title="Guarda todos tus momentos importantes en una caja personalizada">
                         </div>
                     
                     </div>
@@ -212,18 +218,18 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="img/ban3.png"
+      <img class="d-block w-100" src="/img/ban3.png"
         alt="Third slide">
       <div class="carousel-caption d-none d-md-block text-left">
           <div class="container text-center">
                     <div class="row">
                         <div class="col-md-5">
-                        <img class="" id="bann3" src="img/fondolibrosgif.gif" data-toggle="tooltip" data-placement="bottom" title="Elige distintos diseños y modelos!">
+                        <img class="" id="bann3" src="/img/fondolibrosgif.gif" data-toggle="tooltip" data-placement="bottom" title="Elige distintos diseños y modelos!">
                         </div>
                         <div class="col-md-1 mb-1 mt-1"></div>
                         <div class="col-md-5 mr-1">
                             
-                            <img src="img/bantittle3.png" id="bantittle3"><br>
+                            <img src="/img/bantittle3.png" id="bantittle3"><br>
                             
                             <i class="fas fa-calendar-alt fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title="Crea agendas personalizadas"></i>
                             <i class="fas fa-book fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="right" title="Crea albums personalizados"></i>
@@ -245,14 +251,14 @@
     </div>
 
      <div class="carousel-item">
-      <img class="d-block w-100" src="img/ban5.png"
+      <img class="d-block w-100" src="/img/ban5.png"
         alt="Second slide">
         <div class="carousel-caption d-none d-md-block text-right">
              <div class="container text-center">
                     <div class="row">
                         <div class="col-md-5">
                             
-                            <img src="img/bantittle5.png" id="bantittle5">
+                            <img src="/img/bantittle5.png" id="bantittle5">
 
                             <i class="fas fa-palette fa-3x pb-2 ml-4 mr-4" data-toggle="tooltip" data-placement="left" title=":)"></i>
         
@@ -271,7 +277,7 @@
                         </div>
                         <div class="col-md-1 mb-1 mt-1"></div>
                         <div class="col-md-5 mr-1">
-                            <img class="" id="bann5" src="img/personalizaciongif.gif" data-toggle="tooltip" data-placement="top" title="Imprime tus diseños y momentos más importantes!">
+                            <img class="" id="bann5" src="/img/personalizaciongif.gif" data-toggle="tooltip" data-placement="top" title="Imprime tus diseños y momentos más importantes!">
                         </div>
                     
                     </div>
@@ -281,7 +287,7 @@
      </div>
 
     <div class="carousel-item">
-        <img class="d-block w-100" src="img/ban.png"
+        <img class="d-block w-100" src="/img/ban.png"
         alt="Second slide">
     <div class="carousel-caption d-none d-md-block text-right">
           <div class="container text-center">
@@ -292,7 +298,7 @@
                         <div class="col-md-1 mb-1 mt-1"></div>
                         
                         <div class="col-md-5">
-                            <img src="img/bantittle4.png" id="bantittle4">
+                            <img src="/img/bantittle4.png" id="bantittle4">
                             <p style="font-size: 15px" class="mb-5 pb-2 mr-4 pr-5">
                             <a href="/contacto">
                             <button type="button" class="btn btn-light pr-3 mr-3" data-toggle="tooltip" data-placement="right" title="Escribenos y te atenderemos en lo que tu necesites">
@@ -302,7 +308,7 @@
                             </p>
                            
                             
-                            <img class="" id="bann4" src="img/fondoiniciogif.gif" data-toggle="tooltip" data-placement="right" title="La variedad de nuestros productos te encantarán!">
+                            <img class="" id="bann4" src="/img/fondoiniciogif.gif" data-toggle="tooltip" data-placement="right" title="La variedad de nuestros productos te encantarán!">
                                 
                         </div>
                     </div>
@@ -366,7 +372,7 @@
                                         <% if(producto.nameCategory == "Foto Regalos"){ %>
                                         <div class="col-md-3">
                                             <div class="card mb-5" style="width: auto">
-                                                <img class="card-img-top" src="img/<%= producto.imageProduct %>" alt="Card image cap">
+                                                <img class="card-img-top" src="/img/<%= producto.imageProduct %>" alt="Card image cap">
                                                 <div class="card-body text-center">
                                                     <h5 class="card-title">
                                                         <font size="3"><%= producto.nameProduct %> uPrint®</font>
@@ -447,7 +453,7 @@
                                     <% if(producto.nameCategory == "Foto Marcos"){ %>
                                     <div class="col-md-3">
                                         <div class="card mb-5" style="width: auto">
-                                            <img class="card-img-top" src="img/<%= producto.imageProduct %>" alt="Card image cap">
+                                            <img class="card-img-top" src="/img/<%= producto.imageProduct %>" alt="Card image cap">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">
                                                     <font size="3"><%= producto.nameProduct %> uPrint®</font>
@@ -528,7 +534,7 @@
                                     <% if(producto.nameCategory == "Foto libros"){ %>
                                     <div class="col-md-3">
                                         <div class="card mb-5" style="width: auto">
-                                            <img class="card-img-top" src="img/<%= producto.imageProduct %>" alt="Card image cap">
+                                            <img class="card-img-top" src="/img/<%= producto.imageProduct %>" alt="Card image cap">
                                             <div class="card-body text-center">
                                                 <h5 class="card-title">
                                                     <font size="3"><%= producto.nameProduct %> uPrint®</font>
@@ -587,7 +593,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card" style="width: auto">
-                    <img class="card-img-top" src="img/card2.JPG" alt="Card image cap">
+                    <img class="card-img-top" src="/img/card2.JPG" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Foto libros</h5>
                         <p class="card-text">Nuestros fotolibros ofrecen una alternativa a los albumes fotográficos tradicionales, ofreciendo un nivel de personalización, elegancia y portabilidad más creativa.</p>
@@ -598,7 +604,7 @@
 
             <div class="col-md-4">
                 <div class="card" style="width: auto">
-                    <img class="card-img-top" src="img/card3.JPG" alt="Card image cap">
+                    <img class="card-img-top" src="/img/card3.JPG" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title pb-3">Foto regalos</h5>
                         <p class="card-text">Lleva contigo las memorias de días pasados en articulos para compartir, asociar y mostrar ante el mundo de maneras dinamicas y emocionantes.</p>
@@ -609,7 +615,7 @@
 
             <div class="col-md-4">
                 <div class="card" style="width: auto">
-                    <img class="card-img-top" src="img/card1.JPG" alt="Card image cap">
+                    <img class="card-img-top" src="/img/card1.JPG" alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title pb-3">Foto marcos</h5>
                         <p class="card-text">Inmortaliza las piezas clave y esenciales de tu memoria, haciendo uso de un enmarcado de alta calidad, al nivel de belleza de sus recuerdos más valioso.</p>
@@ -623,7 +629,7 @@
     
 </section>
   <!-- FOOTER -->
-  <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(img/dif3.png)">
+  <footer id="main-footer" class="pt-3 pb-5 text-white" style="background-image:url(/img/dif3.png)">
       
       <div class="container mb-5">
         <div class="row text-center">

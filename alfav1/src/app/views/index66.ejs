@@ -45,7 +45,13 @@
               <button type="button" class="btn btn-primary">
                 
                 <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">Admin</span>
+                <span class="badge badge-light text-secondary">
+                    <% if(user){ %>
+                      <%= user.username %>
+                    <% } else { %>
+                    Usuario
+                    <% } %>
+                </span>
               </button>
             </a>
 
@@ -122,7 +128,7 @@
         <div class="col-md-3 mr-1 ml-1 mt-2 mb-2"> 
            <div class="card text-center bg-white text-secondary" data-toggle="tooltip" data-placement="top" title="Total de productos registrados en almacén">
             <div class="card-body">
-                <h6><i class="fas fa-home"></i> Total de kioskos: </h6>
+                <h6><i class="fas fa-home"></i> Total de kioskos: <%= producto.length %></h6>
             </div>
            </div>
         </div>
@@ -150,48 +156,48 @@
           </ul>
 <div class="tab-content card pt-5" id="myTabContentMD">
   <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
-  
-  <div class="col-md-3 mr-2 ml-2 mt-2 mb-2">
-         <!-- CARDS DE KIOSKOS -->
+      <div class="container">
+          <div class="row">
+    <% producto.forEach(producto => { %>
+      <div class="col-md-3 mr-2 ml-2 mt-2 mb-2">
+        <!-- CARDS DE KIOSKOS -->
         <div class="card text-center pt-1" >
-        <div class="card-header bg-dark">
-        <h5 class="card-title text-white">Kiosko 1</h5>
-        </div>
-        <div class="card-body">
+          <div class="card-header bg-dark">
+            <h5 class="card-title text-white"><%= producto.user %></h5>
+          </div>
+          <div class="card-body">
             <i class="fas fa-home fa-3x"></i>
-        </div>
-
-        <div class="card-header">
-                <h6 class="">
-                  <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">
-                    <i class="fas fa-arrow-circle-down"></i> Información:
-                  </div>
-                </h6>
-        </div>
-
-        <div id="collapse1" class="collapse">
-                <div class="card-body">
-                   <ul class="list-group list-group-flush">
-                   <li class="list-group-item">Información 1</li>
-                   <li class="list-group-item">Información 2</li>
-                   <li class="list-group-item">Información 3</li>
-                   </ul>
-                </div>
-        </div>
-
-       
-        <div class="card-body">
+          </div>
+          <div class="card-header">
+            <h6 class="">
+              <div href="#collapse1" data-toggle="collapse" data-parent="#accordion">                  <i class="fas fa-arrow-circle-down"></i> Información:
+              </div>
+            </h6>
+          </div>
+          <div id="collapse1" class="collapse">
+            <div class="card-body">
+             <ul class="list-group list-group-flush">
+                <li class="list-group-item">Nombre del encargado: <%= producto.attendantName %><%= producto.attendantSecondName %></li>
+                <li class="list-group-item">Calle: <%= producto.street %></li>
+                <li class="list-group-item">Colonia: <%= producto.suburb %></li>
+                <li class="list-group-item">CP:<%= producto.zipcode %></li>
+                <li class="list-group-item">Email:<%= producto.email %></li>
+                <li class="list-group-item">Email alternativo: <%= producto.otheremail %></li>                  
+              </ul>
+            </div>
+          </div>
+          <div class="card-body">
             <a href="#" class="card-link">
-
-            <a href="" class="btn btn-secondary pr-4 pl-4">
+              <a href="editarKiosko/<%= producto.user %>" class="btn btn-secondary pr-4 pl-4">
                 <i class="fas fa-angle-double-right"></i> Editar
-            </a>
+              </a>
             </a> 
+          </div>
         </div>
-        </div>
-
-</div>  
-  
+      </div>  
+    <% })%>
+          </div>
+          </div>
   </div>
 
   <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
@@ -211,27 +217,24 @@
     </tr>
   </thead>
   <tbody>
+      <% producto.forEach(producto => { %>
     <tr>
       <th scope="row">
-          <p>Kiosko 1</p>
-          <a href="#" class="btn btn-secondary pr-4 pl-4">
+          <p><%= producto.user %></p>
+          <a href="editarKiosko/<%= producto.user %>" class="btn btn-secondary pr-4 pl-4">
           <i class="fas fa-angle-double-right"></i> Editar
           </a>
       </th>
         
-      <td>Juan</td>
-      <td>Perez</td>
-      <td>Argentina #123</td>
-      <td>Colonia soledad</td>
-      <td>5230</td>
-      <td>kiosko@gmail.com</td>
-      <td>kiosko2@gmail.com</td> 
+      <td><%= producto.attendantName %></td>
+      <td><%= producto.attendantSecondName %></td>
+      <td><%= producto.street %></td>
+      <td><%= producto.suburb %></td>
+      <td><%= producto.zipcode %></td>
+      <td><%= producto.email %></td>
+      <td><%= producto.otheremail %></td> 
     </tr>
-    
-   
-
-
-     
+    <% }); %>
   </tbody>
 </table>
       
@@ -296,7 +299,7 @@
 
         <div class="modal-body">
         
-<form>
+<form method="post" action="/insertarKiosko">
  
   <div class="container">
       <div class="row">
@@ -306,7 +309,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el nombre del kiosko, debe ser único">
                     <h6 class="">Nombre del kiosko <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Kiosko centro...">
+                  <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Kiosko centro...">
               </div>
           </div>
 
@@ -315,7 +318,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el primer nombre del encargado del kiosko">
                     <h6 class="">Nombre del encargado <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Juan">
+                  <input type="text" class="form-control" id="encargado" name="encargado" placeholder="Juan">
               </div>
           </div>
 
@@ -324,7 +327,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el segundo nombre del encargado del kiosko">
                     <h6 class="">Segundo nombre del encargado <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Perez">
+                  <input type="text" class="form-control" id="snencargado" name="snencargado" placeholder="Perez">
               </div>
           </div>
          
@@ -333,7 +336,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la calle donde se encuentra el kiosko">
                     <h6 class="">Calle <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="Argentina #123">
+                  <input type="text" class="form-control" id="inputAddress" name="inputAddress" placeholder="Argentina #123">
             </div>
           </div>
 
@@ -342,7 +345,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la colonia donde se encuentra el kiosko">
                     <h6 class="">Colonia <i class="fas fa-info-circle"></i></h6>
                    </button>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Col soledad...">
+                  <input type="text" class="form-control" id="inputAddress2" name="inputAddress2" placeholder="Col soledad...">
               </div>
           </div>
           
@@ -351,7 +354,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el código postal donde se encuentra el kiosko">
                     <h6 class="">Código postal <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="text" class="form-control" id="inputZip" placeholder="5280...">
+                  <input type="text" class="form-control" id="inputZip" name="inputZip" placeholder="5280...">
               </div>
           </div>
 
@@ -360,7 +363,7 @@
                    <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el correo electrónico del kiosko">
                     <h6 class="">Correo electrónico <i class="fas fa-info-circle"></i></h6>
                    </button>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="kiosko@gmail.com">
+                  <input type="email" class="form-control" id="inputEmail4" name="inputEmail4" placeholder="kiosko@gmail.com">
               </div>
           </div>
 
@@ -369,7 +372,7 @@
                   <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el correo eletrónico secundario del kiosko">
                     <h6 class="">Correo electrónico Alternativo <i class="fas fa-info-circle"></i></h6>
                   </button>
-                  <input type="email" class="form-control" id="inputEmail4" placeholder="kiosko2@gmail.com">
+                  <input type="email" class="form-control" id="inputEmail2" name="inputEmail2" placeholder="kiosko2@gmail.com">
               </div>
           </div>
 

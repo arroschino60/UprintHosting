@@ -70,7 +70,7 @@ module.exports = {
                 pass=?,
                 email=?,
                 otheremail=? 
-                WHERE user=?,`,
+                WHERE user=?`,
                 [street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail, user],
                 (err) => {
                     if (err) reject(err);
@@ -78,12 +78,12 @@ module.exports = {
                 });
         });
     },
-    insertarKiosko(user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail){
+    insertarKiosko(user, street, suburb, attendantName, zipcode, attendantSecondName, email, otheremail){
         return new Promise((resolve, reject) => {
             conexion.query(`INSERT INTO kiosko
-                (user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail) 
-                VALUES (?,?,?,?,?,?,?,?,?)`,
-                [user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail], (err, resultados) => {
+                (user, street, suburb, attendantName, zipcode, attendantSecondName, email, otheremail) 
+                VALUES (?,?,?,?,?,?,?,?)`,
+                [user, street, suburb, attendantName, zipcode, attendantSecondName, email, otheremail], (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados.insertId);
                 });
@@ -100,5 +100,16 @@ module.exports = {
                     else resolve();
                 });
         });
-    }
+    },
+    obtenerKioskoPorId(id) {
+        return new Promise((resolve, reject) => {
+            conexion.query(`select * from kiosko where user = ?`,
+                [id],
+                (err, resultados) => {
+                    console.log({resultados});
+                    if (err) reject(err);
+                    else resolve(resultados[0]);
+                });
+        });
+    },
   }

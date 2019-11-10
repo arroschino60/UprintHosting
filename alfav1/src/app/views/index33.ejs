@@ -55,7 +55,13 @@
               <button type="button" class="btn btn-info">
                 <a id="shoppingBag" href="/signin">
                 <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">Usuario</span>
+                <span class="badge badge-light text-secondary">
+                  <% if(user){ %>
+                  <%= user.username %>
+                <% } else { %>
+                Usuario
+                <% } %>
+              </span>
                 <span class="sr-only">unread messages</span>
                 </a>
              </button>
