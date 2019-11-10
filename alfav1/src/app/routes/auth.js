@@ -531,23 +531,25 @@ app.post('/reestablecer', (req, res) => {
                 transporter.sendMail(mailOptions, (error, info) => {
                     if (error) {
                         return console.log(error);
-                    }
-                    console.log('Message sent: %s', info.messageId);   
-                    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+                    }else{
+                        console.log('Message sent: %s', info.messageId);   
+                        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     
-                    console.log(req.body);
-                    res.render('logo');
+                        console.log("Contraseña enviada: "+nuew);
+                        //Asigna cambio de contraseña a la base de datos
+                        productosModel
+                        .reestablecerContrasena(req.body.campo1, nuew)
+                        .then(() => {
+                            res.redirect("/signin");
+                        })
+                        .catch(err => {
+                            return res.status(500).send(err);
+                        })
+                        //res.render('logo');
+                    }
                 });
 
-                //Asigna cambio de contraseña a la base de datos
-                productosModel
-                    .reestablecerContrasena(req.body.campo1, nuew)
-                    .then(() => {
-                        res.redirect("/");
-                    })
-                    .catch(err => {
-                        return res.status(500).send(err);
-                });
+                
             }else{
                 //return res.status(500).send("No se ha registrado ese correo");
                 res.redirect("/signup");

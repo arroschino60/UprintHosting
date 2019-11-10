@@ -1,3 +1,4 @@
+var bCrypt = require('bcrypt-nodejs');
 const conexion = require("./connection.js");
 module.exports = {
     obtenerProd(){
@@ -22,11 +23,17 @@ module.exports = {
         });
     },
     reestablecerContrasena(mail,newpass) {
+        console.log("antes de hash: "+newpass);
+        var generateHash =  bCrypt.hashSync(newpass, bCrypt.genSaltSync(8), null);
+        console.log("Contraseña: "+generateHash);
         return new Promise((resolve, reject) => {
             conexion.query(`UPDATE users SET password= ? WHERE email = ? `,
-                [generateHash(newpass), mail], 
+                [generateHash, mail], 
                     (err) => {
-                        if (err) reject(err);
+                        if (err) {
+                            console.log("Hubo un error desde aquí");
+                            reject(err);
+                        }
                         else resolve();
                 });
         });
