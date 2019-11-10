@@ -43,4 +43,55 @@ module.exports = {
                 });
         });
     },
+    obtenerKioskos(){
+        return new Promise((resolve, reject) => {
+            conexion.query(`SELECT * FROM kiosko`,
+                (err, resultados) => {
+                    if (err) reject(err);
+                    else resolve(resultados);
+                });
+        });
+    },
+    editarKioskos(user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail){
+        return new Promise((resolve, reject) => {
+            conexion.query(`UPDATE kiosko SET 
+                street=?,
+                suburb=?,
+                attendantName=?,
+                zipcode=?,
+                attendantSecondName=?,
+                pass=?,
+                email=?,
+                otheremail=? 
+                WHERE user=?,`,
+                [street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail, user],
+                (err) => {
+                    if (err) reject(err);
+                    else resolve();
+                });
+        });
+    },
+    insertarKiosko(user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail){
+        return new Promise((resolve, reject) => {
+            conexion.query(`INSERT INTO kiosko
+                (user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail) 
+                VALUES (?,?,?,?,?,?,?,?,?)`,
+                [user, street, suburb, attendantName, zipcode, attendantSecondName, pass, email, otheremail], (err, resultados) => {
+                    if (err) reject(err);
+                    else resolve(resultados.insertId);
+                });
+        });
+    },
+    eliminarKiosko(id){
+        return new Promise((resolve, reject) => {
+            conexion.query(`update kiosko
+            set status = false
+            where user = ?`,
+                [id],
+                (err) => {
+                    if (err) reject(err);
+                    else resolve();
+                });
+        });
+    }
   }
