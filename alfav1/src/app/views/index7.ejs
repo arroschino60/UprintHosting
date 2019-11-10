@@ -18,7 +18,7 @@
 
 <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
     <div class="container">
-      <a href="/" class="navbar-brand">
+      <a href="/dashboard" class="navbar-brand">
         <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
       </a>
       <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -27,39 +27,78 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav ml-auto">
           
-          <li class="nav-item pt-3">
-            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"> Pedidos </h1></a>
-          </li>
-         
-         
-          <li class="nav-item mt-3 pb-2">
-              <button type="button" class="btn btn-primary">
-                <a id="shoppingBag" href="#">
-                <i class="fas fa-user text-white"></i>
-                <span class="badge badge-light text-secondary">ADMIN</span>
-                <span class="sr-only">unread messages</span>
-                </a>
-             </button>
+
+          <li class="nav-item pt-3 ml-2 mr-2">
+            <a href="/kiosko" class="nav-link"><h1 class="lead" style="font-size: 22px"><i class="fas fa-home"></i> Kiosko </h1></a>
           </li>
 
+          <li class="nav-item pt-3 ml-2 mr-2">
+            <a href="/prodd" class="nav-link"><h1 class="lead" style="font-size: 22px"><i class="fas fa-box-open"></i> Productos </h1></a>
+          </li>
+         
+          <li class="nav-item pt-3 ml-2 mr-2">
+            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"><i class="fas fa-people-carry"></i> Pedidos </h1></a>
+          </li>
+         
+         
+          <li class="nav-item dropdown mt-2 pb-2 ml-2 mr-2">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-primary">
+                
+                <i class="fas fa-user text-white"></i>
+                <span class="badge badge-light text-secondary">Admin</span>
+              </button>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="/dashboard">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-angle-double-right"></i>
+                <span class="badge badge-light text-secondary">Login</span>
+                </button>
+                </a>
+
+                <a href="/logout">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="badge badge-light text-secondary">Cerrar sesión</span>
+                </button>
+                </a>
+            </div>
+            
+          </li>    
+            
         </ul>
       </div>
     </div>
   </nav>
  
   <!-- HEADER -->
-  <header id="main-header" style="background-image:url(img/dif2.png)" class="py-2">
+  <header id="main-header" class="py-2">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+      
+        <div class="col-md-6">
           <h1><i class="fas fa-box-open"></i> Productos </h1>
         </div>
+
+        <div class="col-md-5">
+          
+        </div>
+          
+        <div class="col-md-1" data-toggle="tooltip" data-placement="left" title="¿Necesitas ayuda acerca de como funciona la interfaz? ¡Haz click aquí!">
+          <a href="" data-toggle="modal" data-target="#prodmodalhelp">
+          <h1><i class="fas fa-question-circle text-right text-dark"></i></h1>
+          </a>
+        </div> 
+          
+
       </div>
     </div>
   </header>
 
   <!-- ACTIONS -->
-  <section id="actions" class="py-4 mb-4 bg-light">
+  <section id="actions" style="background-image:url(img/dif2.png)">
     <div class="container">
       <div class="row">
           
@@ -70,14 +109,25 @@
               </button> 
           </a> 
         </div>
-        <div class="form-group"> 
-             <a href="/eliminar/<%= producto.idProduct %>" class="btn btn-danger pr-4 pl-4">
-              <i class="fas fa-trash-alt"></i> Borrar
-            </a>
-          </div>
-        
 
-    
+        <div class="col-md-5  mr-1 ml-1 mt-2 mb-2">
+            <h2><i class="fas fa-edit mt-4"></i> Modificación de productos </h2>
+        </div>
+  
+        <div class="col-md-2  mr-1 ml-1 mt-2 mb-2 text-right" data-toggle="tooltip" data-placement="bottom" title="Eliminar este producto">
+            <div class="form-group"> 
+             <a href="/eliminar/<%= producto.idProduct %>" class="btn btn-danger pl-5 pr-5 mt-4">
+              <i class="fas fa-trash-alt"></i> Borrar
+             </a>
+            </div>
+        </div>
+        
+        <div class="col-md-2 mr-1 ml-5 mt-4 mb-2">
+          <a href="" data-toggle="modal" data-target="#prodmodalhelp">
+          <h1><i class="fas fa-question-circle text-right text-dark" data-toggle="tooltip" data-placement="right" title="¿Necesitas ayuda acerca de como funciona la interfaz? ¡Haz click aquí!"></i></h1>
+          </a>
+        </div> 
+          
       </div>
     </div>
   </section>
@@ -221,8 +271,8 @@
               </div>
 
               <div class="form-group"> 
-                  <button class="btn btn-success pl-5 pr-5 mt-4" data-dismiss=""><i class="fas fa-check-circle"></i> Guardar</button> 
-                </div>
+                  <button class="btn btn-success pl-5 pr-5 mt-4" data-dismiss="" data-toggle="tooltip" data-placement="right" title="Guarda todos los cambios de este producto"><i class="fas fa-check-circle"></i> Guardar</button> 
+              </div>
 
           </form>
                 

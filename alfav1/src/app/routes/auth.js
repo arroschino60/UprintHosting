@@ -86,7 +86,17 @@ module.exports = function(app,passport){
         });
 	});
 
+     app.get('/kiosko', (req, res) => {
+		res.render('index66', {
+            user: req.user
+        });
+	});
     
+   app.get('/kioskomod', (req, res) => {
+		res.render('index77', {
+            user: req.user
+        });
+	});
 	//app.get('/login', (req, res) => {
 	//	res.render('login.ejs');
 	//});
