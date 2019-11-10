@@ -135,7 +135,7 @@ app.post('/signin', passport.authenticate('local-signin',  {
 }), function(req, res) {
     console.log(req.user);
     // successful auth, user is set at req.user.  redirect as necessary.
-    if (req.user.username == "admin") { return res.redirect('/dashboard'); }
+    if (req.user.username == "Adm1n") { return res.redirect('/dashboard'); }
     res.redirect('/carrito');
     }
 );
@@ -153,13 +153,15 @@ app.get('/pro', isLoggedIn, function (req, res, next) {
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});}
+        });
+    }else{
         res.redirect('/');
-
+    }
 });
 
 app.get('/pro2', isLoggedIn, function (req, res, next) {
-    if (req.user.username == "Adm1n") { 
+    console.log(req.user);
+    if (req.user.username = "Adm1n") { 
     admModel
 		.obtenerUnidades()
 		.then(productos => {
@@ -170,9 +172,10 @@ app.get('/pro2', isLoggedIn, function (req, res, next) {
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});}
+        });
+    }else{
         res.redirect('/');
-
+        }
 });
 
 //Función para obtener productos
@@ -187,9 +190,10 @@ app.get('/prodd', isLoggedIn, function (req, res, next) {
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});}
+        });
+    }else{
         res.redirect('/');
-
+        }
 });
 
 app.get('/prodd2', isLoggedIn, function (req, res, next) {
@@ -204,8 +208,10 @@ app.get('/prodd2', isLoggedIn, function (req, res, next) {
 		})
 		.catch(err => {
 			return res.status(500).send("Error obteniendo productos");
-		});}
+        });
+    }else{
         res.redirect('/');
+    }
 
 });
 
