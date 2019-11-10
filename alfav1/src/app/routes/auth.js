@@ -51,6 +51,11 @@ module.exports = function(app,passport){
 		res.render('contacto');
     });
     
+    //Funciones para la administración  de kioskos
+    app.get('/kiosko', (req, res) => {
+		res.render('index66');
+    });
+
     /*app.get('/comprar', (req, res) => {
 		res.render('dashboard', {
             user: req.user
@@ -282,7 +287,7 @@ check('comment', 'Se debe ingresar un comentario').not().isEmpty()
     //saca la extención de la imagén
     var extension = req.files.file.name.split(".").pop();
     //Aquí se le asigna dirección y nombre
-    var newPath =  "C:/Users/Jorge/Desktop/yuprin/uprint/alfav1/src/public/img"+req.files.file.name;
+    var newPath =  "./src/public/img/"+req.files.file.name;
     var oldPath = req.files.file.path;
     console.log(newPath);
     //Se cambia el archivo de carpeta
@@ -293,7 +298,7 @@ check('comment', 'Se debe ingresar un comentario').not().isEmpty()
     //se hacen los cambios
     const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
     admModel
-        .insertarProducto(nombre, precio, tiempo, min, max, categoria, "nvoproduct"+req.files.file.name, dimen, comment, exist)
+        .insertarProducto(nombre, precio, tiempo, min, max, categoria, req.files.file.name, dimen, comment, exist)
         .then(idProductoInsertado => {
             res.redirect("/prodd");
         })
@@ -411,7 +416,7 @@ app.post('/actualizar', [
         //saca la extensión de la imagén
         var extension = req.files.file.name.split(".").pop();
         //Aquí se le asigna dirección y nombre
-        var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/product"+id+"."+extension;
+        var newPath =  "./src/public/img/product"+id+"."+extension;
         var oldPath = req.files.file.path;
         console.log(newPath);
         //Se cambia el archivo de carpeta
