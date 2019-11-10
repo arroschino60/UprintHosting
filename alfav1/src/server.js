@@ -4,6 +4,7 @@
     const path = require('path');
     var passport   = require('passport');
     var session    = require('express-session');
+   const { check, validationResult } = require('express-validator');
     var bodyParser = require('body-parser');
     var env        = require('dotenv').load;
     var exphbs     = require('express-handlebars');

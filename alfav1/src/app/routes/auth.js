@@ -3,6 +3,8 @@ const productosModel = require("../config/passport/productions.js");
 const admModel = require("../config/passport/amin.js");
 const nodemailer = require('nodemailer');
 var fs = require("fs"); 
+const { check, validationResult } = require('express-validator');
+
 
 module.exports = function(app,passport){
 
@@ -86,17 +88,7 @@ module.exports = function(app,passport){
         });
 	});
 
-     app.get('/kiosko', (req, res) => {
-		res.render('index66', {
-            user: req.user
-        });
-	});
     
-   app.get('/kioskomod', (req, res) => {
-		res.render('index77', {
-            user: req.user
-        });
-	});
 	//app.get('/login', (req, res) => {
 	//	res.render('login.ejs');
 	//});
@@ -263,40 +255,34 @@ app.post('/cambStatus/:id/:idos',isLoggedIn, function(req, res, next){
 
 
 //Función para insertar productos
-app.post('/insertar',isLoggedIn, function (req, res, next) {
-    // Obtener el nombre y precio. Es lo mismo que
-    // const nombre = req.body.nombre;
-    // const precio = req.body.precio;
-    const { nombre, precio, tiempo, min, max, categoria, file, dimen, comment, exist } = req.body;
-    if (!nombre) {
-        return res.status(500).send("No hay nombre");
-	}
-	if (!precio ) {
-        return res.status(500).send("No hay precio");
-	}
-	if (!tiempo) {
-        return res.status(500).send("No hay tiempo");
-	}
-	if (!min ) {
-        return res.status(500).send("No hay min");
-	}
-	if ( !max ) {
-        return res.status(500).send("No hay max");
-	}
-	if ( !categoria ) {
-        return res.status(500).send("No hay categoria");
-	}
-	if ( !dimen ) {
-        return res.status(500).send("No hay dimen");
-	}
-	if ( !comment) {
-        return res.status(500).send("No hay comment");
-	}
-    // Si todo va bien, seguimos
+
+app.post('/insertar', [
+    check('nombre', 'Se debe ingresar nombre del producto').not().isEmpty(),
+check('precio', 'Se debe ingresar un precio').not().isEmpty(),
+check('precio', 'El precio debe ser numerico').isNumeric(),
+check('tiempo', 'Se debe ingresar un tiempo de entrega').not().isEmpty(),
+check('tiempo', 'El tiempo debe ser numerico').isNumeric(),
+//check('file', 'Se debe elegir una imagen para el producto').not().isEmpty(),
+check('min', 'Se debe ingresar un minimo de venta').not().isEmpty(),
+check('max', 'Se debe ingresar un maximo de venta').not().isEmpty(),
+check('categoria', 'Se debe ingresar una categoria').not().isEmpty(),
+check('dimen', 'Se debe ingresar una dimension').not().isEmpty(),
+check('comment', 'Se debe ingresar un comentario').not().isEmpty()
+
+  ], isLoggedIn,
+  function (req, res) {
+    const errors = validationResult(req);
+    console.log(req.body);
+
+    if (!errors.isEmpty()) {
+        console.log(errors);
+      return res.status(422).jsonp(errors.array());
+    } else {
+      // Si todo va bien, seguimos
     //saca la extención de la imagén
     var extension = req.files.file.name.split(".").pop();
     //Aquí se le asigna dirección y nombre
-    var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/nvoproduct"+req.files.file.name;
+    var newPath =  "C:/Users/Jorge/Desktop/yuprin/uprint/alfav1/src/public/img"+req.files.file.name;
     var oldPath = req.files.file.path;
     console.log(newPath);
     //Se cambia el archivo de carpeta
@@ -305,6 +291,7 @@ app.post('/insertar',isLoggedIn, function (req, res, next) {
         console.log('Successfully renamed - AKA moved!')
     })
     //se hacen los cambios
+    const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
     admModel
         .insertarProducto(nombre, precio, tiempo, min, max, categoria, "nvoproduct"+req.files.file.name, dimen, comment, exist)
         .then(idProductoInsertado => {
@@ -313,7 +300,60 @@ app.post('/insertar',isLoggedIn, function (req, res, next) {
         .catch(err => {
             return res.status(500).send(err);
         });
-});
+    }
+  });
+
+//app.post('/insertar',isLoggedIn, function (req, res, next) {
+    // Obtener el nombre y precio. Es lo mismo que
+    // const nombre = req.body.nombre;
+    // const precio = req.body.precio;
+//    const { nombre, precio, tiempo, min, max, categoria, file, dimen, comment, exist } = req.body;
+    //if (!nombre) {
+  //      return res.status(500).send("No hay nombre");
+//	}
+//	if (!precio ) {
+      //  return res.status(500).send("No hay precio");
+	//}
+	//if (!tiempo) {
+      //  return res.status(500).send("No hay tiempo");
+	//}
+	//if (!min ) {
+      //  return res.status(500).send("No hay min");
+	//}
+	//if ( !max ) {
+      //  return res.status(500).send("No hay max");
+	//}
+	//if ( !categoria ) {
+      //  return res.status(500).send("No hay categoria");
+	//}
+	//if ( !dimen ) {
+      //  return res.status(500).send("No hay dimen");
+	//}
+	//if ( !comment) {
+      //  return res.status(500).send("No hay comment");
+	//}
+    // Si todo va bien, seguimos
+    //saca la extención de la imagén
+    //var extension = req.files.file.name.split(".").pop();
+    //Aquí se le asigna dirección y nombre
+    //var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/nvoproduct"+req.files.file.name;
+    //var oldPath = req.files.file.path;
+    //console.log(newPath);
+    //Se cambia el archivo de carpeta
+    //fs.rename(oldPath, newPath, function (err) {
+        //if (err) throw err
+      //  console.log('Successfully renamed - AKA moved!')
+    //})
+    //se hacen los cambios
+   // admModel
+        //.insertarProducto(nombre, precio, tiempo, min, max, categoria, "nvoproduct"+req.files.file.name, dimen, comment, exist)
+       // .then(idProductoInsertado => {
+        //    res.redirect("/prodd");
+      //  })
+     //   .catch(err => {
+    //      return res.status(500).send(err);
+  //      });
+//});
 
 //Función para buscar producto por id
 	
@@ -344,39 +384,31 @@ app.post('/actualiza',isLoggedIn, (req, res) => {
   });
 
 //Función para modificar 
-app.post('/actualizar/',isLoggedIn, function (req, res, next) {
-    const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
-    if (!nombre) {
-        return res.status(500).send("No hay nombre");
-	}
-	if (!precio ) {
-        return res.status(500).send("No hay precio");
-	}
-	if (!tiempo) {
-        return res.status(500).send("No hay tiempo");
-	}
-	if (!min ) {
-        return res.status(500).send("No hay min");
-	}
-	if ( !max ) {
-        return res.status(500).send("No hay max");
-	}
-	
-	if ( !comment) {
-        return res.status(500).send("No hay comment");
-    }
-    if(!req.files.file.name) {
-		admModel
-        .actualizar(id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist)
-        .then(() => {
-            res.redirect("/prodd");
-        })
-        .catch(err => {
-            return res.status(500).send(err);
-        });	
-	}else {
-        //Si se cambió la imagen
-        //saca la extención de la imagén
+app.post('/actualizar', [
+    check('nombre', 'Se debe ingresar nombre del producto').not().isEmpty(),
+    check('precio', 'Se debe ingresar un precio').not().isEmpty(),
+    check('precio', 'El precio debe ser numerico').isNumeric(),
+    check('tiempo', 'Se debe ingresar un tiempo de entrega').not().isEmpty(),
+    check('tiempo', 'El tiempo debe ser numerico').isNumeric(),
+    check('min', 'Se debe ingresar un minimo de venta').not().isEmpty(),
+    check('max', 'Se debe ingresar un maximo de venta').not().isEmpty(),
+    check('categoria', 'Se debe ingresar una categoria').not().isEmpty(),
+    check('dimen', 'Se debe ingresar una dimension').not().isEmpty(),
+    check('comment', 'Se debe ingresar un comentario').not().isEmpty()
+    
+      ], isLoggedIn,
+      function (req, res) {
+        const errors = validationResult(req);
+        console.log(req.body);
+    
+        if (!errors.isEmpty()) {
+        console.log(errors)
+        return res.status(422).jsonp(errors.array());
+          //codigo cuando hay errores
+        } else {
+         //codigo cuando no hay errores
+          //Si se cambió la imagen
+        //saca la extensión de la imagén
         var extension = req.files.file.name.split(".").pop();
         //Aquí se le asigna dirección y nombre
         var newPath =  "C:/Users/Samsung/Desktop/segundo2019/Nueva carpeta/versionNov/uprint/alfav1/src/public/img/product"+id+"."+extension;
@@ -396,10 +428,8 @@ app.post('/actualizar/',isLoggedIn, function (req, res, next) {
         .catch(err => {
             return res.status(500).send(err);
         });
-        
-    }
-	});
-
+        }
+      });
 //Función para eliminar producto
 app.get('/eliminar/:id',isLoggedIn, function (req, res, next) {
     admModel
