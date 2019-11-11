@@ -54,6 +54,10 @@ module.exports = function(app,passport){
             user: req.user
         });
     });
+
+    app.get('/kioskomod', (req, res) => {
+		res.render('index77');
+	});
     
     //Funciones para la administración  de kioskos
     app.get('/kiosko', (req, res) => {
