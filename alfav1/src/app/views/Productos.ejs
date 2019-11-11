@@ -47,27 +47,46 @@
                 <a id="shoppingBag" href="/carrito">
                 <i class="fas fa-shopping-cart text-white"></i>
                 <span class="badge badge-light text-secondary">3</span>
-                <span class="sr-only">unread messages</span>
+                
                 </a>
              </button>
           </li>
 
-          <li class="nav-item pt-2">
+          <li class="nav-item dropdown pt-.8">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
               <button type="button" class="btn btn-info">
-                <a id="shoppingBag" href="/signin">
+                
                 <i class="fas fa-user text-white"></i>
                 <span class="badge badge-light text-secondary">
-                        <% if(user){ %>
-                            <%= user.username %>
-                          <% } else { %>
-                          Usuario
-                          <% } %>
+                    <% if(user){ %>
+                        <%= user.username %>
+                      <% } else { %>
+                      Login
+                      <% } %>
                 </span>
-                <span class="sr-only">unread messages</span>
-                </a>
-             </button>
-          </li>
+              </button>
+            </a>
 
+            <div class="dropdown-menu">
+                <a href="/signin">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-angle-double-right"></i>
+                <span class="badge">Login</span>
+                </button>
+                </a>
+                <% if(user){ %>
+                <a href="/salir">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="badge">Cerrar sesión</span>
+                </button>
+                </a>
+                <% } %>
+            </div>
+            
+          </li>    
+
+          
         </ul>
       </div>
     </div>

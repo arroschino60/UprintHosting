@@ -74,5 +74,14 @@ module.exports = {
                 });
         });
     },
-
+    eliminarCarrito(id){
+        return new Promise((resolve, reject) => {
+            conexion.query(`DELETE FROM shop WHERE idUser = ?`,
+                [id],
+                (err) => {
+                    if (err) reject(err);
+                    else resolve();
+                });
+        });
+    }
 }

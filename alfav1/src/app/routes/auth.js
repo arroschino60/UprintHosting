@@ -60,7 +60,7 @@ module.exports = function(app,passport){
 	});
     
     //Funciones para la administración  de kioskos
-    app.get('/kiosko', (req, res) => {
+    app.get('/kiosko',isLoggedIn, (req, res) => {
         productosModel
         .obtenerKioskos()
         .then(producto => {
@@ -103,14 +103,19 @@ module.exports = function(app,passport){
         });
 	});
 
-     app.get('/carrito', (req, res) => {
+     app.get('/carrito',isLoggedIn, (req, res) => {
         //revisar si hay mac sin usuario
         require('getmac').getMac(function(err, macAddress){
             if (err){  throw err }
             else{
-                
+                var uss;
+                if(req.user){
+                    uss = req.user.id;
+                }else{
+                    uss = 0;
+                }
                 productosModel
-                .mimac(macAddress)
+                .mimac(macAddress, uss)
                 .then(producto => {
                     //SI HAY USUARIO
                     if (producto.idUser != null) {
@@ -147,7 +152,8 @@ module.exports = function(app,passport){
                     }
                 })
                 .catch(err => {
-                    return res.status(500).send("Error obteniendo kiosko");
+                    console.log(err);
+                    res.redirect("/productos");
                 });
             }
         })
@@ -192,7 +198,7 @@ app.post('/preregistro/:id',function(req, res) {
             res.redirect("/carrito");
         })
         .catch(err => {
-            return res.status(500).send(err);
+            res.redirect("/carrito");
         });
     }else{
     // successful auth, user is set at req.user.  redirect as necessary.
@@ -229,6 +235,18 @@ app.get('/dashboard',isLoggedIn, authController.dashboard);
 
 //Función para desloggearse
 app.get('/logout',authController.logout);
+
+app.get('/salir',function (req, res) {
+    admModel
+    .eliminarCarrito(req.user.id)
+    .then(() => {
+            res.redirect('/logout');
+    })
+    .catch(err => {
+        return res.status(500).send(err);
+    });
+    }
+);
 
 //Funcion para autenticarse
 app.post('/signin', passport.authenticate('local-signin',  { 
@@ -490,7 +508,7 @@ app.post('/actualizar', [
     check('tiempo', 'El tiempo debe ser numerico').isNumeric(),
     check('min', 'Se debe ingresar un minimo de venta').not().isEmpty(),
     check('max', 'Se debe ingresar un maximo de venta').not().isEmpty(),
-    check('categoria', 'Se debe ingresar una categoria').not().isEmpty(),
+    //check('categoria', 'Se debe ingresar una categoria').not().isEmpty(),
     check('dimen', 'Se debe ingresar una dimension').not().isEmpty(),
     check('comment', 'Se debe ingresar un comentario').not().isEmpty()
     
@@ -498,7 +516,7 @@ app.post('/actualizar', [
       function (req, res) {
         const errors = validationResult(req);
         console.log(req.body);
-    
+        const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
         if (!errors.isEmpty()) {
         console.log(errors)
         return res.status(422).jsonp(errors.array());
@@ -518,6 +536,7 @@ app.post('/actualizar', [
             console.log('Successfully renamed - AKA moved!')
         })
         //se hacen los cambios
+        
         admModel
         .actualizar(id, nombre, precio, tiempo, min, max, categoria, "product"+id+"."+extension , dimen, comment, exist)
         .then(() => {
@@ -534,6 +553,18 @@ app.get('/eliminar/:id',isLoggedIn, function (req, res, next) {
         .eliminar(req.params.id)
         .then(() => {
             res.redirect("/prodd");
+        })
+        .catch(err => {
+            return res.status(500).send(err);
+        });
+});
+
+//Función para eliminar kiosko
+app.get('/eliminarKiosko/:id',isLoggedIn, function (req, res, next) {
+    productosModel
+        .eliminarKiosko(req.params.id)
+        .then(() => {
+            res.redirect("/kiosko");
         })
         .catch(err => {
             return res.status(500).send(err);

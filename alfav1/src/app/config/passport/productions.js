@@ -52,7 +52,7 @@ module.exports = {
     },
     obtenerKioskos(){
         return new Promise((resolve, reject) => {
-            conexion.query(`SELECT * FROM kiosko`,
+            conexion.query(`SELECT * FROM kiosko where status = 1`,
                 (err, resultados) => {
                     if (err) reject(err);
                     else resolve(resultados);
@@ -121,10 +121,10 @@ module.exports = {
                 });
         });
     },
-    mimac(id){
+    mimac(id,user){
         return new Promise((resolve, reject) => {
-            conexion.query(`select idUser from shop where mac = ?`,
-                [id],
+            conexion.query(`select idUser from shop where mac = ? OR idUser = ?`,
+                [id,user],
                 (err, resultados) => {
                     console.log({resultados});
                     if (err) reject(err);
