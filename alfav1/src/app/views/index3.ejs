@@ -81,8 +81,8 @@
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb bg-white">
     <li class="breadcrumb-item" style="font-size: 15px"><a href="/productos">Productos</a></li>
-    <li class="breadcrumb-item" style="font-size: 15px"><a href="/productos">Foto Libros</a></li>
-    <li class="breadcrumb-item active" aria-current="page" style="font-size: 15px">Fotolibro estándar eventos uPrint® </li>
+    <li class="breadcrumb-item" style="font-size: 15px"><a href="/productos"><%= producto.nameCategory %></a></li>
+    <li class="breadcrumb-item active" aria-current="page" style="font-size: 15px"><%= producto.nameProduct%> uPrint® </li>
   </ol>
 </nav>
 
@@ -219,9 +219,9 @@
             <div class="row text-center">
                 
                 <div class="col-md-12">
-                    <a href="/signin">
-                    <button type="button" class="btn btn-success btn-lg pl-3 pr-3 mt-2 mb-2"><i class="fas fa-shopping-cart text-white"></i> Agregar al carrito </button>
-                    </a>
+                    <form method="POST" action="/preregistro/<%= producto.idProduct %>">
+                    <button type="submit" class="btn btn-success btn-lg pl-3 pr-3 mt-2 mb-2"><i class="fas fa-shopping-cart text-white"></i> Agregar al carrito </button>
+                  </form>
                 </div>
                 <div class="col-md-12">
                     <p>o</p>

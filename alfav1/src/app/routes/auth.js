@@ -100,9 +100,48 @@ module.exports = function(app,passport){
 	});
 
      app.get('/carrito', (req, res) => {
-		res.render('index33', {
-            user: req.user
-        });
+        //revisar si hay mac sin usuario
+        require('getmac').getMac(function(err, macAddress){
+            if (err){  throw err }
+            else{
+                
+                productosModel
+                .mimac(macAddress)
+                .then(producto => {
+                    //SI HAY USUARIO
+                    if (producto.idUser != null) {
+                        //consulta de lo que hay en el carrito
+                        productosModel
+                        .carritode(req.user.id)
+                        .then(micarrito => {
+                            console.log("Numero de datos que llegaron: "+micarrito.length);
+                            res.render("index33", {
+                                micarrito: micarrito,
+                                user: req.user,
+                            });
+                        })
+                        .catch(err => {
+                            return res.status(500).send("Error obteniendo productos");
+                        });
+                    }
+                    //SI NO HAY USUARIO
+                    else {
+                        //SE AGREGA AL USUARIO
+                        productosModel
+                        .registro(req.user.id, macAddress)
+                        .then(idProductoInsertado => {
+                            res.redirect("/carrito");
+                        })
+                        .catch(err => {
+                            return res.status(500).send(err);
+                        });
+                    }
+                })
+                .catch(err => {
+                    return res.status(500).send("Error obteniendo kiosko");
+                });
+            }
+        })
 	});
     
     app.get('/pago', (req, res) => {
@@ -134,6 +173,36 @@ app.get('/signup', authController.signup);
 
 //llama a la interfaz del login
 app.get('/signin', authController.signin);
+
+//Funcion para guardar la mac
+app.post('/preregistro/:id',function(req, res) {
+    if(req.user.id){
+        productosModel
+        .agregaAlCarrito(req.params.id, req.user.id)
+        .then(idProductoInsertado => {
+            res.redirect("/carrito");
+        })
+        .catch(err => {
+            return res.status(500).send(err);
+        });
+    }else{
+    // successful auth, user is set at req.user.  redirect as necessary.
+    require('getmac').getMac(function(err, macAddress){
+        if (err){  throw err }
+        else{ 
+            console.log(macAddress);
+            productosModel
+            .preRegistro(macAddress,req.params.id)
+            .then(() => {
+                res.redirect('/signin');
+            })
+            .catch(err => {
+                return res.status(500).send(err);
+            });
+        }
+        })
+    }
+});
 
 //Funcion para registrarse
 app.post('/signup', 

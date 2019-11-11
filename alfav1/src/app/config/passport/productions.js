@@ -112,4 +112,52 @@ module.exports = {
                 });
         });
     },
+    preRegistro(mac, prod){
+        return new Promise((resolve, reject) => {
+            conexion.query(`INSERT INTO shop( idProduct,mac) VALUES (?, ?)`,
+                [prod, mac], (err, resultados) => {
+                    if (err) reject(err);
+                    else resolve(resultados.insertId);
+                });
+        });
+    },
+    mimac(id){
+        return new Promise((resolve, reject) => {
+            conexion.query(`select idUser from shop where mac = ?`,
+                [id],
+                (err, resultados) => {
+                    console.log({resultados});
+                    if (err) reject(err);
+                    else resolve(resultados[0]);
+                });
+        });
+    },
+    registro(id,mac){
+        return new Promise((resolve, reject) => {
+            conexion.query(`UPDATE shop SET idUser=? where mac=?`,
+                [id, mac], (err, resultados) => {
+                    if (err) reject(err);
+                    else resolve(resultados.insertId);
+                });
+        });
+    },
+    carritode(id){
+        return new Promise((resolve, reject) => {
+            conexion.query(`select * from carrito where idUser = ?`,
+                [id],
+                (err, resultados) => {
+                    if (err) reject(err);
+                    else resolve(resultados);
+                });
+        });
+    },
+    agregaAlCarrito(prod, us){
+        return new Promise((resolve, reject) => {
+            conexion.query(`INSERT INTO shop( idProduct,idUser) VALUES (?, ?)`,
+                [prod, us], (err, resultados) => {
+                    if (err) reject(err);
+                    else resolve(resultados.insertId);
+                });
+        });
+    }
   }

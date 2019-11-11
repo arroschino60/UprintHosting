@@ -79,6 +79,7 @@
           <h5 class="h2"><i class="fas fa-shopping-cart"></i> Carrito (STATIC TEST)</h5>
         </div>
         
+        <% for(var i=0; i< micarrito.length ; i++) { %>
         <div class="col-md-12">
             
             <div class="card">
@@ -87,7 +88,7 @@
 
                         <div class="col-md-2">
                             <div class="card">
-                                <img class="card-img-top" src="img/productore7.png" alt="Card image cap">
+                                <img class="card-img-top" src="/img/<%= micarrito[i].imageProduct %>" alt="Card image cap">
                                 <div class="card-body">
                             
                                 </div>
@@ -96,8 +97,8 @@
 
                         <div class="col-md-6">
                                 <div class="card-body">
-                                    <h5 class="card-title">Fotolibro estándar eventos uPrint®</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Categoria: Foto Libro</h6>
+                                    <h5 class="card-title"><%= micarrito[i].nameProduct %> uPrint®</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">Categoria: <%= micarrito[i].nameCategory %></h6>
                                     <p class="card-text">
                                         <span class="badge badge-primary">Modelo: Libro evento1</span>
                                         <span class="badge badge-primary">Bordado: Cocodrilo</span>
@@ -122,115 +123,15 @@
                         </div>
                         
                         <div class="col-md-1 mt-5 pt-3">
-                        <h2 class="h4"><i class="fas fa-dollar-sign"></i> 200</h2>
+                        <h2 class="h4"><i class="fas fa-dollar-sign"></i> <%= micarrito[i].priceProduct %></h2>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-12">
-            
-            <div class="card">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-md-2">
-                            <div class="card">
-                                <img class="card-img-top" src="img/productore8.png" alt="Card image cap">
-                                <div class="card-body">
-                            
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                                <div class="card-body">
-                                    <h5 class="card-title">Fotolibro 2 estándar eventos uPrint®</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Categoria: Foto Libro</h6>
-                                    <p class="card-text">
-                                        <span class="badge badge-primary">Modelo: Libro evento1</span>
-                                        <span class="badge badge-primary">Bordado: Cocodrilo</span>
-                                        <span class="badge badge-primary">Material: Piel sintética</span>
-                                        <span class="badge badge-primary">Color: Rosa</span>
-                                    </p>
-                                    <a href="#" class="card-link text-success"><i class="fas fa-plus"></i> Más productos de esta categoría</a>
-                                    <a href="#" class="card-link text-info"><i class="fas fa-edit"></i> Modificar</a>
-                                    <a href="#" class="card-link text-danger"><i class="fas fa-trash-alt"></i> Eliminar</a>
-                                </div>
-                        </div>
-
-                        
-                        <div class="col-md-2 mt-5 pt-3">
-                        <input type="number" class="form-control" id="min" placeholder="1"  name="min">
-                        <p class="font-weight-light muted">3 (Pza) Disponibles</p>
-                        </div>
-
-                        <div class="col-md-1 mt-5 pt-1">
-                        <button type="button" class="btn btn-light mb-2"><i class="fas fa-plus"></i> </button>
-                        <button type="button" class="btn btn-light"><i class="fas fa-minus"></i> </button>
-                        </div>
-                        
-                        <div class="col-md-1 mt-5 pt-3">
-                        <h2 class="h4"><i class="fas fa-dollar-sign"></i> 200</h2>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-12">
-            
-            <div class="card">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-md-2">
-                            <div class="card">
-                                <img class="card-img-top" src="img/productore9.png" alt="Card image cap">
-                                <div class="card-body">
-                            
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                                <div class="card-body">
-                                    <h5 class="card-title">Fotolibro 3 estándar eventos uPrint®</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Categoria: Foto Libro</h6>
-                                    <p class="card-text">
-                                        <span class="badge badge-primary">Modelo: Libro evento1</span>
-                                        <span class="badge badge-primary">Bordado: Cocodrilo</span>
-                                        <span class="badge badge-primary">Material: Piel sintética</span>
-                                        <span class="badge badge-primary">Color: Rosa</span>
-                                    </p>
-                                    <a href="#" class="card-link text-success"><i class="fas fa-plus"></i> Más productos de esta categoría</a>
-                                    <a href="#" class="card-link text-info"><i class="fas fa-edit"></i> Modificar</a>
-                                    <a href="#" class="card-link text-danger"><i class="fas fa-trash-alt"></i> Eliminar</a>
-                                </div>
-                        </div>
-
-                        
-                        <div class="col-md-2 mt-5 pt-3">
-                        <input type="number" class="form-control" id="min" placeholder="1"  name="min">
-                        <p class="font-weight-light muted">3 (Pza) Disponibles</p>
-                        </div>
-
-                        <div class="col-md-1 mt-5 pt-1">
-                        <button type="button" class="btn btn-light mb-2"><i class="fas fa-plus"></i> </button>
-                        <button type="button" class="btn btn-light"><i class="fas fa-minus"></i> </button>
-                        </div>
-                        
-                        <div class="col-md-1 mt-5 pt-3">
-                        <h2 class="h4"><i class="fas fa-dollar-sign"></i> 200</h2>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
+<% } %>
+        
 
          <div class="col-md-12">
             
@@ -248,7 +149,7 @@
 
                         
                         <div class="col-md-2 mt-5 pt-3">
-                        <h6 class="card-subtitle mb-2 text-muted">Total productos: (3)</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Total productos: (<%= micarrito.length %>)</h6>
                         <a href="#" class="card-link text-success">Costo de envio:</a>
                        
                         </div>
@@ -378,7 +279,7 @@
                         </div>
 
                         <div class="col-md-2 mt-2">
-                        <p>Total productos: (3)</p>        
+                        <p>Total productos: (<%= micarrito.length %>)</p>        
                         </div>
 
                         
