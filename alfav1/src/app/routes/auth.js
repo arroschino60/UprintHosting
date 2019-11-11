@@ -118,10 +118,15 @@ module.exports = function(app,passport){
                         productosModel
                         .carritode(req.user.id)
                         .then(micarrito => {
-                            console.log("Numero de datos que llegaron: "+micarrito.length);
+                            var suma= 0;
+                            for(var i=0; i< micarrito.length; i++){
+                                suma= suma + micarrito[i].priceProduct;
+                            }
+                            console.log("La suma de lo del carrito es: "+suma);
                             res.render("index33", {
                                 micarrito: micarrito,
                                 user: req.user,
+                                suma: suma,
                             });
                         })
                         .catch(err => {
@@ -180,7 +185,7 @@ app.get('/signin', authController.signin);
 
 //Funcion para guardar la mac
 app.post('/preregistro/:id',function(req, res) {
-    if(req.user.id){
+    if(req.user){
         productosModel
         .agregaAlCarrito(req.params.id, req.user.id)
         .then(idProductoInsertado => {
