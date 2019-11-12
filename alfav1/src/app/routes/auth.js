@@ -444,7 +444,7 @@ app.post('/insertarKiosko', function (req, res, next) {
         });
 });
 
-app.get('/editarKiosko/:id', function (req, res, next) {
+app.get('/editarKiosko/:id',isLoggedIn, function (req, res, next) {
     productosModel
         .obtenerKioskoPorId(req.params.id)
         .then(producto => {
