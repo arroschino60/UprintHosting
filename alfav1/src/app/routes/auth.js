@@ -125,7 +125,7 @@ module.exports = function(app,passport){
                 .mimac(macAddress, uss)
                 .then(producto => {
                     //SI HAY USUARIO
-                    if (producto.idUser != null) {
+                    if (producto) {
                         //consulta de lo que hay en el carrito
                         productosModel
                         .carritode(req.user.id)
@@ -151,7 +151,23 @@ module.exports = function(app,passport){
                         productosModel
                         .registro(req.user.id, macAddress)
                         .then(idProductoInsertado => {
-                            res.redirect("/carrito");
+                            productosModel
+                        .carritode(req.user.id)
+                        .then(micarrito => {
+                            var suma= 0;
+                            for(var i=0; i< micarrito.length; i++){
+                                suma= suma + micarrito[i].priceProduct;
+                            }
+                            console.log("La suma de lo del carrito es: "+suma);
+                            res.render("index33", {
+                                micarrito: micarrito,
+                                user: req.user,
+                                suma: suma,
+                            });
+                        })
+                        .catch(err => {
+                            return res.status(500).send("Error obteniendo productos");
+                        });
                         })
                         .catch(err => {
                             return res.status(500).send(err);
@@ -471,7 +487,7 @@ app.post('/actualizarKiosko',
         const { nombre, encargado, snencargado, inputAddress, inputAddress2, inputZip, inputEmail4, inputEmail2} = req.body;
         //se hacen los cambios
         productosModel
-        .editarKioskos(nombre, inputAddress, inputAddress2, encargado, inputZip, snencargado, inputEmail4, inputEmail2 )
+        .editarKioskos(nombre, inputAddress, inputAddress2, encargado, inputZip, snencargado,"00", inputEmail4, inputEmail2 )
         .then(() => {
             res.redirect("/kiosko");
         })
