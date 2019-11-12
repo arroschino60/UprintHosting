@@ -22,6 +22,9 @@ module.exports = function(app,passport){
 		res.render('logoCopy');
 	});
     //Para obtener productos para el catálogo
+    app.get('/pasaber', (req, res) => {
+		res.render('logoCopy');
+	});
 	app.get('/productos', (req, res) => {
         productosModel
 		.obtenerProd()
