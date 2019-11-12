@@ -28,7 +28,7 @@ section{
     justify-content: center;
     align-items: center;
     flex-flow: column;
-    background-image: url(../img/logodif.png);
+    background-image: url(../img/elmo.mp4);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -93,7 +93,7 @@ section{
 
 .tipo{
     fill:#383838;
-    font-family:'Roboto-Thin';
+    
     font-size:45.4054px;
     letter-spacing:22px;
     animation: fade 1s ease-in-out 1s alternate forwards ;

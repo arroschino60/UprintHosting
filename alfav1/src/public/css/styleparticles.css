@@ -71,46 +71,24 @@ canvas{
 }
 
 #stats{
+  position: fixed;
   border-radius: 3px 3px 0 0;
   overflow: hidden;
 }
 
 .count-particles{
+  position: fixed;
   border-radius: 0 0 3px 3px;
 }
 
 
 /* ---- particles.js container ---- */
 /* */
-#particles-js1{
-  width: 100%;
-  height: 100%;
-  
-  background-image: url('../img/dif3.png');
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  
-}
 
-#particles-js2{
-  width: 100%;
-  height: 100%;
-  
-  background-image: url('../img/dif3.png');
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  
-}
 
 #particles-js{
-  width: 100%;
-  height: 100%;
-  
-  background-image: url('../img/dif3.png');
-  background-size: cover;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  
+  position: absolute;
+  width: 1270px;
+  height: 1500px;
+  z-index: 1;
 }
