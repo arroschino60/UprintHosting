@@ -392,11 +392,14 @@ check('comment', 'Se debe ingresar un comentario').not().isEmpty()
   ], isLoggedIn,
   function (req, res) {
     const errors = validationResult(req);
+    var malo = errors.errors;
     console.log(req.body);
 
     if (!errors.isEmpty()) {
         console.log(errors);
-      return res.status(422).jsonp(errors.array());
+        res.render('index6', {
+            malo: errors
+          })
     } else {
       // Si todo va bien, seguimos
     //saca la extención de la imagén
