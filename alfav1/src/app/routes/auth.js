@@ -38,11 +38,15 @@ module.exports = function(app,passport){
 	});
 
 	app.get('/tc', (req, res) => {
-		res.render('tc');
+		res.render('tc', {
+            user: req.user,
+        });
 	});
 
     app.get('/tc2', (req, res) => {
-		res.render('tc2');
+		res.render('tc2', {
+            user: req.user,
+        });
 	});
 
     app.get('/editor', (req, res) => {
