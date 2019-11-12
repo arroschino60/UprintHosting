@@ -33,7 +33,12 @@ section{
     background-size: cover;
     background-position: center;
 }
+.bienvenido{
+    color: gray;
+    margin-left: 30% auto;
+    font-size: 32px;
 
+}
 #logoSvg{
     stroke-dasharray: 1000;
     stroke-dashoffset: 1000;

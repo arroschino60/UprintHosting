@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <title>Ingresar</title>
     <% include partials/head %>
+    <script src="js/validar.js"></script>
 </head>
 <body id="signup" style="background-image: url(../img/logodif.png);">
     
@@ -17,7 +18,7 @@
                 <h1 class="text-center">
                     <span class="fa fa-sign-in"></span> Registrarse
                 </h1>
-                <form id="signup" name="signup" method="post" action="/signup" class="box">
+                <form onsubmit="validar();" id="signup" name="signup" method="post" action="/signup" class="box">
                     <div class="col align-self-center">
                             <a href="/"><img src="img/logouprint.png" style="width: 120px; height: 100px;"></a><br>
                         </div>
