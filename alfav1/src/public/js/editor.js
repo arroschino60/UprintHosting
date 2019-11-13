@@ -542,9 +542,9 @@ function main(){
     switch(mainEditor.mode){
 
         case'fotolibro':{
-            pictures.push(new Picture(310,-80,'./img/foto1.jpg',341.625,512));
-            pictures.push(new Picture(310,-80,'./img/foto1.jpg',341.625,512));
-            pictures.push(new Picture(-50,-80,'./img/foto3.jpg',500,750));
+            pictures.push(new Picture(310,-80,'/img/foto1.jpg',341.625,512));
+            pictures.push(new Picture(310,-80,'/img/foto1.jpg',341.625,512));
+            pictures.push(new Picture(-50,-80,'/img/foto3.jpg',500,750));
 
             let mask1 = new Mask(320,185,300,165);
             let mask2 = new Mask(320,10,300,165);
@@ -563,8 +563,8 @@ function main(){
             });
         }break;
         case'rompecabezas':{
-            pictures.push(new Picture(210,-80,'./img/foto1.jpg',341.625,512));
-            pictures.push(new Picture(110,-80,'./img/jigsaw.png',424.25,600));
+            pictures.push(new Picture(210,-80,'/img/foto1.jpg',341.625,512));
+            pictures.push(new Picture(110,-80,'/img/jigsaw.png',424.25,600));
 
             let mask1 = new Mask(157,5,350,350,"heart","rgba(255,255,255,1)");
 
@@ -575,7 +575,7 @@ function main(){
 
                 mainEditor.addDrawable(mask1);
                 mainEditor.addDrawable(new Text(100,100,"Un texto"));
-                mainEditor.addDrawable(new Picture(310,-80,'./img/marco.png',205,205));
+                mainEditor.addDrawable(new Picture(310,-80,'/img/marco.png',205,205));
 
                 mainEditor.drawAll();
             });
@@ -705,9 +705,9 @@ function setListeners(){
     }
 
     document.getElementById("addPhotoBtn").onclick = function(){
-        let pic =new Picture(100,100,"./img/marco.png",205,205);
+        let pic =new Picture(100,100,"/img/marco.png",205,205);
         pic.loadPicture().then((result) => {
-            mainEditor.addDrawable(new Picture(100,100,"./img/marco.png",205,205));
+            mainEditor.addDrawable(new Picture(100,100,"/img/marco.png",205,205));
 
         mainEditor.redraw();
         console.log(mainEditor.drawables);
