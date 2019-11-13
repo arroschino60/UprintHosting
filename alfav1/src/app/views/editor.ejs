@@ -8,11 +8,12 @@
     <link rel="icon" href="./img/iconuprint.png" id="">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-    <style>
+      <style>
         *{margin: 0 auto; user-select: none; color: rgba(180, 180, 180, 1) }
         body{background-color: rgb(185, 185, 185);}
-        .app{width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; animation: fade 1s ease-in-out  alternate forwards ; opacity: 0;}
-        .editorContainer{overflow: hidden; display: grid; grid-template-columns: 40px 630px 250px; row-gap: 12px; column-gap: 12px;background-color: rgb(51, 51, 51);}
+        .app{width: 100vw; height: 100vh; display: flex; flex-flow: column; align-items: center; justify-content: center; animation: fade 1s ease-in-out  alternate forwards ; opacity: 0;}
+        .panelsContainer{width: 700px; height: 110px; overflow: hidden; display: grid; background-color: rgb(51, 51, 51); margin-bottom: 12px}
+        .editorContainer{overflow: hidden; display: grid; grid-template-columns: 40px 660px; row-gap: 12px; background-color: rgb(51, 51, 51);}
         .blueRect{width: 210px; height: 120px; background-color: white; display: flex; align-items: center; justify-content: center;}
         .mainEditorContainer{ width: 630px; height: 100%; max-height: 800px; display: flex; flex-flow: column}
         .pagesEditorContainer{display: flex; flex-flow: row; background-color: aquamarine; width:500px;}
@@ -24,7 +25,7 @@
         .material-icons.md-36 { font-size: 36px;}
         .flexCenter{display: flex; align-items: center; justify-content: center;}
         .icbtn{cursor: pointer; width: 24px; height: 24px;}
-        .inputBtn{transform: translateY(-12px); box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); transition: all 0.3s cubic-bezier(.25,.8,.25,1); background-color:rgb(108, 108, 240); color: white; padding:10px;}
+        .inputBtn{ margin-top: 20px; font-size: 12px; transform: translateY(-12px); box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); transition: all 0.3s cubic-bezier(.25,.8,.25,1); background-color:rgb(108, 108, 240); color: white; padding:10px;}
         .inputBtn:hover{ box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); cursor: pointer;}
         .propsCard{background-color: white; width: 200px; height: 250px;}
         .material-icons{ transition: all; transition-duration: 0.3s; transition-timing-function: ease-in;}
@@ -33,32 +34,63 @@
         .propsCard{display: flex; align-items: center; flex-flow: column}
         #downloadLink:hover{cursor: pointer;}
         .material-icons.md-42 { font-size: 42px;}
+        .scrollList{background-color: rgb(26, 25, 25); width: 340px; height: 90px; display: grid; grid-template-columns: 33% 34% 33%;align-items: center; row-gap: 8px; overflow-y: scroll;}
+        .editImagePanel{justify-content: center; align-items: center; column-gap: 12px; grid-template-columns: 120px 120px 120px 100px}
+        .imagePreviw:hover{cursor: pointer;}
+        .imagePreviw{width: 100px; height: 75px; object-fit: contain; background-color: rgb(15, 15, 15);}
+        .currentImagePreview{width: 120px; height: 90px; object-fit: contain; background-color: rgb(15, 15, 15);}
+        .panelsHeader{background-color: white; width:700px; height: 30px; color: rgb(15, 15, 15);}
+        .lBtn{background-color: white; width: 100px; height: 35px;}
+        .red{background-color:rgb(216, 61, 61);}
+        .editTextPanel{justify-content: center; align-items: center; column-gap: 12px; grid-template-columns: 200px 120px}
         @keyframes fade {from{opacity: 0;} to{opacity: 1;}};
 
 
     </style>
 </head>
 
-<body style="background-image:url(img/dif1.png)">
-    <div class="app">
+<body>
+    <div class="app" style="background-image:url(img/dif1.png)">
+
+        <div id="panelsHeader" class="panelsHeader flexCenter">Imagen</div>
+
+        <div id="panelsContainer" class="panelsContainer editImagePanel">
+           
+            <!--
+            <div class="scrollList">
+                <img class="imagePreviw" src="./fotos/foto1.jpg" alt="foto">
+                <img class="imagePreviw" src="./fotos/foto2.jpg" alt="foto">
+                <img class="imagePreviw" src="./fotos/foto3.jpg" alt="foto">
+                <img class="imagePreviw" src="./fotos/foto3.jpg" alt="foto">
+            </div>
+
+            <img id="output" class="currentImagePreview" src="./fotos/foto1.jpg" alt="foto 1">
+
+            <label for="imgInput" class="inputBtn">Subir otra imágen</label>
+            <input id="imgInput" type="file" style="display: none">
+        -->
+
+        </div>
+
         <div class="editorContainer">
 
             <div class="toolBarContainer">
                 <div id="addTextBtn" class="icbtn" style="margin-top: 12px"><i class="material-icons">text_fields</i></div>
-                <div id="addEmojiBtn" class="icbtn"><i class="material-icons">insert_emoticon</i></div>
+                <div id="addPhotoBtn" class="icbtn"><i class="material-icons">add_photo_alternate</i></div>
             </div>
 
-        <div>
-            <img id="pepa" class="text-center" src="/img/<%= producto.imageProduct %>" alt="Card image cap">
-            <h1><%= producto.featuresProduct %></hi>
-            <h1 class="lead" style="font-size: 30px"> <i class="fas fa-book"></i> <%= producto.nameProduct%> uPrint® </h1>
-            <h1 class="text-success col-md-2" style="font-size: 20px"> $<%= producto.priceProduct%> </h1>
-        </div>
+            <div>
+                <img id="pepa" class="text-center" src="/img/<%= producto.imageProduct %>" alt="Card image cap">
+                <h1><%= producto.featuresProduct %></hi>
+                <h1 class="lead" style="font-size: 30px"> <i class="fas fa-book"></i> <%= producto.nameProduct%> uPrint® </h1>
+                <h1 class="text-success col-md-2" style="font-size: 20px"> $<%= producto.priceProduct%> </h1>
+            </div>
 
             <div class="mainEditorContainer flexCenter">
                 <div class="undoBar">
-                    <div class="icbtn" style="grid-column: 2/3"><i class="material-icons md">undo</i></div>
+                   <!-- <div class="icbtn" style="grid-column: 2/3"><i class="material-icons md">undo</i></div>
                     <div class="icbtn" style="grid-column: 3/4"><i style="opacity: 0.5" class="material-icons md">redo</i></div>
+                   -->
                 </div>
                 <canvas id="mainEditor" width="630px" height="360px"></canvas>
                 <div class="zoomBar">
@@ -66,23 +98,24 @@
                 </div>
             </div>
 
+            <!--
             <div class="propertiesContainer flexCenter">
                 <div class="propertiesPanel flexCenter " style="flex-flow: column;">
                     <div class ="propsCard">
-                        <img id="output" accept="image/*" src="./img/foto1.jpg" alt="Image" style=" background-color: rgb(15, 15, 15); width: 200px; height: 150px; object-fit: contain ">
+                        <img id="output" accept="image/*" src="./fotos/foto1.jpg" alt="Image" style=" background-color: rgb(15, 15, 15); width: 200px; height: 150px; object-fit: contain ">
                         <label for="imgInput" class="inputBtn">Cambiar imágen</label>
                         <input id="imgInput" type="file" style="display: none">
                         <div class="imgZoomContainer">
                             <i id="scaleDown" class="material-icons md-42" style="margin-right: 10px">zoom_out</i>
                             <i id="scaleUp" class="material-icons md-42">zoom_in</i>
                         </div>
-                        <!-- <div id ="properties" class="properties" style="color:rgb(15, 15, 15)">
-                        </div> -->
+                         <div id ="properties" class="properties" style="color:rgb(15, 15, 15)">
+                        </div> 
                     </div>
                     <a id="downloadLink" download="file.jpg"> <br> descargar</a>
                 </div>
                 </div>
-            </div>
+            </div>-->
 
             <!--<div class="blueRect pagesEditorContainer">
                 <div class="pageBtn"><</div>
