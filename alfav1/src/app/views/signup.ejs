@@ -25,23 +25,28 @@
                     
                     <div class="agrupar text-center">
                     <div class="form-group text-center">
-                        <input name="username" type="text" class="form-control" placeholder="Nombre de Usuario" required />
-                        <input name="firstname" type="text" class="form-control" placeholder="Nombre(s)" style="margin-left: 25px;" required/>
+                        <input id="username" name="username" type="text" class="form-control" placeholder="Nombre de Usuario" required />
+                        <input id="firstname" name="firstname" type="text" class="form-control" placeholder="Nombre(s)" style="margin-left: 25px;" required/>
                         
                     </div>
                 </div>
                 <div class="agrupar">
                     <div class="form-group">
-                        <input name="lastname" type="text" class="form-control" placeholder="Apellido Paterno" required />
-                        <input name="secondlastname" type="text" class="form-control" placeholder="Apellido Materno" style="margin-left: 25px;" required />
+                        <input id="lastname" name="lastname" type="text" class="form-control" placeholder="Apellido Paterno" required />
+                        <input id="secondlastname" name="secondlastname" type="text" class="form-control" placeholder="Apellido Materno" style="margin-left: 25px;" required />
                     </div>
                     </div>
                     <div class="agrupar">
                         <div class="form-group">
-                            <input class="form-control" name="email" type="text" placeholder="e-mail" required/>
-                            <input name="password" type="password" class="form-control" placeholder="Contraseña" style="margin-left: 25px;" required />
+                            <input id="email" class="form-control" name="email" type="text" placeholder="e-mail" required/>
                         </div>
                     </div>
+                    <div class="agrupar">
+                            <div class="form-group">
+                                <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" style="margin-left: 25px;" required />
+                                <input id="confirmar" name="confirmar" type="password" class="form-control" placeholder="Confirmar contraseña" style="margin-left: 25px;" required />
+                            </div>
+                        </div>
                     <div class="col align-self-center">
                         <input class="btn btn-dark btn-lg text-center" type="submit" value="OK" />
                     </div>

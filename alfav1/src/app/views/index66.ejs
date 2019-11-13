@@ -174,22 +174,46 @@
           </div>
           <div class="card-header">
             <h6 class="">
-              <div href="#collapse<%= i %>" data-toggle="collapse" data-parent="#accordion">                  <i class="fas fa-arrow-circle-down"></i> Información:
+              <div href="#" class="botonbajo" data-toggle="modal" data-target="#modal<%= i %>" style="cursor: pointer;" >
+                  Caracteristicas <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Ver caracteristicas del producto"></i> 
               </div>
-            </h6>
+          </h6>
           </div>
-          <div id="collapse<%= i %>" class="collapse">
-            <div class="card-body">
-             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Nombre del encargado: <%= producto.attendantName %> <%= producto.attendantSecondName %></li>
-                <li class="list-group-item">Calle: <%= producto.street %></li>
-                <li class="list-group-item">Colonia: <%= producto.suburb %></li>
-                <li class="list-group-item">CP:<%= producto.zipcode %></li>
-                <li class="list-group-item">Email:<%= producto.email %></li>
-                <li class="list-group-item">Email alternativo: <%= producto.otheremail %></li>                  
-              </ul>
-            </div>
-          </div>
+
+
+
+
+ <!-- MODAL DE CARACTERISTICAS -->
+              <div class="modal fade" id="modal<%= i %>">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                      <h5 class="modal-title"> <i class="fas fa-info"></i> Caracteristicas</h5>
+                      <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="card-body">
+                        <h1><%= producto.user %></h1>                            
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8">Encargado:</span><%= producto.attendantName %> <%= producto.attendantSecondName %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Calle:</span > <%= producto.street %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Colonia:</span><%= producto.suburb %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Código postal maximos:</span><%= producto.zipcode %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Email:</span><%= producto.email %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">E-mail alterno:</span> <%= producto.otheremail %></li>
+                            
+                        </ul>
+                    </div>
+                    </div>
+            
+                  </div>
+                </div>
+              </div>
+
+
+
           <div class="card-body">
             <a href="#" class="card-link">
               <a href="editarKiosko/<%= producto.user %>" class="btn btn-secondary pr-4 pl-4">
@@ -238,6 +262,8 @@
       <td><%= producto.email %></td>
       <td><%= producto.otheremail %></td> 
     </tr>
+
+    
     <% }); %>
   </tbody>
 </table>

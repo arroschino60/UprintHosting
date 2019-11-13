@@ -420,7 +420,7 @@ check('comment', 'Se debe ingresar un comentario').not().isEmpty()
 
     if (!errors.isEmpty()) {
         console.log(errors);
-        res.render('index6', {
+        res.render('errores', {
             malo: errors
           })
     } else {
