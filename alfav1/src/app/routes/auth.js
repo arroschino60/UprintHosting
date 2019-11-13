@@ -52,8 +52,23 @@ module.exports = function(app,passport){
         });
 	});
 
-    app.get('/editor', (req, res) => {
-		res.render('editor');
+    app.get('/editor/:id', (req, res) => {
+        productosModel
+        .obtenerPorId(req.params.id)
+        .then(producto => {
+            if (producto) {
+                console.log({ producto });
+                res.render("editor", {
+                    producto: producto,
+                    user : req.user,
+                });
+            } else {
+                return res.status(500).send("No existe producto con ese id");
+            }
+        })
+        .catch(err => {
+            return res.status(500).send("Error obteniendo producto");
+        });
 	});
         
     app.get('/contacto', (req, res) => {
