@@ -29,15 +29,15 @@
         <ul class="navbar-nav ml-auto">
           
          <li class="nav-item pt-4 ml-2 mr-2">
-           <h5><i class="fas fa-user-cog"></i> Administrador: <%= user.firstname %></h5> 
+           <h5>¡Bienvenido, <span style="color: #007bff;"><%= user.firstname %><i class="fas fa-user-cog"></i></span>!</h5> 
          </li>
             
          <li class="nav-item pt-4 ml-2 mr-2">
-           <h5><i class="fa fa-user"></i> Usuario: <%= user.username %></h5> 
+           <h5><i class="fa fa-user"></i> Usuario: <span style="color: #007bff;"><%= user.username %></span></h5> 
          </li>
          
          <li class="nav-item pt-4 ml-2 mr-2">
-           <h5><i class="fas fa-user-tag"></i> No. Usuario: <%= user.id %></h5>
+           <h5><i class="fas fa-user-tag"></i> No. Usuario:<span style="color: #007bff;"> <%= user.id %> </span></h5>
          </li>
          
          
@@ -206,8 +206,21 @@
         </div>
           
         <div class="modal-body">
+          <h1 style="color: #007bff;">Guía Rapida:</h1>
+        <h2 style="font-weight: bolder;"><p>¡Bienvenido a la página de inicio para el administrador!</p></h2>
+        <div style="font-weight: bolder;"><p>Da click sobre alguno de los botones en la parte central de la pantalla para proceder a una ventana y manipular sus datos</p></div>
+         <div>
+           <ul class="list-group list-group-flush">
+<li> <h6><i class="fas fa-home"></i> Kioskos </h6>
+<div>Muestra una ventana con todos los kioskos disponibles de Uprint con todas sus caracteristicas, se puede tambien editar los datos y dar de baja al kiosko.</div></li>
+<li> <h6><i class="fas fa-box-open"></i> Productos </h6>
+  <div>Muestra una ventana con todos los productos disponibles en las tiendas de Uprint con todas sus caracteristicas, se puede tambien editar los datos e imágen, así como eliminar algún producto del inventario.</div></li>
+<li><h6><i class="fas fa-people-carry "></i> Pedidos</h6>
+  <div>Muestra una ventana con todos los pedidos realizados por clientes de Uprint, para dar seguimiento y alterar su estado, de recibido, en proceso y terminado según sea el caso.</div> </li>
 
 
+          </ul>
+        </div>
 
 
         </div>
