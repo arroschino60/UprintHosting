@@ -140,7 +140,8 @@ module.exports = function(app,passport){
                 .mimac(macAddress, uss)
                 .then(producto => {
                     //SI HAY USUARIO
-                    if (producto) {
+                    if (producto == null) {
+                        console.log(producto);
                         //consulta de lo que hay en el carrito
                         productosModel
                         .carritode(req.user.id)
@@ -163,6 +164,7 @@ module.exports = function(app,passport){
                     //SI NO HAY USUARIO
                     else {
                         //SE AGREGA AL USUARIO
+                        console.log("entro aqui el sope");
                         productosModel
                         .registro(req.user.id, macAddress)
                         .then(idProductoInsertado => {
