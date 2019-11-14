@@ -658,22 +658,25 @@ function main(){
             });
 
         }break;
-        case "Marcos":{
+        case "Marco de Aluminio":{
+            let mask = new Mask(119,16,370,325,"rect","white");
+
             mainEditor.bgColor="rgba(51,51,51,1)";
 
-            pictures.push(new Picture(50,-130,'/img/case.png'));
+            pictures.push(new Picture(115,15,'/img/marco.png'));
 
-            pictures.push(new Picture(200,90,"/img/iconuprint.png"));
+            pictures.push(new Picture(145,-10,'/img/foto1.jpg',341.625,512));
 
 
             pictures[0].loadPicture().then(()=>{
-                pictures[0].resize(0.5);
+                pictures[0].resize(0.25);
 
-                mainEditor.bottomDrawable = pictures[0];
+                mainEditor.topDrawable = pictures[0];
                 
                 pictures[1].loadPicture().then(()=>{ 
-                    pictures[1].resize(0.7);
-                    mainEditor.addDrawable(pictures[1]);
+                    //pictures[1].resize(0.8);
+                    mask.addDrawable(pictures[1])
+                    mainEditor.addDrawable(mask);
                     mainEditor.activeElement=0;
                     mainEditor.focusedIndex=0;
                     triggerpanel();
