@@ -264,6 +264,8 @@ class Editor {
         this.currentPanel = 0;
         this.mode = mode ;
         this.bgColor = "rgba(255, 255, 255, 1)";
+        this.topDrawable = false;
+        this.bottomDrawable = false;
     }
 
     deleteDrawable(index){
@@ -375,7 +377,7 @@ class Editor {
 
     resetDrawables(){
         this.drawables = [];
-    }xS
+    }
 
     drawMask(mask){
         this.ctx.save();
@@ -403,7 +405,7 @@ class Editor {
 
         this.ctx.clip();
          this.ctx.fillStyle =mask.bgColor;
-         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+         //this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
          this.ctx.fillRect(0,0,this.canvas.width, this.canvas.height);
         //this.ctx.scale(mask.scale, mask.scale, mask.drawables[0].x + mask.drawables[0].w/2, mask.drawables[0].y + mask.drawables[0].h/2 );
         //this.ctx.scale(mask.scale, mask.scale);
@@ -455,9 +457,13 @@ class Editor {
 
     drawAll(){
         this.clear();
+        if(this.bottomDrawable)
+            this.draw(this.bottomDrawable);
         for(let drawable of this.drawables){
             this.draw(drawable);
         }
+        if(this.topDrawable)
+            this.draw(this.topDrawable);
     }
 
     applyTransfotmations(state){
@@ -556,44 +562,126 @@ function main(){
 
     switch(mainEditor.mode){
 
-        case'fotolibro':{
+        case'Fotolibro':{
             pictures.push(new Picture(310,-80,'/img/foto1.jpg',341.625,512));
             pictures.push(new Picture(310,-80,'/img/foto1.jpg',341.625,512));
             pictures.push(new Picture(-50,-80,'/img/foto3.jpg',500,750));
 
             let mask1 = new Mask(320,185,300,165);
-            let mask2 = new Mask(320,10,300,165);
-            let mask3 = new Mask(10,10,300,340);
+            let mask2 = new Mask(320,10,300,165,"rect","transparent");
+            let mask3 = new Mask(10,10,300,340,"rect","transparent");
         
-            loadPictures(pictures).then(lPictures=>{
-                mask1.addDrawable(lPictures[0]);
-                mask2.addDrawable(lPictures[1]);
-                mask3.addDrawable(lPictures[2]);
+            // loadPictures(pictures).then(lPictures=>{
+            //     mask1.addDrawable(lPictures[0]);
+            //     mask2.addDrawable(lPictures[1]);
+            //     mask3.addDrawable(lPictures[2]);
         
-                mainEditor.addDrawable(mask1);
-                mainEditor.addDrawable(mask2);
-                mainEditor.addDrawable(mask3);
-                mainEditor.addDrawable(new Text(100,100,"Un texto"));
-                mainEditor.drawAll();
+            //     mainEditor.addDrawable(mask1);
+            //     mainEditor.addDrawable(mask2);
+            //     mainEditor.addDrawable(mask3);
+            //     mainEditor.addDrawable(new Text(100,100,"Un texto"));
+            //     mainEditor.drawAll();
+            // });
+
+            pictures[0].loadPicture().then(()=>{
+                mask1.addDrawable(pictures[0]);
+                pictures[1].loadPicture().then(()=>{
+                    mask2.addDrawable(pictures[1]);
+                    pictures[2].loadPicture().then(()=>{
+                        mask3.addDrawable(pictures[2]);
+                        mainEditor.addDrawable(mask1);
+                        mainEditor.addDrawable(mask2);
+                        mainEditor.addDrawable(mask3);
+                        mainEditor.addDrawable(new Text(100,100,"Un texto"));
+                        mainEditor.drawAll();
+                        mainEditor.activeElement = 3;
+                        triggerpanel();
+                        charge = true;
+                    });
+                });
             });
+
+
         }break;
-        case'rompecabezas':{
-            pictures.push(new Picture(210,-80,'/img/foto1.jpg',341.625,512));
+        case'Rompecabezas':{
+            pictures.push(new Picture(110,-80,'/img/foto1.jpg',341.625,512));
+
             pictures.push(new Picture(110,-80,'/img/jigsaw.png',424.25,600));
 
-            let mask1 = new Mask(157,5,350,350,"heart","rgba(255,255,255,1)");
+            let mask1 = new Mask(157,5,350,350,"heart","white");
 
-            mainEditor.bgColor="rgba(51,51,51,1)"
-            loadPictures(pictures).then(lPictures=>{
-                mask1.addDrawable(lPictures[0]);
-                mask1.addDrawable(lPictures[1]);
+            mainEditor.bgColor="rgba(51,51,51,1)";
 
-                mainEditor.addDrawable(mask1);
-                mainEditor.addDrawable(new Text(100,100,"Un texto"));
-                mainEditor.addDrawable(new Picture(310,-80,'/img/iconuprint.png',205,205));
+            pictures[0].resize(1.5);
 
-                mainEditor.drawAll();
+            pictures[0].loadPicture().then(()=>{
+                mask1.addDrawable(pictures[0]);
+                pictures[1].loadPicture().then(()=>{
+                    let mask2 = new Mask(157,5,350,350,"heart","transparent");
+
+                    mask2.addDrawable(pictures[1]);
+                    mainEditor.addDrawable(mask1);
+                    mainEditor.topDrawable = mask2;
+                    mainEditor.activeElement=0;
+                    mainEditor.focusedIndex=0;
+                    triggerpanel();
+                    mainEditor.drawAll();
+                    charge = true;
+                });
+               
             });
+
+        }break;
+
+        case "Funda para celular":{
+            mainEditor.bgColor="rgba(51,51,51,1)";
+
+            pictures.push(new Picture(50,-130,'/img/case.png'));
+
+            pictures.push(new Picture(200,90,"/img/iconuprint.png"));
+
+
+            pictures[0].loadPicture().then(()=>{
+                pictures[0].resize(0.5);
+
+                mainEditor.bottomDrawable = pictures[0];
+                
+                pictures[1].loadPicture().then(()=>{ 
+                    pictures[1].resize(0.7);
+                    mainEditor.addDrawable(pictures[1]);
+                    mainEditor.activeElement=0;
+                    mainEditor.focusedIndex=0;
+                    triggerpanel();
+                    mainEditor.drawAll();
+                    charge = true;
+                });
+            });
+
+        }break;
+        case "Marcos":{
+            mainEditor.bgColor="rgba(51,51,51,1)";
+
+            pictures.push(new Picture(50,-130,'/img/case.png'));
+
+            pictures.push(new Picture(200,90,"/img/iconuprint.png"));
+
+
+            pictures[0].loadPicture().then(()=>{
+                pictures[0].resize(0.5);
+
+                mainEditor.bottomDrawable = pictures[0];
+                
+                pictures[1].loadPicture().then(()=>{ 
+                    pictures[1].resize(0.7);
+                    mainEditor.addDrawable(pictures[1]);
+                    mainEditor.activeElement=0;
+                    mainEditor.focusedIndex=0;
+                    triggerpanel();
+                    mainEditor.drawAll();
+                    charge = true;
+                });
+            });
+
         }break;
     }
 
@@ -696,9 +784,8 @@ function setListeners(){
     
     mainEditor.canvas.onmouseup = function(){
         mainEditor.draggin= false;
-
         triggerpanel();
-        
+
     }
 
    
@@ -726,8 +813,7 @@ function setListeners(){
             mainEditor.addDrawable(pic);
             mainEditor.redraw();
             mainEditor.activeElement = mainEditor.drawables.length-1;
-        triggerpanel();
-            console.log(mainEditor.drawables);
+            triggerpanel();
         });
         
     }
@@ -738,10 +824,12 @@ let mouseX = 0, mouseY = 0;
 let clicklenable = false;
 let mainCanvas ;
 let mainEditor ;
+let charge = false;
 
+let productType = document.getElementById("productType").innerHTML;
 
 mainCanvas = document.getElementById("mainEditor");
-mainEditor = new Editor(mainCanvas,'fotolibro');
+mainEditor = new Editor(mainCanvas,productType);
 
 
 //let scaleUp = document.getElementById("scaleUp");
@@ -749,5 +837,10 @@ mainEditor = new Editor(mainCanvas,'fotolibro');
 
 main();
 setListeners();
+
+setInterval(() => {
+    if(!charge)
+    main();
+}, 1000);
 //setLeft();
 //drawPages();
