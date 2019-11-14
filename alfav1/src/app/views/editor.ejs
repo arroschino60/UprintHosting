@@ -12,7 +12,7 @@
   <title>uPrint</title>
       <style>
         *{margin: 0 auto; user-select: none; color: rgba(180, 180, 180, 1) }
-        body{background-color: rgb(185, 185, 185);}
+        body{background-color: rgb(185, 185, 185); overflow-x: hidden;}
         .app{width: 100vw; height: 100vh; display: flex; flex-flow: column; align-items: center; justify-content: center; animation: fade 1s ease-in-out  alternate forwards ; opacity: 0;}
         .panelsContainer{width: 700px; height: 110px; overflow: hidden; display: grid; background-color: rgb(51, 51, 51); margin-bottom: 12px}
         .editorContainer{overflow: hidden; display: grid; grid-template-columns: 40px 660px; row-gap: 12px; background-color: rgb(51, 51, 51);}
@@ -44,6 +44,7 @@
         .panelsHeader{background-color: white; width:700px; height: 30px; color: rgb(15, 15, 15);}
         .lBtn{background-color: white; width: 100px; height: 35px;}
         .red{background-color:rgb(216, 61, 61);}
+        .hidden{display:none}
         .editTextPanel{justify-content: center; align-items: center; column-gap: 12px; grid-template-columns: 200px 120px}
         @keyframes fade {from{opacity: 0;} to{opacity: 1;}};
 
@@ -157,11 +158,13 @@
 
 
 
-        <div>
+      <div class="hidden" id="productPrice"><%= producto.priceProduct%></div>
+      <div class="hidden" id="productType"><%= producto.nameProduct%></div>
+        <!-- <div>
             <h1><%= producto.featuresProduct %></hi>
             <h1 class="lead" style="font-size: 30px"> <i class="fas fa-book"></i> <%= producto.nameProduct%> uPrint® </h1>
             <h1 class="text-success col-md-2" style="font-size: 20px"> $<%= producto.priceProduct%> </h1>
-        </div>
+        </div> -->
 
         <div id="panelsHeader" class="panelsHeader flexCenter">Imagen</div>
 

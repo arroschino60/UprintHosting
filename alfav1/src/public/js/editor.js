@@ -49,9 +49,14 @@ class ImagePanel extends ToolPanel{
         
     }
 
-    changeElement(imageSrc){
-        this.currentImage = imageSrc;
-        document.getElementById(`output`).src = imageSrc;
+    changeElement(args){
+        this.currentImage = args.imageSrc;
+        document.getElementById(`output`).src = args.imageSrc;
+        if(args.deletable == false){
+            document.getElementById("delete").className ="hidden";
+        }else {
+            document.getElementById("delete").className ="red inputBtn";
+        }
     }
 }
 
@@ -133,10 +138,14 @@ class Picture extends Drawable{
     loadPicture(){
         return new Promise((resolve,reject) => {
             this.img.addEventListener('load', ()=> {
-                if(!this.w)
+                if(!this.w){
                     this.w = this.img.width;
-                if(!this.h)
+                    this.w1 = this.w;
+                }
+                if(!this.h){
                     this.h = this.img.height;
+                    this.h1 = this.h;
+                }
                 resolve();
             });
             this.img.addEventListener('error', err=> reject(err));
@@ -156,6 +165,8 @@ class Picture extends Drawable{
             this.img.addEventListener('load', ()=> {
                 this.w = this.img.width;
                 this.h = this.img.height;
+                this.w1 = this.w;
+                this.h1 = this.h;
                 resolve();
             });
             this.img.addEventListener('error', err=> reject(err));
@@ -257,6 +268,10 @@ class Editor {
 
     deleteDrawable(index){
         this.drawables.splice(index, 1);
+        console.log(this.drawables);
+        for(let i = 0; i<this.drawables.length; i++){
+            this.drawables[i].index = i;
+        }
     }
 
 
@@ -575,7 +590,7 @@ function main(){
 
                 mainEditor.addDrawable(mask1);
                 mainEditor.addDrawable(new Text(100,100,"Un texto"));
-                mainEditor.addDrawable(new Picture(310,-80,'/img/marco.png',205,205));
+                mainEditor.addDrawable(new Picture(310,-80,'/img/iconuprint.png',205,205));
 
                 mainEditor.drawAll();
             });
@@ -602,6 +617,19 @@ function setRight(){
     mainEditor.addMask(mask3);
 }
 
+function triggerpanel(){
+    let drawable = mainEditor.drawables[mainEditor.activeElement];
+        if(drawable.className == "Mask")
+            mainEditor.setPanel('imagen',
+            {"imageSrc": drawable.drawables[0].src, "deletable":false}); 
+        else if(drawable.className == "Text"){
+            mainEditor.setPanel('Text', mainEditor.drawables[mainEditor.activeElement].text);
+        }
+        else if(drawable.className == "Picture"){
+            mainEditor.setPanel('imagen', {"imageSrc": drawable.src, "deletable":true});
+        }
+}
+
 function setListeners(){
 
     mainEditor.canvas.onmouseout = function(){
@@ -611,7 +639,7 @@ function setListeners(){
     mainEditor.canvas.onmousemove = function(e){
         let newMouseX = e.pageX - this.offsetLeft;
         let newMouseY = e.pageY - this.offsetTop;
-        clicklenable=false;
+        //clicklenable=false;
 
         if(mainEditor.draggin){
             mainEditor.drawables[mainEditor.focusedIndex].drag(parseInt(mouseX - newMouseX),parseInt(mouseY - newMouseY));
@@ -664,30 +692,16 @@ function setListeners(){
         clicklenable = true;
         mainEditor.draggin= true;
         mainEditor.activeElement = mainEditor.focusedIndex;
-
-
     }
     
     mainEditor.canvas.onmouseup = function(){
         mainEditor.draggin= false;
+
+        triggerpanel();
+        
     }
 
-    mainEditor.canvas.onclick = function(){
-        if(clicklenable){
-            //alert("click");
-            //ge.log( mainEditor.drawables[mainEditor.focusedIndex]);
-            let drawable = mainEditor.drawables[mainEditor.activeElement];
-            if(drawable.className == "Mask")
-                mainEditor.setPanel('imagen', drawable.drawables[0].src);
-            else if(drawable.className == "Text"){
-                mainEditor.setPanel('Text', mainEditor.drawables[mainEditor.activeElement].text);
-            }
-            else if(drawable.className == "Picture"){
-                mainEditor.setPanel('imagen', drawable.src);
-            }
-            //document.getElementById("properties").innerHTML = mainEditor.drawables[mainEditor.focusedIndex].toStirng();
-        }
-    }
+   
     
     document.getElementsByTagName("body")[0].onmouseup = ()=>{
         mainEditor.draggin= false;
@@ -702,18 +716,20 @@ function setListeners(){
     document.getElementById("addTextBtn").onclick = function(){
         mainEditor.addDrawable(new Text(100,100,"Otro texto"));
         mainEditor.redraw();
+        mainEditor.activeElement = mainEditor.drawables.length-1;
+        triggerpanel();
     }
 
     document.getElementById("addPhotoBtn").onclick = function(){
-        let pic =new Picture(100,100,"/img/marco.png",205,205);
+        let pic =new Picture(100,100,"/img/iconuprint.png");
         pic.loadPicture().then((result) => {
-            mainEditor.addDrawable(new Picture(100,100,"/img/marco.png",205,205));
-
-        mainEditor.redraw();
-        console.log(mainEditor.drawables);
-        }).catch((err) => {
-            
-        });;
+            mainEditor.addDrawable(pic);
+            mainEditor.redraw();
+            mainEditor.activeElement = mainEditor.drawables.length-1;
+        triggerpanel();
+            console.log(mainEditor.drawables);
+        });
+        
     }
 
     
