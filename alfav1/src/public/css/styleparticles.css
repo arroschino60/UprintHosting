@@ -84,7 +84,31 @@ canvas{
 
 /* ---- particles.js container ---- */
 /* */
+<<<<<<< Updated upstream
 
+=======
+#particles-js1{
+  width: 100%;
+  height: 100%;
+  
+  background-image: url('../img/dif3.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  
+}
+
+#particles-js2{
+  width: 100%;
+  height: 100%;
+  
+  background-image: url('../img/dif3.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  
+}
+>>>>>>> Stashed changes
 
 #particles-js{
   position: absolute;
