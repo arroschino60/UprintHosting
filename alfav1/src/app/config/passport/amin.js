@@ -83,5 +83,32 @@ module.exports = {
                     else resolve();
                 });
         });
+    },
+    cuantosP(){
+        return new Promise((resolve, reject) => {
+            conexion.query(`select COUNT(idProduct) as nopro from productos where statusProduct = 1`,
+            (err, resultados) => {
+                if (err) reject(err);
+                else resolve(resultados);
+            });
+        });
+    }, 
+    cuantosk(){
+        return new Promise((resolve, reject) => {
+            conexion.query(`select COUNT(user) as nok from kiosko where status = 1`,
+            (err, resultados) => {
+                if (err) reject(err);
+                else resolve(resultados);
+            });
+        });
+    },
+    cuantasV(){
+        return new Promise((resolve, reject) => {
+            conexion.query(`select COUNT(idSelling) as nov from ventas where statusOrder != 4`,
+            (err, resultados) => {
+                if (err) reject(err);
+                else resolve(resultados);
+            });
+        });
     }
 }

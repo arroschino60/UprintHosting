@@ -244,11 +244,11 @@
               <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Sube la imagen del producto (Max 5mb)">
                   <h6 class="">Imagen: <i class="fas fa-info-circle"></i></h6>
               </button>
-              <input value="<%= producto.imageProduct %>" name="imagen" type="hidden">
+              <input value="<%= producto.imageProduct %>" name="imagen" id="imagen" type="text" >
               <div class="custom-file">
-                <label>Actual: <%= producto.imageProduct %></label>
+                <label id="imgant" name="imgant"><%= producto.imageProduct %></label>
                 <br>
-                <input type="file" name="file">
+                <input type="file" name="file" id="file">
               </div>
               
               

@@ -141,7 +141,6 @@ module.exports = function(app,passport){
                 .then(producto => {
                     //SI HAY USUARIO
                     if (producto == null) {
-                        console.log(producto);
                         //consulta de lo que hay en el carrito
                         productosModel
                         .carritode(req.user.id)
@@ -150,7 +149,6 @@ module.exports = function(app,passport){
                             for(var i=0; i< micarrito.length; i++){
                                 suma= suma + micarrito[i].priceProduct;
                             }
-                            console.log("La suma de lo del carrito es: "+suma);
                             res.render("index33", {
                                 micarrito: micarrito,
                                 user: req.user,
@@ -164,7 +162,6 @@ module.exports = function(app,passport){
                     //SI NO HAY USUARIO
                     else {
                         //SE AGREGA AL USUARIO
-                        console.log("entro aqui el sope");
                         productosModel
                         .registro(req.user.id, macAddress)
                         .then(idProductoInsertado => {
@@ -175,7 +172,6 @@ module.exports = function(app,passport){
                             for(var i=0; i< micarrito.length; i++){
                                 suma= suma + micarrito[i].priceProduct;
                             }
-                            console.log("La suma de lo del carrito es: "+suma);
                             res.render("index33", {
                                 micarrito: micarrito,
                                 user: req.user,
@@ -218,9 +214,34 @@ module.exports = function(app,passport){
     
 //profile view
 app.get('/dashboard', isLoggedIn, (req, res) => {
-    res.render('dashboard', {
-        user: req.user
-    });
+    admModel
+		.cuantosP()
+		.then(p => {
+			admModel
+		    .cuantosk()
+		    .then(k => {
+			    admModel
+		        .cuantasV()
+		        .then(v => {
+                    console.log(p);
+			        res.render("dashboard", {
+                    p : p,
+                    k : k,
+                    v : v,
+                    user: req.user,
+			    });
+		        })
+		        .catch(err => {
+			        return res.status(500).send("Error obteniendo v");
+                });
+    		})
+		    .catch(err => {
+			    return res.status(500).send("Error obteniendo k");
+            });
+		})
+		.catch(err => {
+			return res.status(500).send("Error obteniendo p");
+        });
 });
 
 //Llama a la interfaz de signuo
@@ -559,13 +580,25 @@ app.post('/actualizar', [
       function (req, res) {
         const errors = validationResult(req);
         console.log(req.body);
-        const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist } = req.body;
+        const {file, id, nombre, precio, tiempo, min, max, categoria, imagen, dimen, comment, exist, imgant} = req.body;
         if (!errors.isEmpty()) {
         console.log(errors)
         return res.status(422).jsonp(errors.array());
           //codigo cuando hay errores
         } else {
          //codigo cuando no hay errores
+         if(!req.files.file.name){
+            //si no cambia
+            admModel
+        .actualizar(id, nombre, precio, tiempo, min, max, categoria, imagen , dimen, comment, exist)
+        .then(() => {
+            res.redirect("/prodd");
+        })
+        .catch(err => {
+            return res.status(500).send(err);
+        });
+
+         } else{
           //Si se cambió la imagen
         //saca la extensión de la imagén
         var extension = req.files.file.name.split(".").pop();
@@ -579,7 +612,6 @@ app.post('/actualizar', [
             console.log('Successfully renamed - AKA moved!')
         })
         //se hacen los cambios
-        
         admModel
         .actualizar(id, nombre, precio, tiempo, min, max, categoria, "product"+id+"."+extension , dimen, comment, exist)
         .then(() => {
@@ -589,6 +621,7 @@ app.post('/actualizar', [
             return res.status(500).send(err);
         });
         }
+    }
       });
 //Función para eliminar producto
 app.get('/eliminar/:id',isLoggedIn, function (req, res, next) {
