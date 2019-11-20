@@ -5,8 +5,19 @@ const nodemailer = require('nodemailer');
 var fs = require("fs"); 
 const { check, validationResult } = require('express-validator');
 
-
 module.exports = function(app,passport){
+
+    app.post('/subirPersonalizado',(req,res)=>{
+        console.log(req.files);
+        var newPath =  "./src/public/subidas/"+req.files.file.name +Date.now()+".png";
+        var oldPath = req.files.file.path;
+        console.log(newPath);
+        //Se cambia el archivo de carpeta
+        fs.rename(oldPath, newPath, function (err) {
+            if (err) throw err
+            console.log('Successfully renamed - AKA moved!');
+        })
+    });
 
 // index routes
 	app.get('/pasaber', (req, res) => {
@@ -764,6 +775,11 @@ app.post('/reestablecer', (req, res) => {
             return res.status(500).send(err);
         });
 });
+
+
+//Para subir productos personalizados
+
+
     
 
       //Generar un valor aleatorio

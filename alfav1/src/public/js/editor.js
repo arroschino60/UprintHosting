@@ -821,6 +821,26 @@ function setListeners(){
         
     }
 
+    document.getElementById("agregar").onclick = () =>{
+        var dataURL = mainCanvas.toDataURL(); // data:image/png....
+
+        var blobBin = atob(dataURL.split(',')[1]);
+        var array = [];
+        for(var i = 0; i < blobBin.length; i++) {
+            array.push(blobBin.charCodeAt(i));
+        }
+        var file=new Blob([new Uint8Array(array)], {type: 'image/png'});
+        
+        var formData = new FormData();
+
+        formData.append("file", file);
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "/subirPersonalizado");
+        request.send(formData);
+        location.href="/productos";
+    }          
+
     
 }
 let mouseX = 0, mouseY = 0;
