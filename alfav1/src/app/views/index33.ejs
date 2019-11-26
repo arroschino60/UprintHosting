@@ -123,8 +123,13 @@
                                         <span class="badge badge-primary">Material: Piel sintética</span>
                                         <span class="badge badge-primary">Color: Rosa</span>
                                     </p>
-                                    <a href="#" class="card-link text-success"><i class="fas fa-plus"></i> Más productos de esta categoría</a>
-                                    <a href="#" class="card-link text-info"><i class="fas fa-edit"></i> Modificar</a>
+                                    <% if(micarrito[i].nameCategory=="Foto Regalos"){%>
+                                      <a href="productos#secfotoregalos" class="card-link text-success"><i class="fas fa-plus"></i> Más productos de esta categoría</a>
+                                      <% }else if(micarrito[i].nameCategory=="Foto libros"){ %>
+                                        <a href="productos#secfotolibros" class="card-link text-success"><i class="fas fa-plus"></i> Más productos de esta categoría</a>
+                                        <% }else{ %>
+                                          <a href="productos#secfotomarcos" class="card-link text-success"><i class="fas fa-plus"></i> Más productos de esta categoría</a>
+                                        <% } %>                                    <a href="#" class="card-link text-info"><i class="fas fa-edit"></i> Modificar</a>
                                     <a href="#" class="card-link text-danger"><i class="fas fa-trash-alt"></i> Eliminar</a>
                                 </div>
                         </div>
