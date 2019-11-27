@@ -1,0 +1,304 @@
+
+
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+
+#Capa_1{
+  transform: scale(0.8)
+}
+
+
+.homeSection{
+    
+    position:absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    z-index: 0;
+}
+
+#logoSvg{
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: logo 2s ease-in-out alternate forwards;
+}
+
+.navbar-brand{
+    margin-left: 8px;
+}
+
+.iconContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logoContainer{
+    
+    background-color: white;
+    border-radius: 10em;
+    animation: fade 2s ease-in-out alternate forwards;
+}
+#navbar{
+    transition: all;
+    transition-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition-duration: 1s;
+    transform: translateY(-80px);
+}
+
+#circulo{
+    transition: all;
+    box-shadow: #383838;
+    animation: fade 2s ease-in-out alternate forwards;
+}
+
+@keyframes logo {
+    form{
+        stroke-dashoffset: 1000;
+    }
+    to{
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fade {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.tipo{
+    fill:#383838;
+    
+    font-size:45.4054px;
+    letter-spacing:22px;
+    animation: fade 1s ease-in-out 1s alternate forwards ;
+    opacity: 0;
+}
+
+@keyframes conten {
+    from{
+        transform: scaleX(1) scaleY(1);
+        border-radius: 4em;
+
+    }
+    to{
+        transform: scaleX(3) scaleY(1.5) ;
+        border-radius: 0em;
+
+    }
+}
+
+.links{
+    margin-top: 18px;
+    padding-right: 8px;
+    opacity: 0;
+    animation: fade 2s 1s ease-in-out alternate forwards;
+}
+
+a{
+    margin-left: 8px;
+}
+
+.img{
+    opacity: 0;
+    transition: opacity;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275)
+}
+
+.section{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+#section1, #section2{
+    background-image: url(../img/dif3.png);
+    
+    background-position-y: 800px;
+    background-size: cover;
+}
+
+
+.focusIn{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.focusOut{
+    position: relative;
+}
+
+.photo{
+    background-color: white;
+    width: 300px;
+    height: 300px;
+}
+
+.navbar {
+  box-shadow: 2px 2px 5px #3292a6;
+  opacity: 0.9;
+  background: #fff; }
+  .navbar .nav-item {
+    font-size: 1.4rem;
+    padding-right: 1.4rem; }
+
+#showcase {
+  position: relative;
+  background: url("../img/uprintfondo.png");
+  min-height: 600px; }
+  #showcase .primary-overlay {
+    background: rgba(50, 146, 166, 0.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+.info-header {
+  width: 50%;
+  margin: auto;
+  border-bottom: 1px #ddd solid; }
+
+#authors img {
+  margin-top: -50px; }
+#authors .card:hover {
+  background: #3292a6;
+  color: #fff; }
+#authors .fab {
+  color: #fff; }
+
+@media (max-width: 768px) {
+  #showcase {
+    min-height: 500px; }
+    #showcase h1 {
+      font-size: 4rem; }
+
+  .mb-resp {
+    margin-bottom: 1rem; } }
+element.style {
+}
+#shoppingBag{
+  color: #3e5ff1;
+}
+@media (min-width: 992px)
+.d-lg-block {
+    display: block !important;
+}
+#newsletter1{
+  margin-top: -40px;
+}
+.showInfo{
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+}
+
+.content {
+  top: -50px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+#irtienda{
+    position: fixed;
+    margin-top: 470px;
+    margin-left: 600px;
+    z-index: 2;
+}
+
+
+#logoinfo{
+   position: absolute;
+   margin-top: -100px;
+   z-index: 2;
+}
+
+#objetosespacio{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    
+    z-index: 3;
+}
+
+#logoastro{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   margin-top: 900px;
+   
+   background-image: url(../img/tierra.png);
+   background-repeat: no-repeat;
+   background-size: 1300px 1000px;
+   z-index: 3;
+  
+}
+
+#nave1{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   margin-top: 900px;
+  
+   margin-left: -150px;
+   background-image: url(../img/rocket3.png);
+   background-repeat: no-repeat;
+   background-size: 600px 330px;
+   z-index: 4;    
+}
+
+#fuego1{
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   margin-top: 850px;
+   margin-left: 150px;
+   
+   background-position: left;
+   background-image: url(../img/fuego.gif);
+   background-repeat: no-repeat;
+   background-size: 50px 50px;
+   transform: scaleY(-1);
+   z-index: 3;    
+}
+

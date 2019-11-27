@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="./img/iconuprint.png" id="">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>uPrint</title>
+</head>
+
+<body>
+
+<nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
+    <div class="container">
+      <a href="/dashboard" class="navbar-brand">
+        <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          
+         <li class="nav-item pt-3 ml-2 mr-2">
+            <a href="/kiosko" class="nav-link"><h1 class="lead" style="font-size: 22px"><i class="fas fa-home"></i> Kiosko </h1></a>
+          </li>
+
+          <li class="nav-item pt-3 ml-2 mr-2">
+            <a href="/prodd" class="nav-link"><h1 class="lead" style="font-size: 22px"><i class="fas fa-box-open"></i> Productos </h1></a>
+          </li>
+         
+          <li class="nav-item pt-3 ml-2 mr-2">
+            <a href="/pro" class="nav-link"><h1 class="lead" style="font-size: 22px"><i class="fas fa-people-carry"></i> Pedidos </h1></a>
+          </li>
+         
+         
+          <li class="nav-item dropdown mt-2 pb-2 ml-2 mr-2">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-primary">
+                
+                <i class="fas fa-user text-white"></i>
+                <span class="badge badge-light text-secondary">
+                    <% if(user){ %>
+                      <%= user.username %>
+                    <% } else { %>
+                    Usuario
+                    <% } %>
+                </span>
+              </button>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="/dashboard">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-angle-double-right"></i>
+                <span class="badge badge-light text-secondary">Menú admin</span>
+                </button>
+                </a>
+
+                <a href="/logout">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="badge badge-light text-secondary">Cerrar sesión</span>
+                </button>
+                </a>
+            </div>
+            
+          </li> 
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+  <!-- HEADER -->
+  <header id="main-header" style="background-image:url(img/dif2.png)" class="py-2">
+    <div class="container">
+      <div class="row">
+          
+        <div class="col-md-6">
+          <h1><i class="fas fa-box-open"></i> Productos </h1>
+        </div>
+
+        <div class="col-md-5">
+          
+        </div>
+          
+        <div class="col-md-1" data-toggle="tooltip" data-placement="left" title="¿Necesitas ayuda acerca de como funciona la interfaz? ¡Haz click aquí!">
+          <a href="" data-toggle="modal" data-target="#prodmodalhelp">
+          <h1><i class="fas fa-question-circle text-right text-dark"></i></h1>
+          </a>
+        </div> 
+          
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="mb-2 mt-2 bg-light">
+    <div class="container">
+      <div class="row">
+       
+
+        <div class="col-md-5 mr-1 mt-2 ">
+         <form class="form-inline">
+            <a href="#" class="btn btn-light" data-toggle="modal" data-target="#addPostModal">
+                <h6><i class="fas fa-search pt-2" aria-hidden="true"></i> Buscar</h6>
+            </a>
+            <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Fotolibro..."
+                   aria-label="Search"> 
+         </form>
+        </div>
+        
+          
+        <div class="col-md-2 mr-4 ml-4 mt-4">
+              <a href="#" class="btn btn-dark" data-toggle="modal" data-target="#addPostModal">
+                <h6><i class="fas fa-plus"></i> Agregar producto</h6>
+              </a>  
+        </div>
+        
+        
+        <div class="col-md-3 mr-1 ml-1 mt-2 mb-2"> 
+           <div class="card text-center bg-white text-secondary" data-toggle="tooltip" data-placement="top" title="Total de productos registrados en almacén">
+            <div class="card-body">
+                <h6><i class="fas fa-box-open"></i> Total de productos: <%= productos.length %></h6>
+            </div>
+           </div>
+        </div>
+    
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="posts">
+    <div class="container" style="background-image:url(img/dif2.png)">
+    
+      <div class="row">
+
+      <div class="col-md-12">
+          <ul class="nav nav-tabs md-tabs" id="myTabMD" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab-md" data-toggle="tab" href="#home-md" role="tab" aria-controls="home-md"
+      aria-selected="true"><i class="fas fa-th-large"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab-md" data-toggle="tab" href="#profile-md" role="tab" aria-controls="profile-md"
+      aria-selected="false"><i class="fas fa-list"></i></a>
+  </li>
+          </ul>
+<div class="tab-content card pt-5" id="myTabContentMD">
+  <div class="tab-pane fade show active" id="home-md" role="tabpanel" aria-labelledby="home-tab-md">
+    <div class="container">
+        <div class="row">
+            <% productos.forEach(producto => { %>
+
+              <div class="col-md-3 mr-2 ml-2 mt-2 mb-2">
+                  <div class="card text-center pt-1" style="width: 15rem;">
+                    <% if(producto.nameCategory == "Foto Regalos"){ %>
+                      <div class="card-header" style="background-color: #17a2b8;">
+                        <h5 class="card-title text-white"><%= producto.nameProduct %></h5>
+                      </div>
+                        <% } if(producto.nameCategory == "Foto libros"){ %>
+                          <div class="card-header" style="background-color: #3795f8;">
+                            <h5 class="card-title text-white"><%= producto.nameProduct %></h5>
+                      </div>
+                        <% } if(producto.nameCategory == "Foto Marcos") { %> 
+                          <div class="card-header" style="background-color: #8256fa;">
+                            <h5 class="card-title text-white"><%= producto.nameProduct %></h5>
+                      </div>
+                            <% } %>
+                      <div class="card-body">
+                          <img src="img/<%= producto.imageProduct %>" width="100%" height="150px">
+                      </div>
+                      <div class="card-header">
+                          <h6 class="">
+                              <div href="#" class="botonbajo" data-toggle="modal" data-target="#modal<%= producto.idProduct %>" style="cursor: pointer;" >
+                                  Caracteristicas <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Ver caracteristicas del producto"></i> 
+                              </div>
+                          </h6>
+                          <h6 class="">
+                            <a href="editar/<%= producto.idProduct %>" class="btn btn-secondary pr-4 pl-4" data-toggle="tooltip" data-placement="top" title="Editar producto"> 
+                              <i class="fas fa-angle-double-right"></i> Editar
+                            </a>
+                        </h6>
+                      </div>  
+                  </div>
+              </div>
+ <!-- MODAL DE CARACTERISTICAS -->
+              <div class="modal fade" id="modal<%= producto.idProduct %>">
+                <div class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                      <h5 class="modal-title"> <i class="fas fa-info"></i> Caracteristicas</h5>
+                      <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="card-body">
+                        <h1><%= producto.nameProduct %>                                 <img src="img/<%= producto.imageProduct %>" width="192px" height="108px"></h1><br>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8">Detalles del producto:</span><%= producto.featuresProduct %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Categoria:</span > <%= producto.nameCategory %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Dimensiones:</span><%= producto.widthDimension %> X <%= producto.heightDimension %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Pedidos maximos:</span><%= producto.max %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Pedidos minimos:</span><%= producto.min %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Precio:</span> <%= producto.priceProduct %></li>
+                            <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Tiempo de entrega:</span><%= producto.time %></li>
+                            <% if(producto.enableProduct == 1){ %>
+                              <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8;">Existencia en almacen:</span> <span style="color: rgb(41, 138, 83);" >Si</span></li>
+                            <% } else{ %>  
+                              <li class="list-group-item"><span style="font-weight: bold; color: #17a2b8; ">Existencia en almacen:</span><span style="color: rgb(177, 40, 40);">No</span></li>        
+                            <% } %>  
+                        </ul>
+                    </div>
+                    </div>
+            
+                  </div>
+                </div>
+              </div>
+
+            <% })%>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="profile-md" role="tabpanel" aria-labelledby="profile-tab-md">
+            <h4>Selecciona numero de filas</h4>
+            <div class="form-group">
+                <select name="state" id="maxRows" class="form-control" style="width: 150px;">
+                        <option value="1">1</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                </select>
+            </div>
+        <table id="mytable" class="table table-bordered table-striped">
+          <thead>
+            <tr style="color: aliceblue; background-color: #17a2b8;">
+              <th scope="col">Nombre:</th>
+              <th scope="col">Precio:</th>
+              <th scope="col">Tiempo de entrega:</th>
+              <th scope="col">Minimo pedido:</th>
+              <th scope="col">Maximo pedido:</th>
+              <th scope="col">Dimensiones:</th>
+              <th scope="col">Descripcion:</th>
+              <th scope="col">Existencia en almacén:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% productos.forEach(producto => { %>
+            <tr>
+              <td scope="row">
+                <p><%= producto.nameProduct %></p>
+                <a href="editar/<%= producto.idProduct %>" class="btn btn-secondary pr-4 pl-4">
+                  <i class="fas fa-angle-double-right"></i> Editar
+                </a>
+              </td>
+              <td><%= producto.priceProduct %></td>
+              <td><%= producto.time %></td>
+              <td><%= producto.min %></td>
+              <td><%= producto.max %></td>
+              <td><%= producto.widthDimension %> X <%= producto.heightDimension %></td>
+              <td><%= producto.featuresProduct %></td> 
+              <% if(producto.enableProduct == 1){ %>
+                <td>Sí</td>
+              <% } else{ %>  
+                <td>No</td>        
+              <% } %>  
+            </tr>
+          <tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <div class="pagination-container">
+          <nav>
+              <ul class="pagination"></ul>
+          </nav>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
+           
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5" style="background-image:url(img/dif3.png)">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy;
+            <span id="year"></span>
+            ITM
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- MODALS -->
+ <div class="modal fade" id="prodmodalhelp">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title">Bienvenido a la interfaz de productos</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <h1 style="color: #007bff;">Guía Rapida:</h1>
+            <div style="font-weight: bolder;"><p>¡Bienvenido a la ventana para administrar Productos!</p></div>
+            <div>Para ver las características de cada producto presiona el boton: <span style="font-weight: bold;">Caracteristicas <i class="fas fa-info-circle"></i></span></div>
+            <div>Como administrador, tambien se pueden editar caracteristicas, para hacerlo, sigue el boton: <span style="color: white;"><a class="btn btn-secondary pr-4 pl-4" style="cursor: auto;"><i class="fas fa-angle-double-right"></i> Editar</a></span></div>
+
+
+
+        </div>
+       
+        </div>
+      </div>
+    </div>
+
+  <!-- ADD MODAL -->
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title"><i class="fas fa-plus"></i> Agregar producto</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  method="post" action="/insertar" enctype="multipart/form-data">
+            <div class="row">
+              <div class="col-md-5"></div>
+              <div class="col-md-3">
+                <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el nombre del producto a registrar (Máximo X caracteres)">
+                  <h6 class="">Nombre: <i class="fas fa-info-circle"></i></h6>
+                </button>
+              </div>
+              <div class="col-md-4"></div>
+            </div>  
+            <div class="form-group">
+              <input placeholder="Nombre del producto" type="text" id="nombre" class="form-control" name="nombre">
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el precio del producto con pesos y decimales ($ 0.00 MXN)">
+                <h6 class="">Precio: <i class="fas fa-info-circle"></i></h6>
+              </button>
+              <input type="number" id="precio" name="precio" class="form-control" placeholder="Precio del producto">
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la cantidad del producto en enteros (1 pieza)">
+                  <h6 class="">Tiempo de entrega en días: <i class="fas fa-info-circle"></i></h6>
+                </button>
+                <div class="form-group">
+                  <input type="number" id="tiempo" class="form-control"  name="tiempo" placeholder="Cantidad de días">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el minimo de los productos que deben estar en existencia en enteros (1 pieza)">
+                  <h6 class="">Minimo en venta: <i class="fas fa-info-circle"></i></h6>
+                </button>      
+                <div class="form-group">
+                  <input type="number" class="form-control" id="min" placeholder="Cantidad minima"  name="min">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa el maximo de productos que pueden estar en existencia en enteros (1 pieza)">
+                  <h6 class="">Máximo en venta: <i class="fas fa-info-circle"></i></h6>
+                </button>
+                <div class="form-group">
+                  <input type="number" class="form-control" id="max" placeholder="Cantidad Maxima" name="max">
+                </div>
+              </div>
+            </div>  
+            <div class="form-group">
+              <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la linea del producto a la que pertenece">
+                  <h6 class="">Linea de producto: <i class="fas fa-info-circle"></i></h6>
+              </button>
+              <select class="form-control" id="categoria" name="categoria">
+                <option value="1">Foto Regalos</option>
+                <option value="2">Foto Libros</option>
+                <option value="3">Foto Marcos</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la linea del producto a la que pertenece">
+                  <h6 class="">Hay en almacén: <i class="fas fa-info-circle"></i></h6>
+              </button>
+
+              <select class="form-control" id="exist" name="exist">
+                    <option value="true" aria-selected="true">Sí</option>        
+                    <option value="false">No</option>
+             </select>
+            </div>
+            <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Sube la imagen del producto (Max 5mb)">
+              <h6 class="">Imagen: <i class="fas fa-info-circle"></i></h6>
+            </button>
+            <div class="custom-file">
+              <input placeholder="Elegir imágen" type="file" name="file">
+            </div>
+              <div class="form-group">
+                  <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="right" title="Ingresa la linea del producto a la que pertenece">
+                      <h6 class="">Dimensiones: <i class="fas fa-info-circle"></i></h6>
+                  </button>
+                  <select class="form-control" id="dimen" name="dimen">
+                    <option value="1">25 X 15</option>
+                    <option value="2">15 X 15</option>
+                  </select>
+                </div>
+              <div class="form-group">
+                <button type="button" class="btn btn-light mt-2" data-toggle="tooltip" data-placement="right" title="Ingresa la descripcion del producto, caracteristicas principales, datos significativos.">
+                  <h6 class="">Descripción: <i class="fas fa-info-circle"></i></h6>
+                </button>
+                <textarea placeholder="Breve descripción del producto" class="form-control" rows="3" id="comment" name="comment"></textarea>
+              </div>
+              <div class="form-group text-center">
+                  <button class="btn btn-success">Guardar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+  <script>
+    var table='#mytable'
+$('#maxRows').on('change', function(){
+    $('.pagination').html('')
+    var trnum=0
+    var maxRows=parseInt($(this).val())
+    var totalRows=$(table+' tbody tr').length
+    $(table+' tr:gt(0)').each(function(){
+        trnum++
+        if(trnum > maxRows){
+            $(this).hide()
+        }
+        if(trnum <= maxRows){
+            $(this).show()
+        }
+        
+    })
+    if(totalRows > maxRows){
+        var pagenum=Math.ceil(totalRows/maxRows)
+        for(var i=0;i<=pagenum;){
+            $('.pagination').append('<li data-page="'+i+'">\<span>'+ i++ +'<span class="sr-only">(current)</span></span>\</li>').show()
+        }
+    }
+    $('.pagination li:first-child').addClass('active')
+    $('.pagination li').on('click', function(){
+        var pageNum=$(this).attr('data-page')
+        var trIndex=0;
+        $('.pagination li').removeClass('active')
+        $(this).addClass('active')
+        $(table+' tr:gt(0)').each(function(){
+            trIndex++
+            if(trIndex > (maxRows*pageNum) || trIndex <= ((maxRows*pageNum)-maxRows)){
+                $(this).hide()
+            }else{
+                $(this).show()
+            }
+        })
+    })
+})
+$(function(){
+    $('table tr:eq(0)').prepend('<th>ID</th>')
+    var id=0;
+    $('table tr:gt(0)').each(function(){
+        id++
+        $(this).prepend('<td>'+id+'</td>')
+    })
+})
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    CKEDITOR.replace('editor1');
+  </script>
+  
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+
+</html>

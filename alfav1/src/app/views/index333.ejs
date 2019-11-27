@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link rel="icon" href="img/iconuprint.png" id="">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>uPrint</title>
+</head>
+
+<body id="home" data-spy="scroll" data-target="#main-nav" style="background-image:url(img/dif2.png)">
+     <nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
+    <div class="container">
+      <a href="/" class="navbar-brand">
+        <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item pt-2">
+                <a href="/" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Inicio </h1></a>
+                </li>
+                
+                <li class="nav-item pt-2">
+                <a href="/productos" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Productos </h1></a>
+                </li>
+
+                <li class="nav-item pt-2">
+                <a href="/personalizar" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Personalización </h1></a>
+                </li>
+
+                <li class="nav-item pt-2">
+                <a href="/contacto" class="nav-link"><h1 class="lead pl-3 pr-3 pt-1 pb-1" style="font-size: 17px"> Contacto </h1></a>
+                </li>
+
+         <li class="nav-item pt-2">
+              <button type="button" class="btn btn-info">
+                <a id="shoppingBag" href="/carrito">
+                <i class="fas fa-shopping-cart text-white"></i>
+                <span class="badge badge-light text-secondary">3</span>
+                <span class="sr-only">unread messages</span>
+                </a>
+             </button>
+          </li>
+
+          <li class="nav-item dropdown pt-.8">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                <button type="button" class="btn btn-info">
+                  
+                  <i class="fas fa-user text-white"></i>
+                  <span class="badge badge-light text-secondary">
+                      <% if(user){ %>
+                          <%= user.username %>
+                        <% } else { %>
+                        Login
+                        <% } %>
+                  </span>
+                </button>
+              </a>
+  
+              <div class="dropdown-menu">
+                  <a href="/signin">
+                  <button class="btn btn-light ml-3 mr-1">
+                  <i class="fas fa-angle-double-right"></i>
+                  <span class="badge">Login</span>
+                  </button>
+                  </a>
+                  <% if(user){ %>
+                  <a href="/salir">
+                  <button class="btn btn-light ml-3 mr-1">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <span class="badge">Cerrar sesión</span>
+                  </button>
+                  </a>
+                  <% } %>
+              </div>
+              
+            </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+          <h5 class="h2"><i class="fas fa-wallet"></i> Pago (STATIC TEST)</h5>
+        </div>
+        
+        <div class="col-md-6">
+            
+            <div class="card">
+            
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <p class="lead text-primary">*Campo requerido</p>
+               <h5 class="card-title">Tarjeta de Crédito / Débito (aplicación restricciones)</h5>
+                 
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Tipo de Tarjeta de Crédito / Débito *
+                <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+            </label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Master Card</option>
+                    <option value="1">Visa</option>
+                    <option value="2">American express</option>
+                </select>
+        </div>
+
+        <div class="col-md-12">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Número de la Tarjeta de Crédito / Débito *
+                <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+            </label>             
+            <input type="number" class="form-control" id="min" placeholder="555 555 555 555 555"  name="min">
+        </div>
+
+        <div class="col-md-12">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Número de seguridad *
+                <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+            </label>
+            <input type="password" class="form-control" id="inputPassword" placeholder="***">
+        </div>
+
+        <div class="col-md-12">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Vence: *
+                <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+            </label>
+        </div>
+        
+        <div class="col-md-6">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Mes *
+
+            </label>
+            <input type="number" class="form-control" id="min" placeholder="08"  name="min">
+        </div>
+        
+        <div class="col-md-6">
+            <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Año *
+
+            </label>
+            <input type="number" class="form-control" id="min" placeholder="2025"  name="min">
+        </div>
+        
+        <div class="col-md-12">
+            <div class="form-check mt-2 mb-2">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Almacene la información de su tarjeta de crédito y facturación en nuestro sistema seguro para hacer compras en el futuro más rápidas y fáciles, Tendrá la oportunidad más adelante en el proceso de administrar configuración del sistema de su cuenta <p class="text-primary">Aviso de privacidad</p></label>
+            </div>
+        
+        </div>
+        
+        <div class="col-md-12 text-center">
+    <label for="validationCustom01">Nombre(s) de la persona autorizada a recoger el pedido
+    <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+    </label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Juan Perez" required>
+        
+        </div>
+
+        
+    </div>
+</div>
+               
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            
+            <div class="card">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                    <h5 class="card-title">Dirección (datos de la tarjeta)</h5>
+                    </div>
+                    <div class="col-md-12">
+                    
+                        <label for="validationCustom01">Nombre(s) del tarjetahabiente
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Juan" required>
+                    
+                        <label for="validationCustom02">Apellido del Tarjetahabiente
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Perez" required>
+                        
+                        <label for="validationCustom03">Calle y número
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom03" placeholder="Benhamin hill 30" required>
+
+                        <label for="validationCustom03">Colonia
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom03" placeholder="Obrera" required>
+
+                        <label for="validationCustom03">Delegación o municipio
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom03" placeholder="Morelia" required>
+                        
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="validationCustom04">Estado
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom04" placeholder="Michoacán" required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="validationCustom05">Código postal
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom05" placeholder="58210" required>
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label for="validationCustom04">Pais
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>
+                        <input type="text" class="form-control" id="validationCustom04" placeholder="Mexico" required>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Telefóno
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>             
+                        <input type="number" class="form-control" id="min" placeholder="4433553230"  name="min">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Otro Telefóno (Opcional) 
+                        <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Ayuda respectiva"></i>
+                        </label>             
+                        <input type="number" class="form-control" id="min" placeholder="4433553230"  name="min">
+                    </div>
+                    
+                </div>
+            </div>
+
+            </div>
+        </div>
+
+        
+        
+    </div>
+</div>  
+
+    
+<section>
+  
+
+</section>
+
+
+
+<section id="totalcoz">
+   <div class="container">
+       <div class="row">
+            <div class="col-md-12">
+            
+            <div class="card">
+                <div class="container">
+                    <div class="row">
+                        
+                        <div class="col-md-1 pt-3">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        </div>
+                        
+                        <div class="col-md-4">
+                        <label class="form-check-label" for="exampleCheck1">Acepto los <p class="text-primary">Terminos y condiciones & Aviso de privacidad</p>
+                        </label> 
+                        </div>
+
+                        <div class="col-md-2 mt-2">
+                        <p>Total productos: (3)</p>        
+                        </div>
+
+                        
+                        <div class="col-md-2">
+                        <h2 class="h2">Total:</h2>
+                        </div>
+                        
+                        <div class="col-md-2 mt-2">
+                        <h2 class="h4"><i class="fas fa-dollar-sign"></i> 600.00</h2>
+                        </div>
+                        
+                        <div class="col-md-1 mt-1">
+                        <a href="">
+                        <button type="button" class="btn btn-primary">Pagar</button>
+                        </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+   </div>
+</section>
+
+  <!-- FOOTER -->
+  <footer id="main-footer" class="pt-5 mt-5 pb-5 text-white" style="background-image:url(img/dif3.png)">
+      
+      <div class="container mb-5">
+        <div class="row text-center">
+           
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-1">
+                <i class="fab fa-facebook fa-3x"></i>
+            </div>
+            <div class="col-md-1">
+                <i class="fas fa-envelope fa-3x"></i>
+            </div>
+            <div class="col-md-1">
+                <i class="fas fa-phone-square fa-3x"></i>
+            </div>
+            <div class="col-md-1">
+                <i class="fas fa-map-marker-alt fa-3x"></i>
+            </div>
+            <div class="col-md-3">
+            </div>
+        
+        </div>
+            </div>
+
+    
+
+
+    <div class="container">
+      <div class="row text-center">
+
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-4">
+                <h6 class="lead" style="font-size: 15px">
+                <span id="year"></span>
+                &copy; uPrint.com <br> Todos los Derechos Reservados
+                </h6>
+            </div>
+              <div class="col-md-2">
+                <a href="tc.html">
+                <button type="button" class="btn btn-dark">Terminos & Condiciones</button>
+                </a>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-2">
+                <a href="tc2.html">
+                <button type="button" class="btn btn-dark">Aviso de Privacidad</button>
+                </a>
+            </div>
+             
+
+      </div>
+        
+    </div>      
+
+  </footer>
+
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+  <script>
+    // Get the current year for the copyright
+    $('#year').text(new Date().getFullYear());
+
+    // Init Scrollspy
+    $('body').scrollspy({ target: '#main-nav' });
+
+    // Smooth Scrolling
+    $("#main-nav a").on('click', function (event) {
+      if (this.hash !== "") {
+        event.preventDefault();
+
+        const hash = this.hash;
+
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function () {
+
+          window.location.hash = hash;
+        });
+      }
+    });
+  </script>
+
+  <script>
+    $('.carousel').carousel({
+      interval: 3000,
+      keyboard: true,
+      pause: 'hover',
+      wrap: true
+    });
+
+    $('#slider4').on('slide.bs.carousel', function () {
+      console.log('SLIDE!');
+    });
+
+    $('#slider4').on('slid.bs.carousel', function () {
+      console.log('SLID!');
+    });
+
+  </script>
+
+  <script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+  </script> 
+    
+  <!-- scripts -->
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+
+</body>
+
+</html>

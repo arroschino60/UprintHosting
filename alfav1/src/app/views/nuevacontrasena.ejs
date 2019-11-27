@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <title>Hola</title>
+    <link rel="stylesheet" href="css/style.css">
+    </head>
+<body onload="generar()">
+    <form class="box" action="/actualiza" method="POST">
+    <img src="img/logouprint.png" style="height: 100px; width: 120px;">
+    <h1>Nueva Contraseña</h1>
+    <input type="text" name="campo1" id="campo1" placeholder="Correo Elecronico">
+    <input type="password" name="newpass" id="newpass" placeholder="Nueva Contraseña">
+    <input type="password" name="confpass" id="confpass" placeholder="Confirmar contraseña">
+    <input type="submit" value="Actualizar" ><br>
+    
+    <p type="hidden" id="custId" name="custId"></p>
+
+
+        </form>
+</body>
+</html>

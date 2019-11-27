@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="./img/iconuprint.png" id="">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>uPrint Admin</title>
+
+</head>
+<body style="background-image: url(../img/logodif.png);">
+
+<nav id="navbar" class="navbar navbar-expand-md navbar-light fixed-top bg-light" id="main-nav">
+    <div class="container">
+      <a href="/dashboard" class="navbar-brand">
+        <img src="../logo/homelogo-01.png" width="180px" height="32px" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto">
+          
+         <li class="nav-item pt-4 ml-2 mr-2">
+           <h5>¡Bienvenid@, <span style="color: #007bff;"><%= user.firstname %><i class="fas fa-user-cog"></i></span>!</h5> 
+         </li>
+            
+         <li class="nav-item pt-4 ml-2 mr-2">
+           <h5><i class="fa fa-user"></i> Usuario: <span style="color: #007bff;"><%= user.username %></span></h5> 
+         </li>
+         
+         <li class="nav-item pt-4 ml-2 mr-2">
+           <h5><i class="fas fa-user-tag"></i> No. Usuario:<span style="color: #007bff;"> <%= user.id %> </span></h5>
+         </li>
+         
+         
+          <li class="nav-item dropdown mt-2 pb-2 ml-2 mr-2">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+              <button type="button" class="btn btn-primary">
+                
+                <i class="fas fa-user text-white"></i>
+                <span class="badge badge-light text-secondary">Admin</span>
+              </button>
+            </a>
+
+            <div class="dropdown-menu">
+                <a href="/dashboard">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-angle-double-right"></i>
+                <span class="badge badge-light text-secondary">Menú admin</span>
+                </button>
+                </a>
+
+                <a href="/logout">
+                <button class="btn btn-light ml-3 mr-1">
+                <i class="fas fa-sign-out-alt"></i>
+                <span class="badge badge-light text-secondary">Cerrar sesión</span>
+                </button>
+                </a>
+            </div>
+            
+          </li> 
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+ <!-- HEADER -->
+  <header id="main-header" style="background-image:url(img/dif2.png)" class="pb-4">
+    <div class="container">
+      <div class="row">
+          
+        <div class="col-md-6">
+          <h1><i class="fas fa-address-card"></i> Menú del administrador </h1>
+        </div>
+
+        <div class="col-md-5">
+          
+        </div>
+          
+        <div class="col-md-1" data-toggle="tooltip" data-placement="left" title="¿Necesitas ayuda acerca de como funciona la interfaz? ¡Haz click aquí!">
+          <a href="" data-toggle="modal" data-target="#prodmodalhelp">
+          <h1><i class="fas fa-question-circle text-right text-dark"></i></h1>
+          </a>
+        </div> 
+          
+      </div>
+    </div>
+  </header>
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center bg-white text-secondary">
+                        <div class="card-body">
+                            <a href="/kiosko">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Administración de kioskos">
+                            <i class="fas fa-home fa-8x"></i>
+                            <h4>Kioskos</h4>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center bg-white text-secondary">
+                        <div class="card-body">
+                            <a href="/prodd">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Administración de productos">
+                            <i class="fas fa-box-open fa-8x"></i>
+                            <h4>Productos</h4>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center bg-white text-secondary">
+                        <div class="card-body">
+                            <a href="/pro">
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Administración de pedidos">
+                            <i class="fas fa-people-carry fa-8x"></i>
+                            <h4>Pedidos</h4>
+                            </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+
+
+         <div class="col-md-12">
+            
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card text-center bg-white text-secondary" data-toggle="tooltip" data-placement="bottom" title="Total de kioskos registrados">
+                        <div class="card-body">
+                           <h6><i class="fas fa-home"></i> Total de kioskos: <%= k[0].nok %> </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center bg-white text-secondary" data-toggle="tooltip" data-placement="bottom" title="Total de productos registrados en almacén">
+                        <div class="card-body">
+                           <h6><i class="fas fa-box-open"></i> Total de productos: <%= p[0].nopro %> </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card text-center bg-white text-secondary" data-toggle="tooltip" data-placement="bottom" title="Total de pedidos en proceso">
+                        <div class="card-body">
+                           <h6><i class="fas fa-people-carry "></i> Pedidos en proceso: <%= v[0].nov %></h6> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+
+        
+    </div>
+</div>
+
+<!-- FOOTER -->
+  <footer id="main-footer" class="bg-dark text-white mt-5 p-5" style="background-image:url(img/dif3.png)">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <p class="lead text-center">
+            Copyright &copy;
+            <span id="year"></span>
+            ITM
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- MODALS -->
+ <div class="modal fade" id="prodmodalhelp">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title">Bienvenido al menú del administrador</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+          
+        <div class="modal-body">
+          <h1 style="color: #007bff;">Guía Rapida:</h1>
+        <h2 style="font-weight: bolder;"><p>¡Bienvenido a la página de inicio para el administrador!</p></h2>
+        <div style="font-weight: bolder;"><p>Da click sobre alguno de los botones en la parte central de la pantalla para proceder a una ventana y manipular sus datos</p></div>
+         <div>
+           <ul class="list-group list-group-flush">
+<li> <h6><i class="fas fa-home"></i> Kioskos </h6>
+<div>Muestra una ventana con todos los kioskos disponibles de Uprint con todas sus caracteristicas, se puede tambien editar los datos y dar de baja al kiosko.</div></li>
+<li> <h6><i class="fas fa-box-open"></i> Productos </h6>
+  <div>Muestra una ventana con todos los productos disponibles en las tiendas de Uprint con todas sus caracteristicas, se puede tambien editar los datos e imágen, así como eliminar algún producto del inventario.</div></li>
+<li><h6><i class="fas fa-people-carry "></i> Pedidos</h6>
+  <div>Muestra una ventana con todos los pedidos realizados por clientes de Uprint, para dar seguimiento y alterar su estado, de recibido, en proceso y terminado según sea el caso.</div> </li>
+
+
+          </ul>
+        </div>
+
+
+        </div>
+       
+        </div>
+      </div>
+  </div>
+
+   
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+</html>
